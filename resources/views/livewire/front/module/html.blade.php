@@ -1,0 +1,3 @@
+<div>
+    {!! $module->description !!}
+</div>
