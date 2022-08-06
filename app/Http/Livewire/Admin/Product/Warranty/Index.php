@@ -150,37 +150,25 @@ class Index extends Component
     public function updateDisable($id)
     {
         if(Gate::allows('edit_garranty')){
-            $warranty = Warranty::find($id);
+            $warranty = Warranty::findOrFail($id);
+            if($warranty->status == 1){
+                $status=0;
+                $action='غیر فعال';
+            }else{
+                $status=1;
+                $action=' فعال';
+            }
             $warranty->update([
-                'status' => 0
+                'status'=>$status
             ]);
+
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'غیرفعال کردن وضعیت گارانتی' .'-'. $this->warranty->name,
-                'actionType' => 'غیرفعال'
+                'url' => 'تغییر وضعیت گارانتی' .'-'. $this->warranty->name,
+                'actionType' => $action
             ]);
-            $this->emit('toast', 'success', 'وضعیت گارانتی با موفقیت غیرفعال شد.');
+            $this->emit('toast', 'success', 'تغییر وضعیت با موفقیت انجام شد.');
 
-        }else{
-
-            $this->emit('toast', 'warning','شما اجازه ویرایش این قسمت را ندارید.');
-        }
-
-    }
-
-    public function updateEnable($id)
-    {
-        if(Gate::allows('edit_garranty')){
-            $warranty = Warranty::find($id);
-            $warranty->update([
-                'status' => 1
-            ]);
-            Log::create([
-                'user_id' => auth()->user()->id,
-                'url' => 'فعال کردن وضعیت گارانتی' .'-'. $this->warranty->name,
-                'actionType' => 'فعال'
-            ]);
-            $this->emit('toast', 'success', 'وضعیت گارانتی با موفقیت فعال شد.');
         }else{
 
             $this->emit('toast', 'warning','شما اجازه ویرایش این قسمت را ندارید.');

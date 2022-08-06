@@ -10,10 +10,11 @@ Route::get('mySiteMapGenerate',[\App\Http\Controllers\Smpe::class,'index'])->nam
 Route::get('/verify/{phone}',\App\Http\Livewire\Auth\VerifyPhoneNumber::class)->name('Verify');
 Route::get('/',\App\Http\Livewire\Front\Home\Index::class)->name('Home');
 Route::get('logout', function () {  Auth::logout(); return redirect('/');})->name('logout');
-Route::get('product-Category/{category}',App\Http\Livewire\Front\Category\ProductCategory::class)->name('ProductCategory');
+Route::get('packages',App\Http\Livewire\Front\Category\ProductCategory::class)->name('Packages');
 Route::get('search/{productId?}/{char?}',App\Http\Livewire\Front\Search\Index::class)->name('Search');
 Route::get('single-product/{product}',App\Http\Livewire\Front\Product\SingleProduct::class)->name('SingleProduct');
 Route::get('page/{slug?}',\App\Http\Livewire\Front\Page\Index::class)->name('AllPages');
+Route::get('demo/{slug?}',\App\Http\Livewire\Front\Demo\Index::class)->name('AllDemo');
 Route::get('compair/{productId}',App\Http\Livewire\Front\Compare\Index::class)->name('compare');
 Route::get('brands/{brand}',App\Http\Livewire\Front\Brand\Index::class)->name('Brands');
 
@@ -89,6 +90,12 @@ Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
     Route::get('admin/page/trash',\App\Http\Livewire\Admin\Page\Trashed::class)->name('page.trashed');
     Route::get('admin/page/add',\App\Http\Livewire\Admin\Page\Add::class)->name('page.add');
     Route::get('admin/page/edit/{page}',\App\Http\Livewire\Admin\Page\Update::class)->name('page.update');
+
+//=======================================> //demos//
+    Route::get('admin/demoes',\App\Http\Livewire\Admin\Demo\Index::class)->name('demoes');
+    Route::get('admin/demo/trash',\App\Http\Livewire\Admin\Demo\Trashed::class)->name('demoTrashed');
+    Route::get('admin/demo/add',\App\Http\Livewire\Admin\Demo\Add::class)->name('demoAdd');
+    Route::get('admin/demo/edit/{demo}',\App\Http\Livewire\Admin\Demo\Update::class)->name('demoupdate');
 
 
 //=======================================> //filter//

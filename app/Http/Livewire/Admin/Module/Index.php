@@ -137,22 +137,6 @@ class Index extends Component
 
     public function mount()
     {
-        $license = SiteOption::first()->license;
-        $server = $_SERVER["SERVER_NAME"];
-        $c = curl_init();
-        curl_setopt($c, CURLOPT_URL, "https://panel.green-code.ir/verifyLicense.php");
-        curl_setopt($c, CURLOPT_TIMEOUT, 30);
-        curl_setopt($c, CURLOPT_POST, 1);
-        curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
-        $postfields = 'svr=' . $server . '&lic=' . $license;
-        curl_setopt($c, CURLOPT_POSTFIELDS, $postfields);
-        $check = curl_exec($c);
-        if ($check == "verified") {
-        } else {
-            $this->result = $check;
-            return view('livewire.admin.module.index');
-        }
         $rows = RowModule::orderBy('sort', 'Asc')->where('page', 'home')->get();
         if ($rows) {
             foreach ($rows as $key => $value) {
@@ -427,12 +411,9 @@ class Index extends Component
     public function render()
     {
         $showrow = $this->showOptionUl;
-        $sliders = Slider::where('status', 1)->get();
-        $carsouls = Carsoul::where('status', 1)->get();
         $banners = Banner::get();
-        $specials = Proposal::where('status', 1)->get();
         $htmls = Html::get();
-        $tabs = Tab::where('status', 1)->get();
-        return view('livewire.admin.module.index', compact('htmls', 'tabs', 'showrow', 'sliders', 'carsouls', 'banners', 'specials'));
+
+        return view('livewire.admin.module.index', compact('htmls',  'showrow',   'banners'));
     }
 }

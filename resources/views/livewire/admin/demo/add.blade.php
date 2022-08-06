@@ -1,14 +1,14 @@
-<div>
-@section('title','افزودن برگه')
+@section('title','افزودن دمو')
+
     <div class="container-fluid">
         <div class="inner-body">
             <div class="page-header">
                 <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">افزودن برگه</h2>
+                    <h2 class="main-content-title tx-24 mg-b-5">افزودن دمو</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('Dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('pages')}}">برگه ها</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">افزودن برگه</li>
+                        <li class="breadcrumb-item"><a href="{{route('demoes')}}">دمو ها</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">افزودن دمو</li>
                     </ol>
                 </div>
                 <div>
@@ -18,7 +18,7 @@
                     <div wire:loading wire:target="saveTotalData">
                         <div class="spinner-border text-primary" role="status"></div>
                     </div>
-                    <a data-toggle="tooltip" href="{{route('pages')}}" class="btn btn-warning text-white"
+                    <a data-toggle="tooltip" href="{{route('demoes')}}" class="btn btn-warning text-white"
                        data-original-title="برگشت">
                         <i class="fa fa-backward"></i>
                     </a>
@@ -49,7 +49,7 @@
                     <div class="col-xl-10 col-lg-12 col-md-12">
                         <div class="card custom-card">
                             <div class="card-header p-3 tx-medium my-auto tx-white bg-primary">
-                                افزودن برگه
+                                افزودن دمو
                             </div>
                             <div class="card-body">
                                 <form id="saveForm">
@@ -59,13 +59,12 @@
                                             <div>
                                                 <div class="form-group">
                                                     <div class="row row-sm">
-                                                        <label class="form-label col-sm-2">نام صفحه: <span
-                                                                class="tx-danger">*</span></label>
+                                                        <label class="form-label col-sm-2">نام دمو: <span
+                                                                    class="tx-danger">*</span></label>
                                                         <div class="col-sm-10">
-                                                            <input
-                                                                class="form-control @error('page.title') parsley-error @enderror"
-                                                                wire:model.defer="page.title">
-                                                            @error('page.title')
+                                                            <input  class="form-control @error('demo.title') parsley-error @enderror"
+                                                                    wire:model.defer="demo.title">
+                                                            @error('demo.title')
                                                             <div class="invalid-feedback">
                                                                 {{ $message }}
                                                             </div>
@@ -75,13 +74,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="row row-sm">
-                                                        <label class="form-label col-sm-2">لینک صفحه: <span
-                                                                class="tx-danger">*</span></label>
+                                                        <label class="form-label col-sm-2">لینک دمو: <span
+                                                                    class="tx-danger">*</span></label>
                                                         <div class="col-sm-10">
                                                             <input
-                                                                class="form-control @error('page.link') parsley-error @enderror"
-                                                                wire:model.defer="page.link">
-                                                            @error('page.link')
+                                                                    class="form-control @error('demo.link') parsley-error @enderror"
+                                                                    wire:model.defer="demo.link">
+                                                            @error('demo.link')
                                                             <div class="invalid-feedback">
                                                                 {{ $message }}
                                                             </div>
@@ -97,9 +96,9 @@
                                                     <label class="form-label col-sm-2">متا توضیحات: </label>
                                                     <div class="col-sm-10">
                                             <textarea
-                                                class="form-control @error('page.meta_description') parsley-error @enderror"
-                                                wire:model.defer="page.meta_description"></textarea>
-                                                        @error('page.meta_description')
+                                                    class="form-control @error('demo.meta_description') parsley-error @enderror"
+                                                    wire:model.defer="demo.meta_description"></textarea>
+                                                        @error('demo.meta_description')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
@@ -112,9 +111,9 @@
                                                     <label class="form-label col-sm-2">متا عنوان: </label>
                                                     <div class="col-sm-10">
                                             <textarea
-                                                class="form-control @error('page.meta_title') parsley-error @enderror"
-                                                wire:model.defer="page.meta_title"></textarea>
-                                                        @error('page.meta_title')
+                                                    class="form-control @error('demo.meta_title') parsley-error @enderror"
+                                                    wire:model.defer="demo.meta_title"></textarea>
+                                                        @error('demo.meta_title')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
@@ -127,9 +126,9 @@
                                                     <label class="form-label col-sm-2">متا کلمات کلیدی: </label>
                                                     <div class="col-sm-10">
                                             <textarea
-                                                class="form-control @error('page.meta_keyword') parsley-error @enderror"
-                                                wire:model.defer="page.meta_keyword"></textarea>
-                                                        @error('page.meta_keyword')
+                                                    class="form-control @error('demo.meta_keyword') parsley-error @enderror"
+                                                    wire:model.defer="demo.meta_keyword"></textarea>
+                                                        @error('demo.meta_keyword')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
@@ -152,22 +151,22 @@
                                                                        href="#collapseGeneral{{$key}}"
                                                                        role="button"
                                                                        style="font-size: 1.5rem;"> <i
-                                                                            style="color: #fff"
-                                                                            class="fa fa-edit"></i> </a>
+                                                                                style="color: #fff"
+                                                                                class="fa fa-edit"></i> </a>
                                                                 </label>
                                                                 <label class="main-content-label pt-1">
                                                                     <a class="btn ripple btn-primary collapsed"
                                                                        wire:click.prevent="removeRow({{$key}})"
                                                                        style="font-size: 1.5rem;"><i
-                                                                            style="color: #fff"
-                                                                            class="fa fa-minus-circle"></i></a>
+                                                                                style="color: #fff"
+                                                                                class="fa fa-minus-circle"></i></a>
                                                                 </label>
                                                                 <div class="mr-auto float-right">
                                                                     <a class="btn ripple btn-primary"
                                                                        style="font-size: 1.5rem;"
                                                                        data-target="#modal-datepicker{{$key}}"
                                                                        data-toggle="modal" href="#"><i
-                                                                            class="fe fe-more-horizontal"></i></a>
+                                                                                class="fe fe-more-horizontal"></i></a>
                                                                     <!--start modal --->
                                                                     <div class="modal" id="modal-datepicker{{$key}}"
                                                                          style="display: none; padding-right: 17px;"
@@ -187,7 +186,7 @@
                                                                                             class="close"
                                                                                             data-dismiss="modal"
                                                                                             type="button"><span
-                                                                                            aria-hidden="true">×</span>
+                                                                                                aria-hidden="true">×</span>
                                                                                     </button>
                                                                                 </div>
                                                                                 <div class="modal-body"
@@ -264,7 +263,7 @@
                                                                                                             container
                                                                                                         </option>
                                                                                                         <option value="width-100">
-                                                                                                            تمام صفحه
+                                                                                                            تمام دمو
                                                                                                         </option>
                                                                                                     </select>
                                                                                                 </div>
@@ -350,60 +349,60 @@
                                                                             @foreach($optionType1[$key] as $key1)
                                                                                 <div class="col-sm-{{$col[$key][$key1]}}">
                                                                                     <div
-                                                                                        style="background: #ddd;margin-bottom: 10px">
+                                                                                            style="background: #ddd;margin-bottom: 10px">
                                                                                         <div
-                                                                                            class="card-header p-3 tx-medium my-auto tx-white bg-success">
+                                                                                                class="card-header p-3 tx-medium my-auto tx-white bg-success">
                                                                                             <div
-                                                                                                class="d-flex justify-content-between">
+                                                                                                    class="d-flex justify-content-between">
                                                                                                 <label
-                                                                                                    class="main-content-label mb-0 pt-1">
+                                                                                                        class="main-content-label mb-0 pt-1">
                                                                                                     <a href=""
                                                                                                        class="remove"
                                                                                                        wire:click.prevent.prefetch="removeColum({{$key}},{{$key1}})"
                                                                                                        style="curser:pointer"><i
-                                                                                                            style="color: #fff"
-                                                                                                            class="fa fa-minus-circle"></i></a>
+                                                                                                                style="color: #fff"
+                                                                                                                class="fa fa-minus-circle"></i></a>
                                                                                                 </label>
                                                                                                 <div
-                                                                                                    class="mr-auto float-right">
+                                                                                                        class="mr-auto float-right">
                                                                                                     <a class="btn ripple"
                                                                                                        style="color: #fff"
                                                                                                        data-target="#modal-datepicker{{$key.$key1}}"
                                                                                                        data-toggle="modal"
                                                                                                        href="#"><i
-                                                                                                            class="fe fe-more-horizontal"></i></a>
+                                                                                                                class="fe fe-more-horizontal"></i></a>
                                                                                                     <!--start modal --->
                                                                                                     <div class="modal"
                                                                                                          id="modal-datepicker{{$key.$key1}}"
                                                                                                          style="display: none; padding-right: 17px;"
                                                                                                          aria-modal="true">
                                                                                                         <div
-                                                                                                            class="modal-dialog"
-                                                                                                            style="max-width: 700px !important;"
-                                                                                                            role="document">
+                                                                                                                class="modal-dialog"
+                                                                                                                style="max-width: 700px !important;"
+                                                                                                                role="document">
                                                                                                             <div
-                                                                                                                class="modal-content modal-content-demo "
-                                                                                                                style="border-radius:5px">
+                                                                                                                    class="modal-content modal-content-demo "
+                                                                                                                    style="border-radius:5px">
                                                                                                                 <div
-                                                                                                                    class="modal-header border-bottom-0"
-                                                                                                                    style="background: #6259ca ">
+                                                                                                                        class="modal-header border-bottom-0"
+                                                                                                                        style="background: #6259ca ">
                                                                                                                     <h6 class="modal-title"
                                                                                                                         style="color: #fff">
                                                                                                                         تن
                                                                                                                         ستون</h6>
                                                                                                                     <button
-                                                                                                                        style="color: #fff"
-                                                                                                                        aria-label="بستن"
-                                                                                                                        class="close"
-                                                                                                                        data-dismiss="modal"
-                                                                                                                        type="button">
+                                                                                                                            style="color: #fff"
+                                                                                                                            aria-label="بستن"
+                                                                                                                            class="close"
+                                                                                                                            data-dismiss="modal"
+                                                                                                                            type="button">
                                                                                                                     <span
-                                                                                                                        aria-hidden="true">×</span>
+                                                                                                                            aria-hidden="true">×</span>
                                                                                                                     </button>
                                                                                                                 </div>
                                                                                                                 <div
-                                                                                                                    class="modal-body"
-                                                                                                                    style="padding: 0 !important;">
+                                                                                                                        class="modal-body"
+                                                                                                                        style="padding: 0 !important;">
                                                                                                                     <div style="padding: 25px">
                                                                                                                         <div class="form-group">
                                                                                                                             <div class="row">
@@ -618,16 +617,16 @@
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                                 <div
-                                                                                                                    class="modal-footer">
+                                                                                                                        class="modal-footer">
                                                                                                                     <button class="btn ripple btn-primary"
                                                                                                                             data-dismiss="modal">
                                                                                                                         ذخیره
                                                                                                                         تغییرات
                                                                                                                     </button>
                                                                                                                     <button
-                                                                                                                        class="btn ripple btn-secondary"
-                                                                                                                        data-dismiss="modal"
-                                                                                                                        type="button">
+                                                                                                                            class="btn ripple btn-secondary"
+                                                                                                                            data-dismiss="modal"
+                                                                                                                            type="button">
                                                                                                                         بستن
                                                                                                                     </button>
                                                                                                                 </div>
@@ -643,61 +642,61 @@
                                                                                                 @foreach($modules[$key][$key1] as $key2=>$value2)
 
                                                                                                     <div
-                                                                                                        class="card custom-card">
+                                                                                                            class="card custom-card">
                                                                                                         <div
-                                                                                                            class="card-header p-3 tx-medium my-auto tx-white bg-secondary">
+                                                                                                                class="card-header p-3 tx-medium my-auto tx-white bg-secondary">
                                                                                                             <label
-                                                                                                                class="main-content-label mb-0 pt-1">
+                                                                                                                    class="main-content-label mb-0 pt-1">
                                                                                                                 <a href=""
                                                                                                                    class="remove"
                                                                                                                    wire:click.prevent="removemodule({{$key}},{{$key1}}, {{$key2}})"
                                                                                                                    style="curser:pointer"><i
-                                                                                                                        style="color: #fff"
-                                                                                                                        class="fa fa-minus-circle"></i></a>
+                                                                                                                            style="color: #fff"
+                                                                                                                            class="fa fa-minus-circle"></i></a>
                                                                                                             </label>
                                                                                                             <a class="option-dots  float-left"
                                                                                                                style="color: #fff;font-size: 25px"
                                                                                                                data-target="#modal-datepicker{{$key.$key1 . $key2}}"
                                                                                                                data-toggle="modal"
                                                                                                                href="#"><i
-                                                                                                                    class="fe fe-more-horizontal"></i></a>
+                                                                                                                        class="fe fe-more-horizontal"></i></a>
                                                                                                             <!--start modal --->
                                                                                                             <div
-                                                                                                                class="modal"
-                                                                                                                id="modal-datepicker{{$key.$key1 . $key2}}"
-                                                                                                                style="display: none; padding-right: 17px;"
-                                                                                                                aria-modal="true">
+                                                                                                                    class="modal"
+                                                                                                                    id="modal-datepicker{{$key.$key1 . $key2}}"
+                                                                                                                    style="display: none; padding-right: 17px;"
+                                                                                                                    aria-modal="true">
                                                                                                                 <div
-                                                                                                                    class="modal-dialog"
-                                                                                                                    style="max-width: 700px !important;"
-                                                                                                                    role="document">
+                                                                                                                        class="modal-dialog"
+                                                                                                                        style="max-width: 700px !important;"
+                                                                                                                        role="document">
                                                                                                                     <div
-                                                                                                                        class="modal-content modal-content-demo "
-                                                                                                                        style="border-radius:5px">
+                                                                                                                            class="modal-content modal-content-demo "
+                                                                                                                            style="border-radius:5px">
                                                                                                                         <div
-                                                                                                                            class="modal-header border-bottom-0"
-                                                                                                                            style="background: #6259ca ">
+                                                                                                                                class="modal-header border-bottom-0"
+                                                                                                                                style="background: #6259ca ">
                                                                                                                             <h6 class="modal-title"
                                                                                                                                 style="color: #fff">
                                                                                                                                 تنظیمات
                                                                                                                                 ردیف</h6>
                                                                                                                             <button
-                                                                                                                                style="color: #fff"
-                                                                                                                                aria-label="بستن"
-                                                                                                                                class="close"
-                                                                                                                                data-dismiss="modal"
-                                                                                                                                type="button">
+                                                                                                                                    style="color: #fff"
+                                                                                                                                    aria-label="بستن"
+                                                                                                                                    class="close"
+                                                                                                                                    data-dismiss="modal"
+                                                                                                                                    type="button">
                                                                                                                             <span
-                                                                                                                                aria-hidden="true">×</span>
+                                                                                                                                    aria-hidden="true">×</span>
                                                                                                                             </button>
                                                                                                                         </div>
                                                                                                                         <div
-                                                                                                                            class="modal-body"
-                                                                                                                            style="padding: 0 !important;">
+                                                                                                                                class="modal-body"
+                                                                                                                                style="padding: 0 !important;">
                                                                                                                             <div
-                                                                                                                                style="padding: 25px">
+                                                                                                                                    style="padding: 25px">
                                                                                                                                 <div
-                                                                                                                                    class="form-group">
+                                                                                                                                        class="form-group">
                                                                                                                                     <label class="form-label">margin
                                                                                                                                         (فاصله
                                                                                                                                         خارجی
@@ -705,43 +704,43 @@
                                                                                                                                         حسب
                                                                                                                                         px):</label>
                                                                                                                                     <div
-                                                                                                                                        class="row">
+                                                                                                                                            class="row">
                                                                                                                                         <div
-                                                                                                                                            class="col-sm-3">
+                                                                                                                                                class="col-sm-3">
                                                                                                                                             <input
-                                                                                                                                                class="form-control"
-                                                                                                                                                wire:model.defer="module_magin_top.{{$key}}.{{$key1}}.{{$value2}}">
+                                                                                                                                                    class="form-control"
+                                                                                                                                                    wire:model.defer="module_magin_top.{{$key}}.{{$key1}}.{{$value2}}">
                                                                                                                                             <label
-                                                                                                                                                class="form-label">بالا:</label>
+                                                                                                                                                    class="form-label">بالا:</label>
                                                                                                                                         </div>
                                                                                                                                         <div
-                                                                                                                                            class="col-sm-3">
+                                                                                                                                                class="col-sm-3">
                                                                                                                                             <input
-                                                                                                                                                class="form-control"
-                                                                                                                                                wire:model.defer="module_magin_right.{{$key}}.{{$key1}}.{{$value2}}">
+                                                                                                                                                    class="form-control"
+                                                                                                                                                    wire:model.defer="module_magin_right.{{$key}}.{{$key1}}.{{$value2}}">
                                                                                                                                             <label
-                                                                                                                                                class="form-label">راست:</label>
+                                                                                                                                                    class="form-label">راست:</label>
                                                                                                                                         </div>
                                                                                                                                         <div
-                                                                                                                                            class="col-sm-3">
+                                                                                                                                                class="col-sm-3">
                                                                                                                                             <input
-                                                                                                                                                class="form-control"
-                                                                                                                                                wire:model.defer="module_magin_bottom.{{$key}}.{{$key1}}.{{$value2}}">
+                                                                                                                                                    class="form-control"
+                                                                                                                                                    wire:model.defer="module_magin_bottom.{{$key}}.{{$key1}}.{{$value2}}">
                                                                                                                                             <label
-                                                                                                                                                class="form-label">پایین:</label>
+                                                                                                                                                    class="form-label">پایین:</label>
                                                                                                                                         </div>
                                                                                                                                         <div
-                                                                                                                                            class="col-sm-3">
+                                                                                                                                                class="col-sm-3">
                                                                                                                                             <input
-                                                                                                                                                class="form-control"
-                                                                                                                                                wire:model.defer="module_magin_left.{{$key}}.{{$key1}}.{{$value2}}">
+                                                                                                                                                    class="form-control"
+                                                                                                                                                    wire:model.defer="module_magin_left.{{$key}}.{{$key1}}.{{$value2}}">
                                                                                                                                             <label
-                                                                                                                                                class="form-label">چپ:</label>
+                                                                                                                                                    class="form-label">چپ:</label>
                                                                                                                                         </div>
                                                                                                                                     </div>
                                                                                                                                 </div>
                                                                                                                                 <div
-                                                                                                                                    class="form-group">
+                                                                                                                                        class="form-group">
                                                                                                                                     <label class="form-label">padding
                                                                                                                                         (فاصله
                                                                                                                                         داخلی
@@ -749,55 +748,55 @@
                                                                                                                                         حسب
                                                                                                                                         px):</label>
                                                                                                                                     <div
-                                                                                                                                        class="row">
+                                                                                                                                            class="row">
                                                                                                                                         <div
-                                                                                                                                            class="col-sm-3">
+                                                                                                                                                class="col-sm-3">
                                                                                                                                             <input
-                                                                                                                                                class="form-control"
-                                                                                                                                                wire:model.defer="module_padding_top.{{$key}}.{{$key1}}.{{$key2}}">
+                                                                                                                                                    class="form-control"
+                                                                                                                                                    wire:model.defer="module_padding_top.{{$key}}.{{$key1}}.{{$key2}}">
                                                                                                                                             <label
-                                                                                                                                                class="form-label">بالا:</label>
+                                                                                                                                                    class="form-label">بالا:</label>
                                                                                                                                         </div>
                                                                                                                                         <div
-                                                                                                                                            class="col-sm-3">
+                                                                                                                                                class="col-sm-3">
                                                                                                                                             <input
-                                                                                                                                                class="form-control"
-                                                                                                                                                wire:model.defer="module_padding_right.{{$key}}.{{$key1}}.{{$key2}}">
+                                                                                                                                                    class="form-control"
+                                                                                                                                                    wire:model.defer="module_padding_right.{{$key}}.{{$key1}}.{{$key2}}">
                                                                                                                                             <label
-                                                                                                                                                class="form-label">راست:</label>
+                                                                                                                                                    class="form-label">راست:</label>
                                                                                                                                         </div>
                                                                                                                                         <div
-                                                                                                                                            class="col-sm-3">
+                                                                                                                                                class="col-sm-3">
                                                                                                                                             <input
-                                                                                                                                                class="form-control"
-                                                                                                                                                wire:model.defer="module_padding_bottom.{{$key}}.{{$key1}}.{{$key2}}">
+                                                                                                                                                    class="form-control"
+                                                                                                                                                    wire:model.defer="module_padding_bottom.{{$key}}.{{$key1}}.{{$key2}}">
                                                                                                                                             <label
-                                                                                                                                                class="form-label">پایین:</label>
+                                                                                                                                                    class="form-label">پایین:</label>
                                                                                                                                         </div>
                                                                                                                                         <div
-                                                                                                                                            class="col-sm-3">
+                                                                                                                                                class="col-sm-3">
                                                                                                                                             <input
-                                                                                                                                                class="form-control"
-                                                                                                                                                wire:model.defer="module_padding_left.{{$key}}.{{$key1}}.{{$key2}}">
+                                                                                                                                                    class="form-control"
+                                                                                                                                                    wire:model.defer="module_padding_left.{{$key}}.{{$key1}}.{{$key2}}">
                                                                                                                                             <label
-                                                                                                                                                class="form-label">چپ:</label>
+                                                                                                                                                    class="form-label">چپ:</label>
                                                                                                                                         </div>
                                                                                                                                     </div>
                                                                                                                                 </div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                         <div
-                                                                                                                            class="modal-footer">
+                                                                                                                                class="modal-footer">
                                                                                                                             <button
-                                                                                                                                class="btn ripple btn-primary"
-                                                                                                                                data-dismiss="modal">
+                                                                                                                                    class="btn ripple btn-primary"
+                                                                                                                                    data-dismiss="modal">
                                                                                                                                 ذخیره
                                                                                                                                 تغییرات
                                                                                                                             </button>
                                                                                                                             <button
-                                                                                                                                class="btn ripple btn-secondary"
-                                                                                                                                data-dismiss="modal"
-                                                                                                                                type="button">
+                                                                                                                                    class="btn ripple btn-secondary"
+                                                                                                                                    data-dismiss="modal"
+                                                                                                                                    type="button">
                                                                                                                                 بستن
                                                                                                                             </button>
                                                                                                                         </div>
@@ -806,7 +805,7 @@
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <div
-                                                                                                            class="card-body">
+                                                                                                                class="card-body">
                                                                                                             @isset($module_name[$key][$key1][$key2])
                                                                                                                 @php  $array=explode(',',$module_name[$key][$key1][$key2] );  @endphp
 
@@ -833,47 +832,47 @@
                                                                                             @endif
                                                                                             <div class="row">
                                                                                                 <div
-                                                                                                    class="col-md-12 text-center">
+                                                                                                        class="col-md-12 text-center">
                                                                                                     <div class="form-group">
                                                                                                         <label
-                                                                                                            class="form-label">انتخاب
+                                                                                                                class="form-label">انتخاب
                                                                                                             ماژول</label>
                                                                                                         <select
-                                                                                                            class="form-control"
-                                                                                                            style="color: #000000"
-                                                                                                            wire:model="moduleName">
+                                                                                                                class="form-control"
+                                                                                                                style="color: #000000"
+                                                                                                                wire:model="moduleName">
                                                                                                             <option
-                                                                                                                value="">
+                                                                                                                    value="">
                                                                                                                 هیچکدام
                                                                                                             </option>
 
                                                                                                             @foreach($banners as $banner)
                                                                                                                 <option
-                                                                                                                    value="banner,{{$banner->id}}">
+                                                                                                                        value="banner,{{$banner->id}}">
                                                                                                                     بنر
                                                                                                                     - {{$banner->title}}</option>
                                                                                                             @endforeach
 
                                                                                                             @foreach($htmls as $html)
                                                                                                                 <option
-                                                                                                                    value="html,{{$html->id}}">
+                                                                                                                        value="html,{{$html->id}}">
                                                                                                                     html
                                                                                                                     - {{$html->title}}</option>
                                                                                                             @endforeach
 
                                                                                                             <option
-                                                                                                                value="logo">
+                                                                                                                    value="logo">
                                                                                                                 لوگو
                                                                                                             </option>
                                                                                                             <option
-                                                                                                                value="contact">
+                                                                                                                    value="contact">
                                                                                                                 فرم تماس
                                                                                                                 با
                                                                                                                 ما
                                                                                                             </option>
 
                                                                                                             <option
-                                                                                                                value="blog">
+                                                                                                                    value="blog">
                                                                                                                 اخرین
                                                                                                                 مطالب
                                                                                                                 وبلاگ
@@ -883,11 +882,11 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div
-                                                                                                    class="col-md-12 text-center">
+                                                                                                        class="col-md-12 text-center">
                                                                                                     <div
-                                                                                                        style="margin-top: 22px"
-                                                                                                        wire:click.prevent="AddModule({{$t3}},{{$key}},{{$key1}})"
-                                                                                                        class="btn ripple btn-primary text-white btn-icon btn-xs">
+                                                                                                            style="margin-top: 22px"
+                                                                                                            wire:click.prevent="AddModule({{$t3}},{{$key}},{{$key1}})"
+                                                                                                            class="btn ripple btn-primary text-white btn-icon btn-xs">
                                                                                                         <i class="fa fa-plus-circle"></i>
                                                                                                     </div>
                                                                                                 </div>
@@ -940,7 +939,7 @@
                                                 style="height: 5px; border: 5px; border-top: 5px solid #6259c9;">
                                             <div class="col-sm-12">
                                                 <div
-                                                    style="text-align: center;padding: 20px;border-right: 8px;border: 2px dashed #ddd">
+                                                        style="text-align: center;padding: 20px;border-right: 8px;border: 2px dashed #ddd">
                                                     <button class="btn ripple  btn-primary" type="button"
                                                             wire:click.prevent="addRow({{$t1}})">
                                                         <i class="fa fa-plus-circle"></i>
@@ -958,4 +957,4 @@
             </form>
         </div>
     </div>
-</div>
+

@@ -1,7 +1,5 @@
 <div>
-
-    <div class="col-lg-3 col-md-3 col-xs-12 pull-right">
-        <section class="page-aside">
+  <section class="page-aside">
             <div class="sidebar-wrapper">
                 <div class="box-sidebar">
                     <div class="profile-box">
@@ -54,24 +52,13 @@
                         </li>
 
                         <li>
-                            <a href="{{route('Address')}}" class="profile-menu-url @if(Request::routeIs('Address')) active-profile @endif">
-                                <span class="mdi mdi-map"></span>
-                                آدرس ها</a>
-                        </li>
-                        <li>
                             <a href="{{route('Download')}}" class="profile-menu-url @if(Request::routeIs('Download')) active-profile @endif">
                                 <span class="mdi mdi-download"></span>
                                دانلودها</a>
                         </li>
 
-                        <li>
-                            <a href="{{route('UserHistory')}}" class="profile-menu-url @if(Request::routeIs('UserHistory')) active-profile @endif">
-                                <span class="fa fa-clock-o"></span>
-                                بازدید های اخیر</a>
-                        </li>
                     </ul>
                 </div>
             </div>
         </section>
-    </div>
 </div>

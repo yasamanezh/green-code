@@ -105,23 +105,17 @@
                                                 <td><a href="">{{$warranty->name}}</a></td>
                                                 <td>{{ verta($warranty->created_at)->format('%d/ %B  / %Y') }}</td>
                                                 <td>
-                                                    @if($warranty->status == 1)
 
-                                                        <label class="custom-switch"
-                                                               wire:click="updateDisable({{$warranty->id}})">
+
+                                                        <label class="custom-switch" style="cursor: pointer;"
+                                                               wire:click.prevent="updateDisable({{$warranty->id}})">
                                                             <input type="checkbox" name="custom-switch-checkbox"
-                                                                   class="custom-switch-input" checked="checked">
+                                                                   class="custom-switch-input" @if($warranty->status == 1) checked="checked" @endif>
                                                             <span class="custom-switch-indicator"></span>
 
                                                         </label>
-                                                    @else
-                                                        <label class="custom-switch"
-                                                               wire:click="updateEnable({{$warranty->id}})">
-                                                            <input type="checkbox" name="custom-switch-checkbox"
-                                                                   class="custom-switch-input">
-                                                            <span class="custom-switch-indicator"></span>
-                                                        </label>
-                                                    @endif
+
+
                                                 </td>
                                                 <td>
                                                     <div class="btn-icon-list">

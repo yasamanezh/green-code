@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Front\Layouts\Header;
 
-use App\Models\Cart;
+
 use Livewire\Component;
 
 class Acount extends Component

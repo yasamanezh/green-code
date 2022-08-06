@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Page;
+namespace App\Http\Livewire\Admin\Demo;
 
 use App\Models\Banner;
 use App\Models\Colum;
 use App\Models\Html;
 use App\Models\Log;
 use App\Models\Module;
-use App\Models\Page;
+use App\Models\Demo;
 use App\Models\RowModule;
-use App\Models\SiteOption;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
 class Add extends Component
 {
-    public $page;
+    public $demo;
     public $showOptionUl = [];
     public $row_magin_top = [], $row_magin_right = [], $row_magin_bottom = [], $row_magin_left = [], $row_bg_color = [], $row_bg_color_status = [], $row_height = [];
     public $row_padding_top = [], $row_padding_right = [], $row_padding_bottom = [], $row_padding_left = [], $row_full_page = [];
@@ -28,19 +27,19 @@ class Add extends Component
     public $rows;
     public $hidesection = false;
     public $result = null;
-    protected $rules = [
-        'page.title' => 'required|string|min:2|max:255',
-        'page.link' => 'required|string|min:2|unique:pages,link',
-        'page.meta_description' => 'nullable|string|min:3',
-        'page.meta_title' => 'nullable|string|min:2|max:255',
-        'page.meta_keyword' => 'nullable|string|min:2|max:255',
-    ];
+
 
     public function mount()
     {
-
-        $this->page = new Page();
+        $this->demo = new Demo();
     }
+    protected $rules = [
+        'demo.title' => 'required|string|min:2|max:255',
+        'demo.link' => 'required|string|min:2|unique:demos,link',
+        'demo.meta_description' => 'nullable|string|min:3',
+        'demo.meta_title' => 'nullable|string|min:2|max:255',
+        'demo.meta_keyword' => 'nullable|string|min:2|max:255',
+    ];
 
     public function addRow($t1)
     {
@@ -152,32 +151,28 @@ class Add extends Component
 
     }
 
-    public function updated($title)
-    {
-        $this->validateOnly($title);
-    }
 
     public function saveTotalData()
     {
         if (Gate::allows('edit_page')) {
-
             $this->validate();
-            $this->page->save();
+            $this->demo->save();
+            $this->demo->save();
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'افزودن صفحه سایت' . '-' . $this->page->title,
+                'url' => 'افزودن دمو' . '-' . $this->demo->title,
                 'actionType' => 'ایجاد'
             ]);
-            $sections = RowModule:: where('page', $this->page->title)->get();
+            $sections = RowModule:: where('page', $this->demo->title)->get();
             foreach ($sections as $section) {
                 $section->delete();
             }
-            $cols = Colum:: where('page', $this->page->title)->get();
+            $cols = Colum:: where('page', $this->demo->title)->get();
             foreach ($cols as $col) {
 
                 $col->delete();
             }
-            $modules = Module:: where('page', $this->page->title)->get();
+            $modules = Module:: where('page', $this->demo->title)->get();
             if ($modules) {
                 foreach ($modules as $module) {
                     $module->delete();
@@ -190,7 +185,7 @@ class Add extends Component
 
                         $newcol = new Colum();
                         $newcol->row = $key;
-                        $newcol->page = $this->page->title;
+                        $newcol->page = $this->demo->title;
                         $newcol->col = $value1;
                         if (isset($this->col_xs[$key][$key1])) {
                             $newcol->col_xs = $this->col_xs[$key][$key1];
@@ -209,7 +204,7 @@ class Add extends Component
 
                                 $newModule = new Module();
                                 $newModule->row = $key;
-                                $newModule->page = $this->page->title;
+                                $newModule->page = $this->demo->title;
                                 $newModule->module_id = $value2;
                                 $newModule->col = $i;
                                 $newModule->sort = $j;
@@ -269,7 +264,7 @@ class Add extends Component
                 }
                 $row = new RowModule();
                 $row->sort = $key;
-                $row->page = $this->page->title;
+                $row->page = $this->demo->title;
                 $margin = '';
                 if (isset($this->row_magin_top[$key])) {
                     $margin = $this->row_magin_top[$key];
@@ -330,7 +325,7 @@ class Add extends Component
 
             }
             $msg = 'صفحه سایت با موفقیت ایجاد  شد';
-            return redirect(route('pages'))->with('sucsess', $msg);
+            return redirect(route('demoes'))->with('sucsess', $msg);
 
         } else {
             $this->emit('toast', 'warning', 'شما اجازه ویرایش این قسمت را ندارید.');
@@ -342,6 +337,6 @@ class Add extends Component
         $showrow = $this->showOptionUl;
         $banners = Banner::get();
         $htmls = Html::get();
-        return view('livewire.admin.page.add', compact('htmls',  'showrow',  'banners'));
+        return view('livewire.admin.demo.add', compact('htmls',  'showrow',  'banners'));
     }
 }

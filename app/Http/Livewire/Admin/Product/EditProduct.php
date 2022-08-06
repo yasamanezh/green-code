@@ -73,13 +73,14 @@ class EditProduct extends Component
         }
         $Properties=ProductProperty::where('product_id',$this->product->id)->get();
         foreach ($Properties as $Property){
-            $this->property_text[$Property->title .$Property->product_id]=[];
+            $this->property_text[$Property->title]=[];
             $e=$this->e;
             $e = $e + 1;
             array_push($this->inputproperty ,$e);
-            array_push($this->property_name ,$Property->title);
-            array_push($this->property_text[$Property->title .$Property->product_id] ,$Property->description);
+            $this->property_text[$Property->title]=$Property->description;
+
         }
+
         $images=ProductImage::where('product_id',$this->product->id)->get();
         foreach ($images as $image){
             $j=$this->j;
@@ -165,12 +166,6 @@ class EditProduct extends Component
         unset($this->naghd_description[$d]);
         unset($this->naghd_title[$d]);
 
-    }
-    public function AddProperty($e)
-    {
-        $e = $e + 1;
-        $this->e = $e;
-        array_push($this->inputproperty ,$e);
     }
     public function AddImage($j)
     {
@@ -291,14 +286,7 @@ class EditProduct extends Component
         unset($this->attribue_name[$i]);
 
     }
-    public function removeProperty($e)
-    {
-        unset($this->inputproperty[$e]);
-        unset($this->property_name[$e]);
-        unset($this->property_text[$e]);
 
-
-    }
     public function removeDownload($l)
     {
         unset($this->inputdownload[$l]);
@@ -363,6 +351,7 @@ class EditProduct extends Component
 
     public function saveInfo()
 {
+
     if(Gate::allows('edit_product')){
         $this->validate([
             'product.slug' => ['required','string','min:2','max:255', Rule::unique('products','slug')->ignore($this->product->id)],
@@ -375,8 +364,9 @@ class EditProduct extends Component
         $productAttr=\App\Models\Attribute::where('category_id',$this->product->category)->get();
         if($this->property_text){
             foreach ($productAttr as $key=>$value){
-                if(isset($this->property_text[$value->id.$this->product->id])){
-                    $text=$this->property_text[$value->id.$this->product->id];
+                if(isset($this->property_text[$value->id])){
+                    $text=$this->property_text[$value->id];
+                    $this->property_text;
                     $properties[]=[
                         'title'=>$value->id,
                         'description'=>$text,
@@ -386,10 +376,7 @@ class EditProduct extends Component
         }
 
 
-        $productAttr=\App\Models\Attribute::where('category_id',$this->product->category)->get();
-        foreach ($productAttr as $value){
-            array_push($this->property_name,$value->id);
-        }
+
         if($this->inputAttribues){
 
             foreach ($this->attribue_name as $key=>$value){
@@ -660,12 +647,15 @@ class EditProduct extends Component
         if($this->inputAttribues){
             $this->product->productAtts()->createMany($attributeess);
         }
+
         if($this->naghd_title){
             $this->product->productNaghds()->createMany($naghdes);
         }
 
-        if($this->property_name){
+        if($this->property_text){
+
             $this->product->productProperties()->createMany($properties);
+
         }
 
         if($this->download_title){

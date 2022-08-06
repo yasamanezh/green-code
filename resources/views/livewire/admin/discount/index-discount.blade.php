@@ -157,21 +157,14 @@
                                                 @endif
                                             </td>
                                             <td  class="wd-lg-5p">
-                                                @if($discount->status == 1)
-                                                    <label wire:click.prefetch.prevent="disableStatus({{$discount->id}})"
+
+                                                    <label wire:click.prevent="disableStatus({{$discount->id}})" style="cursor: pointer;"
                                                            class="custom-switch">
                                                         <input type="checkbox" name="custom-switch-checkbox"
-                                                               class="custom-switch-input" checked="checked">
+                                                               class="custom-switch-input"  @if($discount->status == 1) checked="checked" @endif>
                                                         <span class="custom-switch-indicator"></span>
                                                     </label>
-                                                @else
-                                                    <label class="custom-switch"
-                                                           wire:click.prefetch.prevent="enableStatus({{$discount->id}})">
-                                                        <input type="checkbox" name="custom-switch-checkbox"
-                                                               class="custom-switch-input">
-                                                        <span class="custom-switch-indicator"></span>
-                                                    </label>
-                                                @endif
+
                                             </td>
                                             <td>
                                                 <a href="{{route('EditDiscount',$discount->id)}}"

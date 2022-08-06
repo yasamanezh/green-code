@@ -1,94 +1,4 @@
 @section('title','افزودن محصول')
-@if(isset($result))
-    <div class="container-fluid">
-        <div class="inner-body">
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">افزودن محصول</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('Dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('Products')}}">محصولات</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">افزودن محصول</li>
-                    </ol>
-                </div>
-                <a data-toggle="tooltip" href="{{route('Products')}}" class="btn btn-warning text-white"
-                   data-original-title="برگشت">
-                    <i class="fa fa-backward"></i>
-                </a>
-            </div>
-        </div>
-        @if($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <div class="row row-sm">
-            <div class="col-xl-3 col-lg-12 col-md-12">
-                <div class="card custom-card">
-                    <ul class="item1-links nav nav-tabs  mb-0">
-                        <li class="nav-item">
-                            <a wire:ignore data-target="#general" class="nav-link active" data-toggle="tab"
-                               role="tablist" style="cursor: pointer;"> عمومی</a>
-                        </li>
-                        <li class="nav-item">
-                            <a wire:ignore data-target="#tab-seo" class="nav-link " data-toggle="tab"
-                               role="tablist" style="cursor: pointer;">سئو</a>
-                        </li>
-                        <li class="nav-item">
-                            <a wire:ignore data-target="#links" class="nav-link " data-toggle="tab" role="tablist"
-                               style="cursor: pointer;"> لینک
-                                ها</a>
-                        </li>
-                        <li class="nav-item">
-                            <a wire:ignore data-target="#attribute" class="nav-link" data-toggle="tab" role="tablist"
-                               style="cursor: pointer;">مشخصات</a>
-                        </li>
-                        <li class="nav-item">
-                            <a wire:ignore data-target="#NaghdOption" class="nav-link" data-toggle="tab" role="tablist"
-                               style="cursor: pointer;">نقد
-                                و بررسی</a>
-                        </li>
-                        <li class="nav-item">
-                            <a wire:ignore data-target="#tab-attribute" class="nav-link" data-toggle="tab"
-                               role="tablist" style="cursor: pointer;">ویژگی ها</a>
-                        </li>
-                        <li class="nav-item">
-                            <a wire:ignore data-target="#tab-download" class="nav-link" data-toggle="tab"
-                               role="tablist" style="cursor: pointer;">دانلودها</a>
-                        </li>
-                        <li class="nav-item">
-                            <a wire:ignore data-target="#tab-image" class="nav-link" data-toggle="tab" role="tablist"
-                               style="cursor: pointer;">تصاویر</a>
-                        </li>
-                        <li class="nav-item">
-                            <a wire:ignore data-target="#tab-option" class="nav-link" data-toggle="tab" role="tablist"
-                               style="cursor: pointer;">گزینه
-                                ها</a>
-                        </li>
-                        <li class="nav-item">
-                            <a wire:ignore data-target="#tab-Anbar" class="nav-link" data-toggle="tab" role="tablist"
-                               style="cursor: pointer;">انبار</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-9 col-lg-12 col-md-12">
-                <div class="card custom-card">
-                    <div class="card-header p-3 tx-medium my-auto tx-white bg-primary">
-                        افزودن محصول
-                    </div>
-                    <div class="card-body">
-                        {!! $result !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@else
     <div class="container-fluid">
         <div class="inner-body">
             <div class="page-header">
@@ -1090,7 +1000,6 @@
             </script>
         @endpush
     </div>
-@endif
 
 
 

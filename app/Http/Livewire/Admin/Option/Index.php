@@ -205,7 +205,6 @@ class Index extends Component
     public function render()
     {
         $pages = Page::get();
-        $countries = Country::get();
-        return view('livewire.admin.option.index', compact('pages', 'countries'));
+        return view('livewire.admin.option.index', compact('pages' ));
     }
 }

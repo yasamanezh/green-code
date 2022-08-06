@@ -142,16 +142,23 @@ class Index extends Component
         if (Gate::allows('edit_comment')) {
             $comment = Comment::find($id);
 
+            if($comment->status == 1){
+                $status=0;
+                $action='غیر فعال';
+            }else{
+                $status=1;
+                $action=' فعال';
+            }
             $comment->update([
-                'status' => 0
+                'status'=>$status
             ]);
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'غیرفعال کردن دیدگاه' . '-' . $comment->title,
-                'actionType' => 'غیر فعال کردن'
+                'url' => 'تغییر وضعیت دیدگاه' . '-' . $comment->title,
+                'actionType' => $action
             ]);
 
-            $this->emit('toast', 'success', ' دیدگاه با موفقیت غیرفعال شد.');
+            $this->emit('toast', 'success', ' تغییر وضعیت با موفقیت انجام شد.');
 
         } else {
             $this->emit('toast', 'warning', 'شما اجازه ویرایش این قسمت را ندارید.');

@@ -88,15 +88,10 @@
                                             <label for="province" class="form-label col-sm-2">استان <span
                                                         class="required-star" style="color:red;"></span></label>
                                             <div class="col-sm-10">
-                                                <select wire:model="siteOption.zone" name="" id="province"
-                                                        class="form-control">
-                                                    <option value="date-desc" selected="selected">استان مورد نظر خود را
-                                                        انتخاب کنید
-                                                    </option>
-                                                    @foreach($countries as $country)
-                                                        <option value="{{$country->id}}">{{$country->name}}</option>
-                                                    @endforeach
-                                                </select>
+
+                                                     <input  wire:model="siteOption.zone"  class="form-control">
+
+
                                                 @error('state')
                                                 <div class="invalid-feedback" style="display: block">
                                                     {{ $message }}
@@ -107,17 +102,9 @@
                                         <div class="form-group row">
                                             <label for="city" class="form-label col-sm-2">شهر </label>
                                             <div class="col-sm-10">
-                                                <select wire:model.defer="siteOption.city" name="" id="city"
+                                                <input wire:model.defer="siteOption.city" name="" id="city"
                                                         class="form-control">
-                                                    <option value="date-desc" selected="selected">شهر مورد نظر خود را
-                                                        انتخاب کنید
-                                                    </option>
-                                                    @if($siteOption->zone)
-                                                        @foreach(\App\Models\City::where('country_id',$siteOption->zone)->get() as $city)
-                                                            <option value="{{$city->id}}">{{$city->name}}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
+
                                                 @error('city')
                                                 <div class="invalid-feedback" style="display: block">
                                                     {{ $message }}

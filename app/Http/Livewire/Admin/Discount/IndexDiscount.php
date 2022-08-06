@@ -146,16 +146,23 @@ class IndexDiscount extends Component
     {
         if(Gate::allows('edit_discount')){
             $discount = Discount::find($id);
+            if($discount->status == 1){
+                $status=0;
+                $action='غیر فعال';
+            }else{
+                $status=1;
+                $action=' فعال';
+            }
             $discount->update([
-                'status'=>0
+                'status'=>$status
             ]);
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'غیرفعال کردن کد تخفیف' . '-' . $discount->code,
-                'actionType' => 'حذف'
+                'url' => 'تغییر وضعیت کد تخفیف' . '-' . $discount->code,
+                'actionType' => $action
             ]);
 
-            $this->emit('toast', 'success', ' کد تخفیف با موفقیت غیرفعال شد.');
+            $this->emit('toast', 'success', ' تغییر وضعیت با موفقیت انجام شد.');
 
         }else{
             $this->emit('toast', 'warning','شما اجازه ویرایش این قسمت را ندارید.');
@@ -163,25 +170,6 @@ class IndexDiscount extends Component
 
     }
 
-    public function enableStatus($id)
-    {
-        if(Gate::allows('edit_discount')){
-            $discount = Discount::find($id);
-            $discount->update([
-                'status'=>1
-            ]);
-            Log::create([
-                'user_id' => auth()->user()->id,
-                'url' => 'فعال کردن کد تخفیف' . '-' . $discount->code,
-                'actionType' => 'حذف'
-            ]);
-            $this->emit('toast', 'success', ' کد تخفیف با موفقیت فعال شد.');
-
-        }else{
-            $this->emit('toast', 'warning','شما اجازه ویرایش این قسمت را ندارید.');
-        }
-
-    }
 
     public function render()
     {

@@ -1,38 +1,36 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Option;
+namespace App\Http\Livewire\Admin\Demo;
 
-
-use App\Models\Question as QuestionModels;
+use App\Models\Brand;
 use App\Models\Log;
+use App\Models\Demo;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Question extends Component
+class Index extends Component
 {
-    use WithPagination;
 
+    use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
 
-    public $search, $count_data;
-
-    protected $queryString = ['search'];
-
-    public $readyToLoad = false;
-    public Question $question;
+    public $img;
+    public $search;
+    public $count_data;
+    public $mulitiSelect = [];
     public $categoryIdBeingRemoved = null;
     public $searchTerm = null;
-    public $mulitiSelect = [];
     public $sortColumnName = 'created_at';
     public $sortDirection = 'desc';
-    public $SelectPage=false;
+    public $SelectDemo=false;
 
-    public function UpdatedSelectPage($value)
+    public function UpdatedSelectDemo($value)
     {
         if ($value){
-            $this->mulitiSelect=QuestionModels::where('question','LIKE',"%{$this->search}%")
+            $this->mulitiSelect=Demo::where('title', 'LIKE', "%{$this->search}%")->
+            orWhere('link', 'LIKE', "%{$this->search}%")
                 ->orWhere('id',$this->search)
                 ->orderBy($this->sortColumnName, $this->sortDirection)
                 ->latest()->paginate($this->count_data)->pluck('id')->map(fn($item)=>(string) $item)->toArray();
@@ -42,6 +40,7 @@ class Question extends Component
         }
 
     }
+
 
 
     public function sortBy($columnName)
@@ -75,36 +74,42 @@ class Question extends Component
 
     public function deleteAll()
     {
-        if (Gate::allows('delete_product')) {
+        if (Gate::allows('delete_page')) {
             foreach ($this->mulitiSelect as $value) {
-                $data = QuestionModels::where('id', $value)->first();
+                $page = Demo::where('id', $value)->first();
 
-                $data->delete();
+
+                $page->delete();
             }
             $this->mulitiSelect = [];
 
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'حذف کردن گروهی پرسش ',
+                'url' => 'حذف کردن گروهی برگه ',
                 'actionType' => 'حذف'
             ]);
-            $this->SelectPage=false;
+            $this->SelectDemo=false;
             $this->dispatchBrowserEvent('hide-form');
             $this->emit('toast', 'success', 'رکورد مورد نظر با موفقیت حذف شد');
         } else {
             $this->dispatchBrowserEvent('hide-form');
             $this->emit('toast', 'warning', 'شما اجازه حذف این قسمت را ندارید.');
         }
+
+
     }
 
     public function delete()
     {
-        if (Gate::allows('delete_product')) {
-            $data_info_id = QuestionModels::findOrFail($this->categoryIdBeingRemoved);
+        if (Gate::allows('delete_page')) {
+            $data_info_id = Demo::findOrFail($this->categoryIdBeingRemoved);
+
+
             $data_info_id->delete();
+
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'حذف کردن پرسش' . '-' . $data_info_id->title,
+                'url' => 'حذف کردن برگه' . '-' . $data_info_id->title,
                 'actionType' => 'حذف'
             ]);
             $this->dispatchBrowserEvent('hide-delete-modal');
@@ -118,78 +123,31 @@ class Question extends Component
 
     public function mount()
     {
-
         $this->count_data = 10;
-
     }
 
-    public function loadCategory()
+    protected $queryString = ['search'];
+
+    public $readyToLoad = false;
+
+    public Demo $site_page;
+
+
+    public function loadDemo()
     {
         $this->readyToLoad = true;
-    }
-
-    public function disableStatus($id)
-    {
-        if (Gate::allows('edit_product')) {
-            $question = QuestionModels::find($id);
-
-            if($question->status == 1){
-                $status=0;
-                $action='غیر فعال';
-            }else{
-                $status=1;
-                $action=' فعال';
-            }
-            $question->update([
-                'status'=>$status
-            ]);
-            Log::create([
-                'user_id' => auth()->user()->id,
-                'url' => 'تغییر وضعیت پرسش' . '-' . $question->title,
-                'actionType' => $action
-            ]);
-
-            $this->emit('toast', 'success', 'تغییر وضعیت با موفقیت انجام شد.');
-
-        } else {
-            $this->emit('toast', 'warning', 'شما اجازه ویرایش این قسمت را ندارید.');
-        }
-
-    }
-
-    public function enableStatus($id)
-    {
-        if (Gate::allows('edit_product')) {
-            $question = QuestionModels::find($id);
-            $question->update([
-                'status' => 1
-            ]);
-            Log::create([
-                'user_id' => auth()->user()->id,
-                'url' => 'فعال کردن پرسش' . '-' . $question->title,
-                'actionType' => 'فعال کردن'
-            ]);
-            $this->emit('toast', 'success', ' پرسش با موفقیت فعال شد.');
-
-        } else {
-            $this->emit('toast', 'warning', 'شما اجازه ویرایش این قسمت را ندارید.');
-        }
-
     }
 
     public function render()
     {
 
-        $questions = $this->readyToLoad ? QuestionModels::
-
-        orWhere('question', 'LIKE', "%{$this->search}%")->
+        $demos = $this->readyToLoad ? Demo::where('title', 'LIKE', "%{$this->search}%")->
+        orWhere('link', 'LIKE', "%{$this->search}%")->
         orWhere('id', $this->search)->
         orderBy($this->sortColumnName, $this->sortDirection)->
         latest()->paginate($this->count_data) : [];
-
-
         $deleteItem = $this->mulitiSelect;
 
-        return view('livewire.admin.option.question', compact('questions', 'deleteItem'));
+        return view('livewire.admin.demo.index', compact('demos', 'deleteItem'));
     }
 }

@@ -1,39 +1,4 @@
 @section('title','ایجاد دسته')
-@if(isset($result))
-    <div class="container-fluid">
-        <div class="inner-body">
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">ایجاد دسته</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('Dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('categories')}}">دسته بندی</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">ایجاد دسته</li>
-                    </ol>
-                </div>
-                <div>
-                    <a data-toggle="tooltip" href="{{route('categories')}}" class="btn btn-warning text-white"
-                       data-original-title="برگشت">
-                        <i class="fa fa-backward"></i>
-                    </a>
-                </div>
-            </div>
-            @include('livewire.admin.layouts.error')
-            <div class="row row-sm">
-                <div class="col-lg-12">
-                    <div class="card custom-card">
-                        <div class="card-header p-3 tx-medium my-auto tx-white bg-primary">
-                            ایجاد دسته
-                        </div>
-                        <div class="card-body">
-                            {!! $result !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@else
     <div class="container-fluid">
         <div class="inner-body">
             <div class="page-header">
@@ -187,4 +152,3 @@
             </div>
         </div>
     </div>
-@endif

@@ -158,24 +158,17 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                @if($data->status==1)
 
-                                                    <label class="custom-switch"
+
+                                                    <label class="custom-switch" style="cursor: pointer;"
                                                            wire:click.prevent="statusDisable({{$data->id}})">
                                                         <input type="checkbox" name="custom-switch-checkbox"
                                                                class="custom-switch-input"
-                                                               checked="checked">
+                                                               @if($data->status==1)    checked="checked"   @endif >
                                                         <span class="custom-switch-indicator"></span>
 
                                                     </label>
-                                                @else
-                                                    <label class="custom-switch"
-                                                           wire:click.prevent="statusEnable({{$data->id}})">
-                                                        <input type="checkbox" name="custom-switch-checkbox"
-                                                               class="custom-switch-input">
-                                                        <span class="custom-switch-indicator"></span>
-                                                    </label>
-                                                @endif
+
                                             </td>
                                             <td>
                                                 <a href="{{route('EditProduct',$data->id)}}"

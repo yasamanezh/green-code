@@ -66,13 +66,8 @@ class Menu extends Component
     }
     public function render()
     {
-        $oneLeveles=Category::where('status',1)->where('parent',0)->orWhere('parent',NULL)->get();
         $menus= \App\Models\Menu::orderBy('sort','ASC')->get();
-        if(auth()->user()){
-            $carts=Cart::where('user_id',auth()->user()->id)->get();
-        }else{
-            $carts=[];
-        }
-        return view('livewire.front.layouts.header.menu',compact('oneLeveles','menus','carts'));
+
+        return view('livewire.front.layouts.header.menu',compact('menus',));
     }
 }

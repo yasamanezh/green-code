@@ -66,22 +66,6 @@ class AddProduct extends Component
 
     public function mount()
     {
-        $license = SiteOption::first()->license;
-        $server = $_SERVER["SERVER_NAME"];
-        $c = curl_init();
-        curl_setopt($c, CURLOPT_URL, "https://panel.green-code.ir/verifyLicense.php");
-        curl_setopt($c, CURLOPT_TIMEOUT, 30);
-        curl_setopt($c, CURLOPT_POST, 1);
-        curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
-        $postfields = 'svr=' . $server . '&lic=' . $license;
-        curl_setopt($c, CURLOPT_POSTFIELDS, $postfields);
-        $check = curl_exec($c);
-        if ($check == "verified") {
-        } else {
-            $this->result = $check;
-            return view('livewire.admin.product.add-product');
-        }
         $this->product = new Product();
         $this->product->weight = 0;
         $this->product->anbar = 1;

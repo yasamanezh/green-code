@@ -57,25 +57,7 @@ class SingleProduct extends Component
         if(! $product){
             abort(404);
         }
-        // تاریخچه
-        if(auth()->user()){
 
-            $isHistory=UserHistory::where('user_id',auth()->user()->id)->where('product_id',$this->product->id)->first();
-           if($isHistory){
-               $isHistory->delete();
-           }
-            $userHistory=UserHistory::where('user_id',auth()->user()->id)->get();
-            if(count($userHistory) >=503){
-                $oldhistory=UserHistory::orderBy('id', 'desc')->where('user_id',auth()->user()->id)->first();
-                $oldhistory->delete();
-
-            }
-                $history=new UserHistory();
-                $history->user_id=auth()->user()->id;
-                $history->product_id=$this->product->id;
-                $history->save();
-
-        }
     }
 
 

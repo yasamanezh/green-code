@@ -134,13 +134,20 @@ class ProductComment extends Component
     {
         if (Gate::allows('edit_product')) {
             $data_info_id = ProductCommentModels::find($id);
+            if($data_info_id->status == 1){
+                $status=0;
+                $action='غیر فعال';
+            }else{
+                $status=1;
+                $action=' فعال';
+            }
             $data_info_id->update([
-                'status' => 0
+                'status'=>$status
             ]);
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'غیر فعال کردن دیدگاه' . '-' . $data_info_id->title,
-                'actionType' => 'غیر فعال کردن'
+                'url' => 'تغییر وضعیت دیدگاه' . '-' . $data_info_id->title,
+                'actionType' => $action
             ]);
             $this->emit('toast', 'success', 'تغییر وضعیت با موفقیت انجام شد');
             return back();

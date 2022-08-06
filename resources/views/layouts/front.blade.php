@@ -23,13 +23,10 @@
     <livewire:front.layouts.head/>
 </head>
 <body>
+<livewire:front.layouts.header/>
 <div class="container-xxl bg-white p-0">
 <!--header------------------------------------->
- <livewire:front.layouts.header/>
-
-
 {{$slot}}
-
  <livewire:front.layouts.footer />
 </div>
 

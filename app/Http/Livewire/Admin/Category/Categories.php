@@ -156,13 +156,20 @@ class Categories extends Component
     public function statusDisable($id){
         if(Gate::allows('edit_category')){
             $data_info_id=Category::find($id);
+            if($data_info_id->status == 1){
+                $status=0;
+                $action='غیر فعال';
+            }else{
+                $status=1;
+                $action=' فعال';
+            }
             $data_info_id->update([
-                'status'=>0
+                'status'=>$status
             ]);
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'غیر فعال کردن دسته' .'-'. $data_info_id->title,
-                'actionType' => 'غیر فعال کردن'
+                'url' => 'تغییر وضعیت دسته' .'-'. $data_info_id->title,
+                'actionType' => $action
             ]);
             $this->emit('toast','success', 'تغییر وضعیت با موفقیت انجام شد');
             return back();
@@ -173,29 +180,7 @@ class Categories extends Component
 
     }
 
-    public function statusEnable($id){
-
-          if(Gate::allows('edit_category')){
-
-              $data_info_id=Category::find($id);
-              $data_info_id->update([
-                  'status'=>1
-              ]);
-              Log::create([
-                  'user_id' => auth()->user()->id,
-                  'url' => ' فعال کردن دسته' .'-'. $data_info_id->title,
-                  'actionType' => ' فعال کردن'
-              ]);
-              $this->emit('toast','success', 'تغییر وضعیت با موفقیت انجام شد');
-              return back();
-        }else{
-            $this->emit('toast', 'warning','شما اجازه ویرایش این قسمت را ندارید.');
-        }
-
-
-
-    }
-	public function mount(){
+   public function mount(){
 
 		$this->data['breadcrumbs_text'] = 'دسته بندی ها';
 		$this->data['breadcrumbs_href'] = route('categories');

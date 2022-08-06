@@ -1,28 +1,4 @@
 @section('title','ماژول ها')
-@if(isset($result))
-    <div class="container-fluid">
-        <div class="inner-body">
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">ماژول ها</h2><br>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('Dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">ماژول ها</li>
-                    </ol>
-                </div>
-            </div>
-            <!-- row opened -->
-            <div class="row row-sm">
-                <div class="col-xxl-12 col-xl-12 col-md-12 col-lg-12">
-                    <div class="card custom-card">
-                        {!! $result !!}
-                    </div>
-                </div>
-            </div>
-            <!-- row closed -->
-        </div>
-    </div>
-@else
 <div class="container-fluid" id="page_builder">
    <div class="inner-body">
         <div class="page-header">
@@ -385,28 +361,10 @@
                                                                             <div class="card-body">
                                                                                 @isset($module_name[$key][$key1][$key2])
                                                                                     @php  $array=explode(',',$module_name[$key][$key1][$key2] );  @endphp
-                                                                                    @if($array[0]=='carsoul')
-                                                                                        @php   $carsoulTitle=\App\Models\Carsoul::where('id',$array[1])->first() @endphp
-                                                                                        @if($carsoulTitle)
-                                                                                            <span>اسکرول مطالب- {{ $carsoulTitle->title }}</span>
-                                                                                        @endif
-
-                                                                                    @elseif($array[0]=='slider')
-                                                                                        @php   $sliderTitle=\App\Models\Slider::where('id',$array[1])->first() @endphp
-                                                                                        @if($sliderTitle)
-                                                                                            <span>اسلایدر- {{ $sliderTitle->title }}</span>
-                                                                                        @endif
-
-                                                                                    @elseif($array[0]=='banner')
+                                                                                    @if($array[0]=='banner')
                                                                                         @php   $bannerTitle=\App\Models\Banner::where('id',$array[1])->first() @endphp
                                                                                         @if($bannerTitle)
                                                                                             <span>بنر- {{ $bannerTitle->title }}</span>
-                                                                                        @endif
-
-                                                                                    @elseif($array[0]=='special')
-                                                                                        @php   $specialTitle=\App\Models\Proposal::where('id',$array[1])->first() @endphp
-                                                                                        @if($specialTitle)
-                                                                                            <span>اسلایدر پیشنهاد ویژه- {{ $specialTitle->title }}</span>
                                                                                         @endif
 
                                                                                     @elseif($array[0]=='html')
@@ -414,24 +372,12 @@
                                                                                         @if($htmlTitle)
                                                                                             <span>html- {{ $htmlTitle->title }}</span>
                                                                                         @endif
-                                                                                    @elseif($array[0]=='tab')
-                                                                                        @php   $tab=\App\Models\Tab::where('id',$array[1])->first() @endphp
-                                                                                        @if($tab)
-                                                                                            <span>تب بندی- {{ $tab->title }}</span>
-                                                                                        @endif
-
                                                                                     @elseif($array[0]=='logo')
                                                                                         <span>logo</span>
                                                                                     @elseif($array[0]=='contact')
                                                                                         <span>فرم تماس با ما</span>
-                                                                                    @elseif($array[0]=='brand')
-                                                                                        <span>اسلایدر برندها</span>
                                                                                     @elseif($array[0]=='blog')
                                                                                         <span>اخرین مطالب وبلاگ</span>
-                                                                                    @elseif($array[0]=='AllCategory')
-                                                                                        <span>دسته بندی ها</span>
-                                                                                    @elseif($array[0]=='InstantOffer')
-                                                                                        <span>پیشنهاد لحظه ای</span>
 
                                                                                     @endif
 
@@ -447,33 +393,17 @@
                                                                                 <select class="form-control" style="color: #000000" wire:model="moduleName">
                                                                                     <option value="">هیچکدام</option>
 
-                                                                                    @foreach($sliders as $slider)
-                                                                                        <option value="slider,{{$slider->id}}">   اسلایدر -{{$slider->title}}</option>
-                                                                                    @endforeach
-                                                                                    @foreach($carsouls as $carsoul)
-                                                                                        <option value="carsoul,{{$carsoul->id}}">اسکرول مطالب-{{$carsoul->title}}</option>
-                                                                                    @endforeach
                                                                                     @foreach($banners as $banner)
                                                                                         <option value="banner,{{$banner->id}}">بنر - {{$banner->title}}</option>
                                                                                     @endforeach
-                                                                                    @foreach($specials as $special)
-                                                                                        <option value="special,{{$special->id}}">اسلایدر پیشنهاد ویژه - {{$special->title}}</option>
-                                                                                    @endforeach
-
                                                                                     @foreach($htmls as $html)
 
                                                                                         <option value="html,{{$html->id}}">html - {{$html->title}}</option>
 
                                                                                     @endforeach
-                                                                                    @foreach($tabs as $tab)
-                                                                                        <option value="tab,{{$tab->id}}">تب بندی - {{$tab->title}}</option>
-                                                                                    @endforeach
                                                                                     <option  value="logo">لوگو</option>
                                                                                     <option value="contact">فرم تماس با ما</option>
-                                                                                    <option value="brand">اسلایدر برندها</option>
                                                                                     <option  value="blog">اخرین مطالب وبلاگ</option>
-                                                                                    <option value="AllCategory">دسته بندی ها</option>
-                                                                                    <option  value="InstantOffer">پیشنهاد لحظه ای</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -539,5 +469,4 @@
     </div>
 
 </div>
-@endif
 

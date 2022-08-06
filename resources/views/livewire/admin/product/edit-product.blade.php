@@ -364,8 +364,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="wd-300">
-                                                                <input type="text" class="form-control" placeholder="مقدار"
-                                                                       wire:model="property_text.{{ $value->id .$product->id }}">
+                                                                <input type="text" class="form-control" placeholder="مقدار"  wire:model="property_text.{{$value->id}}">
                                                             </div>
                                                         </td>
                                                         <td>

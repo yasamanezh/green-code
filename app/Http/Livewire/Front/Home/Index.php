@@ -35,7 +35,7 @@ class Index extends Component
         $url=Request::url();
         $link=URL::to('/');
         $img=$link.'/storage/'. $this->options->logo;
-        $title='فروشگاه آنلاین-'. $this->options->meta_title;
+        $title= $this->options->meta_title;
         SEOTools::setTitle($title);
         SEOTools::setDescription($this->options->meta_description);
         SEOTools::opengraph()->setUrl($url);

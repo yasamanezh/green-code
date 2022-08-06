@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProposalsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateProposalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('proposals', function (Blueprint $table) {
+        Schema::create('demos', function (Blueprint $table) {
             $table->id();
-            $table->string('status')->nullable();
-            $table->string('count')->nullable();
-            $table->string('title')->nullable();
-            $table->string('category_id')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_title')->nullable();
+            $table->text('meta_keyword')->nullable();
+            $table->string('title');
+            $table->string('link');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateProposalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proposals');
+        Schema::dropIfExists('demos');
     }
-}
+};

@@ -186,13 +186,20 @@ class Products extends Component
     public function statusDisable($id){
         if(Gate::allows('edit_product')){
             $data_info_id=Product::find($id);
+            if($data_info_id->status == 1){
+                $status=0;
+                $action='غیر فعال';
+            }else{
+                $status=1;
+                $action=' فعال';
+            }
             $data_info_id->update([
-                'status'=>0
+                'status'=>$status
             ]);
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'غیر فعال کردن ' .$data_info_id->title ,
-                'actionType' => 'غیر فعال کردن'
+                'url' => 'تغییر وضعیت محصول' .$data_info_id->title ,
+                'actionType' => $action
             ]);
             $this->emit('toast','success', 'تغییر وضعیت با موفقیت انجام شد');
             return back();
@@ -200,25 +207,6 @@ class Products extends Component
             $this->emit('toast', 'warning','شما اجازه ویرایش این قسمت را ندارید.');
         }
 
-
-    }
-
-    public function statusEnable($id){
-        if(Gate::allows('edit_product')){
-            $data_info_id=Product::find($id);
-            $data_info_id->update([
-                'status'=>1
-            ]);
-            Log::create([
-                'user_id' => auth()->user()->id,
-                'url' => ' فعال کردن ' .$data_info_id->title ,
-                'actionType' => 'فعال کردن'
-            ]);
-            $this->emit('toast','success', 'تغییر وضعیت با موفقیت انجام شد');
-            return back();
-        }else{
-            $this->emit('toast', 'warning','شما اجازه ویرایش این قسمت را ندارید.');
-        }
 
     }
 

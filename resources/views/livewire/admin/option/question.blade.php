@@ -109,23 +109,17 @@
                                                     <td>{{\App\Models\Product::where('id',$value->product_id)->pluck('title')->first()}}</td>
                                                     <td> {{\Illuminate\Support\Str::limit($value->answer, 30)}}</td>
                                                     <td>
-                                                        @if($value->status == 1)
 
-                                                            <label class="custom-switch"
+
+                                                            <label class="custom-switch" style="cursor: pointer;"
                                                                    wire:click.prefetch.prevent="disableStatus({{$value->id}})">
                                                                 <input type="checkbox" name="custom-switch-checkbox"
-                                                                       class="custom-switch-input" checked="checked">
+                                                                       class="custom-switch-input"  @if($value->status == 1) checked="checked" @endif>
                                                                 <span class="custom-switch-indicator"></span>
 
                                                             </label>
-                                                        @else
-                                                            <label class="custom-switch"
-                                                                   wire:click.prefetch.prevent="enableStatus({{$value->id}})">
-                                                                <input type="checkbox" name="custom-switch-checkbox"
-                                                                       class="custom-switch-input">
-                                                                <span class="custom-switch-indicator"></span>
-                                                            </label>
-                                                        @endif
+
+
                                                     </td>
                                                     <td>
                                                         <a href="{{route('editQuestion',$value->id)}}"

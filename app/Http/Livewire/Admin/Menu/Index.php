@@ -125,46 +125,6 @@ class Index extends Component
 
     }
 
-    public function statusDisable($id)
-    {
-        if (Gate::allows('edit_option')) {
-            $data_info_id = Menu::find($id);
-            $data_info_id->update([
-                'status' => 0
-            ]);
-            Log::create([
-                'user_id' => auth()->user()->id,
-                'url' => 'غیر فعال کردن منو' . '-' . $data_info_id->title,
-                'actionType' => 'غیر فعال کردن'
-            ]);
-            $this->emit('toast', 'success', 'تغییر وضعیت با موفقیت انجام شد');
-            return back();
-        } else {
-            $this->emit('toast', 'warning', 'شما اجازه ویرایش این قسمت را ندارید.');
-        }
-
-    }
-
-    public function statusEnable($id)
-    {
-        if (Gate::allows('edit_option')) {
-            $data_info_id = Menu::find($id);
-            $data_info_id->update([
-                'status' => 1
-            ]);
-            Log::create([
-                'user_id' => auth()->user()->id,
-                'url' => ' فعال کردن منو' . '-' . $data_info_id->title,
-                'actionType' => ' فعال کردن'
-            ]);
-            $this->emit('toast', 'success', 'تغییر وضعیت با موفقیت انجام شد');
-            return back();
-        } else {
-            $this->emit('toast', 'warning', 'شما اجازه ویرایش این قسمت را ندارید.');
-        }
-    }
-
-
     public function render()
     {
 

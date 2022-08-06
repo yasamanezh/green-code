@@ -147,13 +147,20 @@ class Index extends Component
     {
         if (Gate::allows('edit_post')) {
             $data_info_id = Post::find($id);
+            if($data_info_id->status == 1){
+                $status=0;
+                $action='غیر فعال';
+            }else{
+                $status=1;
+                $action=' فعال';
+            }
             $data_info_id->update([
-                'status' => 0
+                'status'=>$status
             ]);
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'غیر فعال کردن پست  ' . $data_info_id->title,
-                'actionType' => 'غیر فعال کردن'
+                'url' => 'تغییر وضعیت پست  ' . $data_info_id->title,
+                'actionType' => $action
             ]);
             $this->emit('toast', 'success', 'تغییر وضعیت با موفقیت انجام شد');
             return back();
@@ -161,26 +168,6 @@ class Index extends Component
             $this->emit('toast', 'warning', 'شما اجازه ویرایش این قسمت را ندارید.');
         }
 
-
-    }
-
-    public function statusEnable($id)
-    {
-        if (Gate::allows('edit_post')) {
-            $data_info_id = Post::find($id);
-            $data_info_id->update([
-                'status' => 1
-            ]);
-            Log::create([
-                'user_id' => auth()->user()->id,
-                'url' => ' فعال کردن پست  ' . $data_info_id->title,
-                'actionType' => 'فعال کردن'
-            ]);
-            $this->emit('toast', 'success', 'تغییر وضعیت با موفقیت انجام شد');
-            return back();
-        } else {
-            $this->emit('toast', 'warning', 'شما اجازه ویرایش این قسمت را ندارید.');
-        }
 
     }
 

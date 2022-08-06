@@ -404,15 +404,6 @@ h6,
     transition: .5s;
 }
 
-#portfolio-flters .btn::after {
-    position: absolute;
-    content: "";
-    right: -1px;
-    bottom: -1px;
-    border-left: 20px solid transparent;
-    border-right: 0 solid transparent;
-    border-bottom: 50px solid #FFFFFF;
-}
 
 #portfolio-flters .btn:hover,
 #portfolio-flters .btn.active {
@@ -548,4 +539,11 @@ h2{
 }
 .end-0 {
     left: -85% !important;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    float: right !important;
+   margin-left: 11px !important;
+}
+.bread-margin{
+    margin-top: -450px;
 }

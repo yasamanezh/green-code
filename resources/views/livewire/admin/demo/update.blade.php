@@ -1,13 +1,13 @@
-@section('title','ویرایش برگه')
+@section('title','ویرایش دمو')
 <div class="container-fluid">
     <div class="inner-body">
         <div class="page-header">
             <div>
-                <h2 class="main-content-title tx-24 mg-b-5">ویرایش برگه</h2>
+                <h2 class="main-content-title tx-24 mg-b-5">ویرایش دمو</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('Dashboard')}}">داشبورد</a></li>
-                    <li class="breadcrumb-item"><a href="{{route('pages')}}">برگه ها</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">ویرایش برگه</li>
+                    <li class="breadcrumb-item"><a href="{{route('pages')}}">دمو ها</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">ویرایش دمو</li>
                 </ol>
             </div>
             <div>
@@ -46,7 +46,7 @@
                 <div class="col-xl-10 col-lg-12 col-md-12">
                     <div class="card custom-card">
                         <div class="card-header p-3 tx-medium my-auto tx-white bg-primary">
-                            افزودن برگه
+                            افزودن دمو
                         </div>
                         <div class="card-body">
                             <form id="saveForm">
@@ -56,13 +56,13 @@
                                         <div>
                                             <div class="form-group">
                                                 <div class="row row-sm">
-                                                    <label class="form-label col-sm-2">نام صفحه: <span
+                                                    <label class="form-label col-sm-2">نام دمو: <span
                                                             class="tx-danger">*</span></label>
                                                     <div class="col-sm-10">
                                                         <input
-                                                            class="form-control @error('page.title') parsley-error @enderror"
-                                                            wire:model.defer="page.title">
-                                                        @error('page.title')
+                                                            class="form-control @error('demo.title') parsley-error @enderror"
+                                                            wire:model.defer="demo.title">
+                                                        @error('demo.title')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
@@ -72,13 +72,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="row row-sm">
-                                                    <label class="form-label col-sm-2">لینک صفحه: <span
+                                                    <label class="form-label col-sm-2">لینک دمو: <span
                                                             class="tx-danger">*</span></label>
                                                     <div class="col-sm-10">
                                                         <input
-                                                            class="form-control @error('page.link') parsley-error @enderror"
-                                                            wire:model.defer="page.link">
-                                                        @error('page.link')
+                                                            class="form-control @error('demo.link') parsley-error @enderror"
+                                                            wire:model.defer="demo.link">
+                                                        @error('demo.link')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
@@ -95,9 +95,9 @@
                                                 <label class="form-label col-sm-2">متا توضیحات: </label>
                                                 <div class="col-sm-10">
                                             <textarea
-                                                class="form-control @error('page.meta_description') parsley-error @enderror"
-                                                wire:model.defer="page.meta_description"></textarea>
-                                                    @error('page.meta_description')
+                                                class="form-control @error('demo.meta_description') parsley-error @enderror"
+                                                wire:model.defer="demo.meta_description"></textarea>
+                                                    @error('demo.meta_description')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
@@ -110,9 +110,9 @@
                                                 <label class="form-label col-sm-2">متا عنوان: </label>
                                                 <div class="col-sm-10">
                                             <textarea
-                                                class="form-control @error('page.meta_title') parsley-error @enderror"
-                                                wire:model.defer="page.meta_title"></textarea>
-                                                    @error('page.meta_title')
+                                                class="form-control @error('demo.meta_title') parsley-error @enderror"
+                                                wire:model.defer="demo.meta_title"></textarea>
+                                                    @error('demo.meta_title')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
@@ -126,9 +126,9 @@
                                                 <label class="form-label col-sm-2">متا کلمات کلیدی: </label>
                                                 <div class="col-sm-10">
                                             <textarea
-                                                class="form-control @error('page.meta_keyword') parsley-error @enderror"
-                                                wire:model.defer="page.meta_keyword"></textarea>
-                                                    @error('page.meta_keyword')
+                                                class="form-control @error('demo.meta_keyword') parsley-error @enderror"
+                                                wire:model.defer="demo.meta_keyword"></textarea>
+                                                    @error('demo.meta_keyword')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
@@ -240,7 +240,7 @@
                                                                                                 <select  value="" wire:model.defer="row_full_page.{{$key}}" class="form-control">
                                                                                                     <option value="container-fluid">container-fluid </option>
                                                                                                     <option value="container">container</option>
-                                                                                                    <option value="width-100">تمام صفحه</option>
+                                                                                                    <option value="width-100">تمام دمو</option>
                                                                                                 </select>
                                                                                             </div>
                                                                                         </div>
@@ -647,9 +647,10 @@
                                                                                                             @if($array[0]=='banner')
                                                                                                                 @php   $bannerTitle=\App\Models\Banner::where('id',$array[1])->first() @endphp
                                                                                                                 <span>بنر- {{ $bannerTitle->title }}</span>
-                                                                                                            @elseif($array[0]=='html')
+                                                                                                         @elseif($array[0]=='html')
                                                                                                                 @php   $htmlTitle=\App\Models\Html::where('id',$array[1])->first() @endphp
                                                                                                                 <span>html- {{ $htmlTitle->title }}</span>
+
 
                                                                                                             @elseif($array[0]=='logo')
                                                                                                                 <span>logo</span>
@@ -658,7 +659,6 @@
 
                                                                                                             @elseif($array[0]=='blog')
                                                                                                                 <span>اخرین مطالب وبلاگ</span>
-
                                                                                                             @endif
                                                                                                         @endisset
                                                                                                     </div>
@@ -681,6 +681,7 @@
                                                                                                             هیچکدام
                                                                                                         </option>
 
+
                                                                                                         @foreach($banners as $banner)
                                                                                                             <option
                                                                                                                 value="banner,{{$banner->id}}">
@@ -695,6 +696,7 @@
                                                                                                                 - {{$html->title}}</option>
                                                                                                         @endforeach
 
+
                                                                                                         <option
                                                                                                             value="logo">
                                                                                                             لوگو
@@ -705,7 +707,10 @@
                                                                                                             ما
                                                                                                         </option>
 
-                                                                                                        <option  value="blog">  اخرین مطالب وبلاگ
+                                                                                                        <option
+                                                                                                            value="blog">
+                                                                                                            اخرین مطالب
+                                                                                                            وبلاگ
                                                                                                         </option>
                                                                                                     </select>
                                                                                                 </div>

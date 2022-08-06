@@ -1,27 +1,22 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Page;
+namespace App\Http\Livewire\Admin\Demo;
 
 use App\Models\Banner;
 use App\Models\Brand;
-use App\Models\Carsoul;
 use App\Models\Colum;
 use App\Models\Html;
 use App\Models\Log;
 use App\Models\Module;
-use App\Models\Page;
-use App\Models\Proposal;
+use App\Models\Demo;
 use App\Models\RowModule;
-use App\Models\Slider;
-use App\Models\Tab;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
 class Update extends Component
 {
-    public Page $page;
+    public Demo $demo;
 
     public $showOptionUl = [];
     public $row_magin_top=[],$row_magin_right=[],$row_magin_bottom=[],$row_magin_left=[],$row_bg_color=[],$row_bg_color_status=[],$row_height=[];
@@ -137,7 +132,7 @@ class Update extends Component
 
     }
     public function mount(){
-        $rows=RowModule::orderBy('sort','Asc')->where('page',$this->page->title)->get();
+        $rows=RowModule::orderBy('sort','Asc')->where('page',$this->demo->title)->get();
 
         if($rows){
             foreach ($rows as $key=>$value){
@@ -162,7 +157,7 @@ class Update extends Component
                 $this->row_bg_color[$key]=$value->bg_color;
                 $this->row_bg_color_status[$key]=$value->bg_color_status;
                 $this->row_height[$key]=$value->height;
-                $cols=Colum::where('row',$value->sort)->where('page',$this->page->title)->get();
+                $cols=Colum::where('row',$value->sort)->where('page',$this->demo->title)->get();
                 if($cols) {
                     foreach ($cols as $key1 => $value1) {
                         if($value1->col){
@@ -177,7 +172,7 @@ class Update extends Component
                         if($value1->col_md){
                             $this->col_md[$key][$key1]=$value1->col_md;
                         }
-                        $modules = Module::where('page',$this->page->title)->where('row', $key)->where('col', $key1)->get();
+                        $modules = Module::where('page',$this->demo->title)->where('row', $key)->where('col', $key1)->get();
 
                         foreach ($modules as $key2 => $module) {
                             $t3 = $key2;
@@ -230,39 +225,39 @@ class Update extends Component
     }
 
     protected $rules = [
-        'page.title' => 'required|string|min:2|max:255',
-        'page.link' => 'required',
-        'page.meta_description' => 'nullable|string|min:3',
-        'page.meta_title' => 'nullable|string|min:2|max:255',
-        'page.meta_keyword' => 'nullable|string|min:2|max:255',
+        'demo.title' => 'required|string|min:2|max:255',
+        'demo.link' => 'required',
+        'demo.meta_description' => 'nullable|string|min:3',
+        'demo.meta_title' => 'nullable|string|min:2|max:255',
+        'demo.meta_keyword' => 'nullable|string|min:2|max:255',
     ];
 
 
 
     public function saveTotalData(){
 
-        if(Gate::allows('edit_page')){
+        if(Gate::allows('edit_demo')){
             $this->validate();
             $this->validate([
-                'page.link' => ['required','string','min:2','max:255', Rule::unique('pages','link')->ignore($this->page->id)],
+                'demo.link' => ['required','string','min:2','max:255', Rule::unique('demos','link')->ignore($this->demo->id)],
             ]);
-            $this->page->update();
+            $this->demo->update();
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'ویرایش صفحه سایت' .'-'. $this->page->title,
+                'url' => 'ویرایش دمو' .'-'. $this->demo->title,
                 'actionType' => 'ویرایش'
             ]);
-            $sections=RowModule:: where('page',$this->page->title)->get();
+            $sections=RowModule:: where('page',$this->demo->title)->get();
             foreach ($sections as $section){
                 $section->delete();
             }
-            $cols=Colum:: where('page',$this->page->title)->get();
+            $cols=Colum:: where('page',$this->demo->title)->get();
             foreach ($cols as $col) {
 
                 $col->delete();
             }
 
-            $modules = Module:: where('page',$this->page->title)->get();
+            $modules = Module:: where('page',$this->demo->title)->get();
             if($modules){
                 foreach ($modules as $module) {
                     $module->delete();
@@ -285,7 +280,7 @@ class Update extends Component
                             $newcol->col_lg = $this->col_lg[$key][$key1];
                         }
                         $newcol->row = $key;
-                        $newcol->page = $this->page->title;
+                        $newcol->page = $this->demo->title;
                         $newcol->col = $value1;
                         $newcol->sort = $i;
                         $newcol->save();
@@ -296,7 +291,7 @@ class Update extends Component
                                 $newModule = new Module();
 
                                 $newModule->row = $key;
-                                $newModule->page = $this->page->title;
+                                $newModule->page = $this->demo->title;
                                 $newModule->module_id = $value2;
                                 $newModule->col = $i;
                                 $newModule->sort = $j;
@@ -360,7 +355,7 @@ class Update extends Component
                     }}
                 $row=new RowModule();
                 $row->sort=$key;
-                $row->page = $this->page->title;
+                $row->page = $this->demo->title;
                 $margin='';
                 if(isset($this->row_magin_top[$key])){
                     $margin=$this->row_magin_top[$key];
@@ -426,8 +421,8 @@ class Update extends Component
                 $row->save();
 
             }
-            $msg = 'صفحه سایت با موفقیت ایجاد  شد.';
-            return redirect(route('pages'))->with('sucsess', $msg);
+            $msg = 'دمو با موفقیت ایجاد  شد.';
+            return redirect(route('demoes'))->with('sucsess', $msg);
         }else{
             $this->emit('toast', 'warning','شما اجازه ویرایش این قسمت را ندارید.');
         }
@@ -443,7 +438,7 @@ class Update extends Component
 
         $htmls=Html::get();
 
-        $page = $this->page;
-        return view('livewire.admin.page.update',compact('page','showrow','banners','htmls'));
+        $demo = $this->demo;
+        return view('livewire.admin.demo.update',compact('demo','showrow','banners','htmls'));
     }
 }
