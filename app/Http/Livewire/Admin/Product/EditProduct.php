@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Manufacturer;
 use App\Models\ProductAtt;
 use App\Models\ProductDownload;
-use App\Models\ProductImage;
 use App\Models\Option;
 use App\Models\productOption;
 use App\Models\ProductProperty;
@@ -19,7 +18,6 @@ use Illuminate\Validation\Rule;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Attribute;
-use App\Models\productNaghd;
 use Livewire\WithFileUploads;
 use Image;
 
@@ -52,15 +50,7 @@ class EditProduct extends Component
     public function mount()
     {
         $this->image=$this->product->image;
-        $naghds=productNaghd::where('product_id',$this->product->id)->get();
-        foreach ($naghds as $naghd){
-            $d=$this->d;
-            $d = $d + 1;
-            array_push($this->inputNaghdes ,$d);
-            array_push($this->naghd_title ,$naghd->title);
-            array_push($this->naghd_description ,$naghd->description);
 
-        }
         $attrs=ProductAtt::where('product_id',$this->product->id)->get();
         foreach ($attrs as $attr){
             $i=$this->i;
@@ -80,15 +70,6 @@ class EditProduct extends Component
 
         }
 
-        $images=ProductImage::where('product_id',$this->product->id)->get();
-        foreach ($images as $image){
-            $j=$this->j;
-            $j = $j + 1;
-            array_push($this->inputImage ,$j);
-            array_push($this->product_img ,$image->img);
-
-
-        }
         $downloads=ProductDownload::where('product_id',$this->product->id)->get();
         if($downloads){
             foreach ($downloads as $value){
@@ -453,11 +434,7 @@ class EditProduct extends Component
             $value->delete();
         }
 
-        $oldNaghds=productNaghd::where('product_id',$this->product->id)->get();
-        foreach ($oldNaghds as $value){
 
-            $value->delete();
-        }
         $oldProperty=ProductProperty::where('product_id',$this->product->id)->get();
         foreach ($oldProperty as $value){
 
@@ -468,11 +445,7 @@ class EditProduct extends Component
         foreach ($oldownload as $value){
             $value->delete();
         }
-        $oldImage=ProductImage::where('product_id',$this->product->id)->get();
-        foreach ($oldImage as $value){
 
-            $value->delete();
-        }
         $oldselect=productOption::where('product_id',$this->product->id)->get();
         foreach ($oldselect as $value){
 
@@ -483,27 +456,15 @@ class EditProduct extends Component
 
             $value->delete();
         }
-        if(! isset($this->product->weight)){
-            $this->product->weight= 0;
-        }
-        if(! isset($this->product->quantity)){
-            $this->product->quantity= 0;
-        }
+
         if(! isset($this->product->price)){
             $this->product->price= 0;
         }
-        if(! isset($this->product->weight_class_id)){
-            $this->product->weight_class_id='kgram';
-        }
+
         if(! isset($this->product->status)){
             $this->product->status=1;
         }
-        if(! isset($this->product->minimum)){
-            $this->product->minimum=1;
-        }
-        if(! isset($this->product->anbar)){
-            $this->product->anbar=1;
-        }
+
         if(isset($this->imageupadate)){
             $this->validate([
                'imageupadate'=>'file|max:800|mimes:jpg,bmp,png,jpeg,svg'
@@ -628,10 +589,6 @@ class EditProduct extends Component
             $this->product->productDownloads()->createMany($downloads);
         }
 
-        if($this->inputImage){
-
-            $this->product->productImages()->createMany($images);
-        }
 
         $msg = 'محصول ذخیره شد';
         return redirect(route('Products'))->with('sucsess', $msg);
