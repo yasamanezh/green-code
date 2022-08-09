@@ -6,7 +6,6 @@ use App\Models\Cart;
 use App\Models\Manufacturer;
 use App\Models\NoProduct;
 use App\Models\Option;
-use App\Models\Order;
 use App\Models\Product;
 use App\Models\productOption;
 use App\Helper\Price;
@@ -15,12 +14,13 @@ use Livewire\Component;
 class Info extends Component
 {
     public $product;
-    public $percent=0,$price,$optionPrice,$color,$option,$manufacturer;
+    public $count=1,$percent=0,$price,$optionPrice,$color,$option,$manufacturer;
     public $phone,$email;
 
     public function mount($id)
     {
      $this->product=Product::findOrFail($id);
+        $this->count=$this->product->minimum;
         // قیمت محصول
         $this->price=$this->product->price;
         if(isset($this->product->sell) && !empty($this->product->sell)){
@@ -48,16 +48,15 @@ class Info extends Component
         if(! auth()->user()){
             return redirect(route('login'));
         }
+        $min=$this->product->minimum;
 
+        $this->validate([
+            'count'=>"required|numeric|integer|min:$min",
+        ]);
 
         $cart=Cart::where('product_id',$this->product->id)->where('user_id',auth()->user()->id)->first();
-        $order=Order::where('status',1)->where('user_id',auth()->user()->id)->first();
         if($cart){
-
             return redirect(route('CartOrders'));
-        }
-        if($order){
-            $order->delete();
         }
 
         $required=productOption::where('product_id',$this->product->id)->get();
@@ -87,6 +86,7 @@ class Info extends Component
         $cart=new Cart();
         $cart->user_id=auth()->user()->id;
         $cart->product_id=$id;
+        $cart->count=$this->count;
 
         $cart->save();
         if ($this->color) {
@@ -94,7 +94,7 @@ class Info extends Component
                 $cart->cartOptions()->createMany($colors);
             }
         }
-
+        $this->count=$min;
         return redirect(route('CartOrders'));
     }
 

@@ -292,7 +292,7 @@ class EditProduct extends Component
             File::delete($oldImage);
         }
         $this->imageupadate->storeAs($directory,$name);
-        $img=Image::make($this->imageupadate->getRealPath())->resize(500, 500)->save();
+        $img=Image::make($this->imageupadate->getRealPath())->resize(500, 370)->save();
         Image::make($this->imageupadate->getRealPath())->resize(250, 250)->save($thumb);
         $image=["$directory/$name","$directory/thumbnail_$name"];
         return($image);

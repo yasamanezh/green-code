@@ -63,13 +63,9 @@ class AddProduct extends Component
     public function mount()
     {
         $this->product = new Product();
-        $this->product->weight = 0;
-        $this->product->anbar = 1;
-        $this->product->quantity = 0;
         $this->product->price = 0;
-        $this->product->weight_class_id = 'kgram';
         $this->product->status = 1;
-        $this->product->minimum = 1;
+
     }
 
     public function AddAttribute($i)
@@ -417,7 +413,7 @@ class AddProduct extends Component
         $thumb = storage_path('app/public/photos/products/thumbnail_') . $this->image->getClientOriginalName();
         $name = $this->image->getClientOriginalName();
         $this->image->storeAs($directory, $name);
-        $img = Image::make($this->image->getRealPath())->resize(500, 500)->save();
+        $img = Image::make($this->image->getRealPath())->resize(500, 370)->save();
         Image::make($this->image->getRealPath())->resize(250, 250)->save($thumb);
         $image = ["$directory/$name", "$directory/thumbnail_$name"];
         return ($image);
