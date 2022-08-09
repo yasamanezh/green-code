@@ -11,12 +11,10 @@ Route::get('/verify/{phone}',\App\Http\Livewire\Auth\VerifyPhoneNumber::class)->
 Route::get('/',\App\Http\Livewire\Front\Home\Index::class)->name('Home');
 Route::get('logout', function () {  Auth::logout(); return redirect('/');})->name('logout');
 Route::get('packages',App\Http\Livewire\Front\Category\ProductCategory::class)->name('Packages');
-Route::get('search/{productId?}/{char?}',App\Http\Livewire\Front\Search\Index::class)->name('Search');
-Route::get('single-product/{product}',App\Http\Livewire\Front\Product\SingleProduct::class)->name('SingleProduct');
+Route::get('pack/{product}',App\Http\Livewire\Front\Product\SingleProduct::class)->name('SingleProduct');
 Route::get('page/{slug?}',\App\Http\Livewire\Front\Page\Index::class)->name('AllPages');
 Route::get('demo/{slug?}',\App\Http\Livewire\Front\Demo\Index::class)->name('AllDemo');
 Route::get('compair/{productId}',App\Http\Livewire\Front\Compare\Index::class)->name('compare');
-Route::get('brands/{brand}',App\Http\Livewire\Front\Brand\Index::class)->name('Brands');
 
 //=======================================> //blog//
 Route::get('blog',App\Http\Livewire\Front\Blog\Index::class)->name('FrontBlog');
@@ -25,9 +23,7 @@ Route::get('blog/category/post/{post}',App\Http\Livewire\Front\Blog\Post::class)
 
 //=======================================> // user profile  routes//
 Route::middleware('web')->middleware('auth')->group(function () {
-    Route::get('carts',App\Http\Livewire\Front\Cart\Index::class)->name('Cart');
     Route::get('checkout',App\Http\Livewire\Front\Order\Index::class)->name('CartOrders');
-    Route::get('shipping',App\Http\Livewire\Front\Shipping\Index::class)->name('ShippingOrders');
     Route::get('payment',[App\Http\Controllers\Payment::class,'index'])->name('payment');
     Route::get('payment/callback',App\Http\Livewire\Front\Payment\Callback::class)->name('callback');
     Route::get('dashboard/profile',App\Http\Livewire\Front\Profile\Index::class)->name('Profile');

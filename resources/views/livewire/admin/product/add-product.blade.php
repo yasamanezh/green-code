@@ -661,6 +661,7 @@
                                                                                 <div class="addoption">
                                                                                     <div class="table-responsive scrollbar"
                                                                                          id="style-1">
+                                                                                        @if($type !='input')
                                                                                         <table class="table table-striped table-bordered table-hover"
                                                                                                id="table{{$key}}">
                                                                                             <thead>
@@ -783,30 +784,24 @@
                                                                                             @endisset
                                                                                             </tbody>
                                                                                         </table>
+                                                                                        @endif
                                                                                         <div class=" add-input"></div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    @if($type !='input')
                                                                     <div class="row">
                                                                         <div class="col-md-12 text-center">
-                                                                            @if($type==1)
-                                                                                @php
-                                                                                    $type1='select';
-                                                                                @endphp
-                                                                            @else
-                                                                                @php
-                                                                                    $type1='color';
-                                                                                @endphp
-                                                                            @endif
-                                                                            <div
-                                                                                    wire:click.prevent="AddOptionType1({{$t1}},{{$key}})"
+
+                                                                            <div  wire:click.prevent="AddOptionType1({{$t1}},{{$key}})"
                                                                                     class="btn ripple btn-primary text-white btn-icon btn-xs">
                                                                                 <i class="fa fa-plus-circle"></i>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         @endforeach
@@ -827,6 +822,7 @@
                                                             <option value="radio">رادیویی</option>
                                                             <option value="select">کشویی</option>
                                                             <option value="color">رنگ</option>
+                                                            <option value="input">input</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-4 mt-4">

@@ -14,6 +14,7 @@ class Product extends Model
         'category','countsell','shipping','thumbnail'
     ];
     use HasFactory;
+
     public function productImages(){
 
         return $this->hasMany(ProductImage::class);

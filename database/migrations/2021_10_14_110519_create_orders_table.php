@@ -20,7 +20,6 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users') ->onUpdate('cascade')->onDelete('cascade');
             $table->string('order_number')->nullable();
-            $table->string('name')->nullable();
             $table->string('status')->nullable();
             $table->string('copen_code')->nullable();
             $table->string('copen_price')->nullable();
@@ -28,19 +27,10 @@ class CreateOrdersTable extends Migration
             $table->string('payment_price')->nullable();
             $table->string('product_price')->nullable();
             $table->string('prices')->nullable();
-            $table->string('send_factor')->nullable();
             $table->string('payment_type')->nullable();
-            $table->string('shipping_type')->nullable();
             $table->string('processing')->nullable();
-            $table->string('zone')->nullable();
-            $table->string('city')->nullable();
             $table->string('driver')->nullable();
-            $table->string('code_posti')->nullable();
             $table->string('transactionId')->nullable();
-            $table->string('mobile')->nullable();
-            $table->text('address')->nullable();
-            $table->text('description')->nullable();
-
             $table->timestamps();
         });
     }

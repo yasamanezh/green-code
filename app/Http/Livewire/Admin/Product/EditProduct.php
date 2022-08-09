@@ -111,9 +111,12 @@ class EditProduct extends Component
                     }elseif($value->type=='radio'){
                         $type='radio';
                         $this->type='radio';
-                    }else{
+                    }elseif($value->type=='color'){
                         $type='color';
                         $this->type='color';
+                    }else{
+                        $type='input';
+                        $this->type='input';
                     }
                     array_push($this->showOptionUl,($value->option.','.$type));
                     array_push($this->option_required,$value->required);
@@ -570,77 +573,94 @@ class EditProduct extends Component
             $string = explode(',', $valueoption);
             $typeoption = $string[1];
             $option = $string[0];
+            if($typeoption != 'input'){
+                if (isset($this->option_value[$keyoption])) {
+                    $saveoption = new productOption();
+                    $saveoption->product_id = $this->product->id;
+                    $saveoption->type = $typeoption;
+                    $saveoption->option = $option;
+                    $saveoption->required = $required;
+                    $saveoption->save();
+                    foreach ($this->option_value[$keyoption] as $key => $value) {
 
-            if (isset($this->option_value[$keyoption])) {
+                        $options = new Option();
+
+                        $options->value = $this->option_value[$keyoption][$key];
+
+                        $options->option = $option;
+                        $options->product_id = $this->product->id;
+                        if (isset($this->option_color[$keyoption][$key])) {
+
+                            $options->color = $this->option_color[$keyoption][$key];
+                        }
+                        if (isset($this->option_quantity[$keyoption][$key])) {
+                            $this->validate([
+
+                                "option_quantity.$keyoption.$key" => 'numeric|min:0',
+                            ], [
+                                'option_quantity.*.*.numeric' => 'تعداد گزینه باید عدد باشد.',
+                                'option_quantity.*.*.min:0' => 'حداقل تعداد گزینه باید صفر میباشد.',
+                            ]);
+                            $options->count = $this->option_quantity[$keyoption][$key];
+                        }
+                        if (isset($this->option_anbar[$keyoption][$key])) {
+                            $options->anbar = $this->option_anbar[$keyoption][$key];
+                        }
+                        if (isset($this->option_price[$keyoption][$key])) {
+                            $this->validate([
+
+                                "option_price.$keyoption.$key" => 'numeric|min:0',
+                            ], [
+                                'option_price.*.*.numeric' => 'قیمت باید عدد باشد.',
+                                'option_price.*.*.min:0' => 'حداقل قیمت صفر میباشد.',
+                            ]);
+                            $options->price = $this->option_price[$keyoption][$key];
+                            if (!isset($this->price_prefix[$keyoption][$key])) {
+                                $options->price_prefix= '1';
+                            } else {
+                                $options->price_prefix = $this->price_prefix[$keyoption][$key];
+                            }
+
+                        }
+                        if (isset($this->option_weight[$keyoption][$key])) {
+                            $this->validate([
+
+                                "option_weight.$keyoption.$key" => 'numeric|min:0',
+                            ], [
+                                'option_weight.*.*.numeric' => 'وزن باید عدد باشد.',
+                                'option_weight.*.*.min:0' => 'حداقل وزن صفر میباشد.',
+                            ]);
+                            $options->weight = $this->option_weight[$keyoption][$key];
+                            if (!isset($this->weight_prefix[$keyoption][$key])) {
+                                $options->weight_prefix = '1';
+                            } else {
+                                $options->weight_prefix = $this->weight_prefix[$keyoption][$key];
+                            }
+
+                        }
+                        $options->save();
+
+
+                    }
+
+                }
+
+            }else{
                 $saveoption = new productOption();
                 $saveoption->product_id = $this->product->id;
                 $saveoption->type = $typeoption;
                 $saveoption->option = $option;
                 $saveoption->required = $required;
                 $saveoption->save();
-                foreach ($this->option_value[$keyoption] as $key => $value) {
-
-                    $options = new Option();
-
-                    $options->value = $this->option_value[$keyoption][$key];
-
-                    $options->option = $option;
-                    $options->product_id = $this->product->id;
-                    if (isset($this->option_color[$keyoption][$key])) {
-
-                        $options->color = $this->option_color[$keyoption][$key];
-                    }
-                    if (isset($this->option_quantity[$keyoption][$key])) {
-                        $this->validate([
-
-                            "option_quantity.$keyoption.$key" => 'numeric|min:0',
-                        ], [
-                            'option_quantity.*.*.numeric' => 'تعداد گزینه باید عدد باشد.',
-                            'option_quantity.*.*.min:0' => 'حداقل تعداد گزینه باید صفر میباشد.',
-                        ]);
-                        $options->count = $this->option_quantity[$keyoption][$key];
-                    }
-                    if (isset($this->option_anbar[$keyoption][$key])) {
-                        $options->anbar = $this->option_anbar[$keyoption][$key];
-                    }
-                    if (isset($this->option_price[$keyoption][$key])) {
-                        $this->validate([
-
-                            "option_price.$keyoption.$key" => 'numeric|min:0',
-                        ], [
-                            'option_price.*.*.numeric' => 'قیمت باید عدد باشد.',
-                            'option_price.*.*.min:0' => 'حداقل قیمت صفر میباشد.',
-                        ]);
-                        $options->price = $this->option_price[$keyoption][$key];
-                        if (!isset($this->price_prefix[$keyoption][$key])) {
-                            $options->price_prefix= '1';
-                        } else {
-                            $options->price_prefix = $this->price_prefix[$keyoption][$key];
-                        }
-
-                    }
-                    if (isset($this->option_weight[$keyoption][$key])) {
-                        $this->validate([
-
-                            "option_weight.$keyoption.$key" => 'numeric|min:0',
-                        ], [
-                            'option_weight.*.*.numeric' => 'وزن باید عدد باشد.',
-                            'option_weight.*.*.min:0' => 'حداقل وزن صفر میباشد.',
-                        ]);
-                        $options->weight = $this->option_weight[$keyoption][$key];
-                        if (!isset($this->weight_prefix[$keyoption][$key])) {
-                            $options->weight_prefix = '1';
-                        } else {
-                            $options->weight_prefix = $this->weight_prefix[$keyoption][$key];
-                        }
-
-                    }
-                    $options->save();
 
 
-                }
-
+                $options = new Option();
+                $options->value = $option;
+                $options->option = $option;
+                $options->product_id = $this->product->id;
+                $options->save();
             }
+
 
         }
 

@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Manufacturer;
 use App\Models\NoProduct;
 use App\Models\Option;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\productOption;
 use App\Helper\Price;
@@ -48,20 +49,19 @@ class Info extends Component
         if(! auth()->user()){
             return redirect(route('login'));
         }
-        $min=$this->product->minimum;
 
         $this->validate([
-            'count'=>"required|numeric|integer|min:$min",
+            'count'=>"required|numeric|integer|min:1",
         ]);
 
         $cart=Cart::where('product_id',$this->product->id)->where('user_id',auth()->user()->id)->first();
+        $order=Order::where('status',1)->where('user_id',auth()->user()->id)->first();
         if($cart){
-            return $this->emit('toast','warning', 'شما این محصول را قبلا به سبد خرید خود افزوده اید.');
+
+            return redirect(route('CartOrders'));
         }
-        if($this->product->type =='phisical'){
-            if($this->product->quantity < $this->count){
-                return $this->emit('toast','warning', 'موجودی انبار کمتر از تعداد سفارش شماست.');
-            }
+        if($order){
+            $order->delete();
         }
 
         $required=productOption::where('product_id',$this->product->id)->get();
@@ -78,13 +78,6 @@ class Info extends Component
                 where('value',$this->color[$value->id])->
                 where('product_id',$this->product->id)->
                 first();
-                if($this->product->type =='phisical'){
-                    if(isset($countColor->count)  && !empty($countColor->count)){
-                        if($countColor->count < $this->count){
-                            return $this->emit('toast','warning', 'موجودی '.' '. $value->option.' ' . $countColor->value .' '. $countColor->count.' '. 'عدد میباشد.');
-                        }
-                    }
-                }
             }
 
             if(isset($this->color[$value->id])){
@@ -106,55 +99,9 @@ class Info extends Component
                 $cart->cartOptions()->createMany($colors);
             }
         }
-        $this->count=$min;
-        $this->emit('toast','success', 'محصول مورد نظر به سبد خرید افزوده شد.');
-        return redirect(request()->header('Referer'));
+        $this->count=1;
+        return redirect(route('CartOrders'));
     }
-
-    public function NoLogin(){
-        $this->validate([
-            'email'=>'nullable|email',
-            'phone'=>'required|digits:11',
-        ]);
-        $data=new NoProduct();
-        $data->product_id=$this->product->id;
-        $data->email=$this->email;
-        $data->phone=$this->phone;
-
-        $data->save();
-        $this->dispatchBrowserEvent('hide-form1');
-        $this->emit('toast','success', 'در صورت افزایش موجودی این کالا به شما اطلاع داده خواهد شد.');
-
-
-    }
-
-
-    public function NoProduct()
-    {
-        if(auth()->user()){
-            $noProduct=NoProduct::where('user_id',auth()->user()->id)->where('product_id',$this->product->id)->first();
-            if($noProduct){
-                $this->emit('toast','success', 'در صورت افزایش موجودی این کالا به شما اطلاع داده خواهد شد.');
-
-            }else{
-
-                $data=new NoProduct();
-                $data->user_id=auth()->user()->id;
-                $data->product_id=$this->product->id;
-                $data->email=$this->email;
-                $data->phone=$this->phone;
-
-                $data->save();
-                $this->emit('toast','success', 'در صورت افزایش موجودی این کالا به شما اطلاع داده خواهد شد.');
-
-            }
-
-        }else{
-            $this->dispatchBrowserEvent('show-form1');
-        }
-
-    }
-
 
     public function changeSelectPrice($id,$optionId)
     {

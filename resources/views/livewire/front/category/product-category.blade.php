@@ -24,8 +24,6 @@
             </div>
         </div>
     </div>
-    <!-- Navbar & Hero End -->
-
 
     <div class="container-xxl">
         <div class="container-fluid px-lg-5">
@@ -38,41 +36,53 @@
                                 <h6 class="position-relative d-inline text-primary ps-4">
                                     <span class="mr-2">پکیج ها</span>
                                 </h6>
-                                <h2 class="mt-2">پکیج های تجاری</h2>
+                                <h2 class="mt-2">  پکیج های تجاری گرینکد</h2>
                             </div>
-                            <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="col-12 text-center">
-                                    <ul class="list-inline mb-5" id="portfolio-flters">
-                                       @foreach($categories as $category)
-                                        <li class="btn px-3 pe-4 {{$loop->first ? 'active' : ''}}"  data-filter=".first{{$category->id}}">{{$category->title}}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="row g-4 portfolio-container">
-                                @foreach($products as $product)
-                                <div class="col-lg-4 col-md-6 portfolio-item first{{$product->category}} wow zoomIn {{$loop->first ? 'active' : ''}}" data-wow-delay="0.1s">
-                                    <div class="box">
-                                        <h1>{{$product->title}}</h1>
-                                        @foreach(App\Models\Attribute::orderBy('sort_order','Asc')->where('category_id',$product->category)->get() as $attr)
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            @foreach($categories as $category)
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link   {{$loop->first ? ' active' : ''}}"
+                                            id="pills-home-tab{{$category->id}}" data-bs-toggle="pill"
+                                            data-bs-target="#tab{{$category->id}}" type="button" role="tab"
+                                            aria-controls="tab{{$category->id}}"
+                                            aria-selected="{{$loop->first ? 'true' : 'false'}}">{{$category->title}}</button>
+                                </li>
+                            @endforeach
 
-                                            <span>{{$attr->title}}</span>
-                                            @if(App\Models\ProductProperty::where('title',$attr->id)->where('product_id',$product->id)->pluck('description')->first() ==1)
-                                                +
-                                            @else
-                                                -
-                                            @endif
 
-                                        @endforeach
-                                            <br>
-                                        <a href="{{route('SingleProduct',$product->slug)}}" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">مشاهده بیشتر</a>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent rtl">
+                            @foreach($categories as $category)
+                                <div class="tab-pane fade  {{$loop->first ? 'show active' : ''}} rtl"
+                                     id="tab{{$category->id}}" role="tabpanel"
+                                     aria-labelledby="pills-home-tab{{$category->id}}">
+                                    <div class="row g-4">
+                                    @foreach(App\Models\Product::where('status',1)->where('category',$category->id)->get() as $product)
+                                          <div class="col-lg-3 col-md-4 col-sm-6 {{$product->category}} ">
+                                                    <div class="box">
+                                                        <h1>{{$product->title}}</h1>
+                                                        @foreach(App\Models\Attribute::orderBy('sort_order','Asc')->where('category_id',$product->category)->get() as $attr)
+
+                                                            <span>{{$attr->title}}</span>
+                                                            @if(App\Models\ProductProperty::where('title',$attr->id)->where('product_id',$product->id)->pluck('description')->first() ==1)
+                                                                +
+                                                            @else
+                                                                -
+                                                            @endif
+
+                                                        @endforeach
+                                                        <br>
+                                                        <a href="{{route('SingleProduct',$product->slug)}}" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">مشاهده بیشتر</a>
+                                                    </div>
+
+                                                </div>
+                                  @endforeach
                                     </div>
 
                                 </div>
-                                @endforeach
-                            </div>
+                            @endforeach
 
-
+                        </div>
                         </div>
                 </div>
             </div>
