@@ -204,7 +204,7 @@ class Index extends Component
         SEOMeta::setTitle('پرداخت');
 
         if ($this->isSetAllRequired()) {
-           // return redirect(route('Cart'));
+           return redirect(route('Home'));
         }
 
         $this->siteOption = SiteOption::first();
@@ -246,7 +246,7 @@ class Index extends Component
                     }
                 }
             }
-            $this->totalPrice = $this->totalPrice + $price * ($cart->count);
+            $this->totalPrice = $this->totalPrice + $price ;
         }
         // محاسبه تخفیف سبد خرید
         $this->cartDiscount = $this->CartDiscounts($this->totalPrice);

@@ -15,13 +15,12 @@ use Livewire\Component;
 class Info extends Component
 {
     public $product;
-    public $count=1,$percent=0,$price,$optionPrice,$color,$option,$manufacturer;
+    public $percent=0,$price,$optionPrice,$color,$option,$manufacturer;
     public $phone,$email;
 
     public function mount($id)
     {
      $this->product=Product::findOrFail($id);
-        $this->count=$this->product->minimum;
         // قیمت محصول
         $this->price=$this->product->price;
         if(isset($this->product->sell) && !empty($this->product->sell)){
@@ -50,9 +49,6 @@ class Info extends Component
             return redirect(route('login'));
         }
 
-        $this->validate([
-            'count'=>"required|numeric|integer|min:1",
-        ]);
 
         $cart=Cart::where('product_id',$this->product->id)->where('user_id',auth()->user()->id)->first();
         $order=Order::where('status',1)->where('user_id',auth()->user()->id)->first();
@@ -91,7 +87,6 @@ class Info extends Component
         $cart=new Cart();
         $cart->user_id=auth()->user()->id;
         $cart->product_id=$id;
-        $cart->count=$this->count;
 
         $cart->save();
         if ($this->color) {
@@ -99,7 +94,7 @@ class Info extends Component
                 $cart->cartOptions()->createMany($colors);
             }
         }
-        $this->count=1;
+
         return redirect(route('CartOrders'));
     }
 

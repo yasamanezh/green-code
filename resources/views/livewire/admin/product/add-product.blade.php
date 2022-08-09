@@ -81,11 +81,6 @@
                                    style="cursor: pointer;">گزینه
                                     ها</a>
                             </li>
-                            <li class="nav-item">
-                                <a wire:ignore data-target="#tab-Anbar" class="nav-link" data-toggle="tab"
-                                   role="tablist"
-                                   style="cursor: pointer;">انبار</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -164,34 +159,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="row row-sm">
-                                                    <label class="form-label col-sm-2">نوع محصول: <span
-                                                                class="tx-danger">*</span></label>
-                                                    <div class="col-md-10" wire:ignore>
-                                                        <select class="form-control"
-                                                                wire:model.defer="product.type">
-                                                            <option value="">انتخاب</option>
-                                                            <option value="phisical">فیزیکی</option>
-                                                            <option value="digital">دیجیتال</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row row-sm">
-                                                    <label class="form-label col-sm-2">نیاز به حمل و نقل: <span
-                                                                class="tx-danger">*</span></label>
-                                                    <div class="col-md-10" wire:ignore>
-                                                        <select id="manufacturer" class="form-control"
-                                                                wire:model.defer="product.shipping">
-                                                            <option value="">انتخاب</option>
-                                                            <option value="shipping">دارد</option>
-                                                            <option value="no-shipping">ندارد</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                             <div class="form-group">
                                                 <div class="row row-sm">
                                                     <label class="form-label col-sm-2">وضعیت: </label>
@@ -219,29 +187,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="row row-sm">
-                                                    <label class="form-label col-sm-2">وزن: </label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" wire:model.defer="product.weight"
-                                                               placeholder="وزن" name="product.weight"
-                                                               class="form-control @error('product.weight') parsley-error @enderror">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row row-sm">
-                                                    <label class="form-label col-sm-2">انتخاب واحد وزن: </label>
-                                                    <div class="col-sm-10">
-                                                        <select wire:model.defer="product.weight_class_id"
-                                                                name="roduct.weight_class_id"
-                                                                class="form-control @error('product.weight_class_id') parsley-error @enderror">
-                                                            <option value="kgram">کیلوگرم</option>
-                                                            <option value="gram">گرم</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                             <div class="form-group row">
                                                 <label for="message" class="col-sm-2 form-label">توضیحات:<span
                                                             class="ml-2 text-danger"> * </span></label>
@@ -404,54 +350,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="table-responsive scrollbar" id="style-1">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <td class="wd-200">عنوان نقد</td>
-                                                    <td>توضیحات نقد</td>
-                                                    <td></td>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($inputNaghdes as $key => $value)
-                                                    <tr>
-                                                        <td>
-                                                            <div class="wd-200">
-                                                                <input class="form-control" placeholder="عنوان"
-                                                                       wire:model.defer="naghd_title.{{$key}}">
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="wd-300">
-                                                                        <textarea rows="10" cols="15"
-                                                                                  class="form-control"
-                                                                                  placeholder="توضیحات"
-                                                                                  wire:model.defer="naghd_description.{{$key}}"></textarea>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <button class="bbtn ripple btn-secondary text-white btn-icon btn-sm"
-                                                                    wire:click.prevent="removeNaghd({{$key}})">
-                                                                <i class="fa fa-minus-circle"></i>
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <br>
-                                        <div class=" add-input ">
-                                            <div class="row">
-                                                <div class="col-md-12 text-center">
-                                                    <button class="btn ripple btn-primary text-white btn-icon btn-xs"
-                                                            wire:click.prevent="AddNaghd({{$d}})">
-                                                        <i class="fa fa-plus-circle"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div wire:ignore.self class="tab-pane " id="tab-attribute" role="tabpanel">
                                         <div class="table-responsive scrollbar" id="style-1">
@@ -569,52 +467,6 @@
                                                            style="display:none" id="fileinput" accept="image/*">
                                                     <span class="mt-2 text-danger" wire:loading
                                                           wire:target="image">در حال آپلود ...</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            @foreach($inputImage as $key => $value)
-                                                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12"
-                                                     style="position: relative">
-                                                    <a>
-                                                        @if(isset($product_img[$key]))
-                                                            <img id="picture{{$key}}"
-                                                                 style="width: 200px;height:200px;padding: 10px;border:2px dashed #ddd;margin-top: 10px;cursor: pointer;"
-                                                                 class="form-control"
-                                                                 src="{{$product_img[$key]->temporaryUrl()}}">
-                                                        @else
-                                                            <img id="picture{{$key}}"
-                                                                 style="width: 200px;height:200px;padding: 10px;border:2px dashed #ddd;margin-top: 10px;cursor: pointer;"
-                                                                 src="{{ asset('assets/uploadicon.png')}}"
-                                                        @endif
-                                                    </a>
-                                                    <input id="fileinput{{$key}}" type="file"
-                                                           wire:model.defer="product_img.{{ $key }}"
-                                                           style="display:none"
-                                                           accept="image/*">
-                                                    <span class="mt-2 text-danger" wire:loading
-                                                          wire:target="product_img.{{ $key }}">در حال آپلود ...</span>
-                                                    <a style="color: red;position: absolute;top:10px;right: 10px"
-                                                       wire:click.prevent="removeImage({{$key}})"><i
-                                                                class="fa fa-minus-circle"></i></a>
-                                                </div>
-                                                <script>
-                                                    $(function () {
-                                                        $("#picture{{$key}}").on('click', function () {
-                                                            $("#fileinput{{$key}}").trigger('click');
-                                                        });
-                                                    });
-                                                </script>
-                                            @endforeach
-                                        </div>
-                                        <br>
-                                        <div class=" add-input">
-                                            <div class="row">
-                                                <div class="col-md-12 text-center">
-                                                    <button class="btn ripple btn-primary text-white btn-icon btn-xs"
-                                                            wire:click.prevent.prefetch="AddImage({{$j}})"><i
-                                                                class="fa fa-plus-circle"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -830,52 +682,6 @@
                                                                 wire:click.prevent="addOptionUl()">افزودن
                                                         </button>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div wire:ignore.self class="tab-pane " id="tab-Anbar" role="tabpanel">
-                                        <div class="form-group">
-                                            <div class="row row-sm">
-                                                <label class="form-label col-sm-2">مکان: </label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" wire:model.defer="product.location"
-                                                           placeholder="مکان"
-                                                           class="form-control @error('product.location') parsley-error @enderror">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-                                            <div class="row row-sm">
-                                                <label class="form-label col-sm-2">تعداد: </label>
-                                                <div class="col-sm-10">
-                                                    <input wire:model.defer="product.quantity"
-                                                           placeholder="تعداد"
-                                                           name="product.quantity"
-                                                           class="form-control @error('product.quantity') parsley-error @enderror">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-                                            <div class="row row-sm">
-                                                <label class="form-label col-sm-2">حداقل تعداد:</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" wire:model.defer="product.minimum"
-                                                           placeholder="حداقل تعداد" name="product.minimum"
-                                                           class="form-control @error('product.minimum') parsley-error @enderror">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-                                            <div class="row row-sm">
-                                                <label class="form-label col-sm-2">از انبار کم شود: </label>
-                                                <div class="col-sm-10">
-                                                    <select wire:model.defer="product.anbar"
-                                                            name="product.anbar"
-                                                            class="form-control ">
-                                                        <option value="1" selected>بله</option>
-                                                        <option value="0">خیر</option>
-                                                    </select>
                                                 </div>
                                             </div>
                                         </div>

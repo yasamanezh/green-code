@@ -8,17 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
-    protected $fillable=['title','sell','anbar','slug','meta_title','description','meta_description','meta_keyword',
-        'location','price','image',
-         'quantity','minimum','Release_date','warrenty','type','weight','weight_class_id','status','manufacturer',
-        'category','countsell','shipping','thumbnail'
+    protected $fillable=['title','sell','slug','meta_title','description','meta_description','meta_keyword',
+        'price','image',
+         'Release_date','warrenty','status','manufacturer',
+        'category','countsell','thumbnail'
     ];
     use HasFactory;
 
-    public function productImages(){
 
-        return $this->hasMany(ProductImage::class);
-    }
      public function productDiscounts(){
 
         return $this->hasOne(Discount::class);

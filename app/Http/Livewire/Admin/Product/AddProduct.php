@@ -30,7 +30,6 @@ class AddProduct extends Component
     public $inputdownload = [], $download_file, $download_title;
     public $inputImage = [], $product_img = [];
     public $inputproperty = [], $property_name = [], $property_text = [], $property_des = [];
-    public $inputNaghdes = [], $naghd_description = [], $naghd_title = [];
     public $type;
     public $optionType1 = [];
     public $image;
@@ -40,22 +39,19 @@ class AddProduct extends Component
     protected $rules = [
         'product.title' => 'required|string|min:2|max:255',
         'product.slug' => 'required|string|min:2|max:255|unique:products,slug',
-        'product.shipping' => 'nullable',
-        'product.type' => 'nullable',
+
         'product.price' => 'nullable|integer',
         'product.related' => 'nullable',
-        'product.anbar' => 'nullable',
         'product.manufacturer' => 'nullable',
+
         'product.description' => 'nullable|string|min:2',
-        'product.quantity' => 'nullable|numeric|min:0',
+
         'product.category' => 'required',
-        'product.minimum' => 'nullable|numeric|min:0',
-        'product.location' => 'nullable',
+
         'product.sell' => 'nullable|numeric|min:0|max:100',
         'product.warrenty' => 'nullable',
         'product.Release_date' => 'nullable',
-        'product.weight_class_id' => 'nullable',
-        'product.weight' => 'nullable|numeric|min:0',
+
         'product.status' => 'nullable',
         'product.meta_title' => 'nullable|string|min:2',
         'product.meta_description' => 'nullable|string|min:3',
@@ -83,33 +79,11 @@ class AddProduct extends Component
         array_push($this->inputAttribues, $i);
     }
 
-    public function AddNaghd($d)
-    {
-        $d = $d + 1;
-        $this->d = $d;
-        array_push($this->inputNaghdes, $d);
-    }
-
-    public function removeNaghd($d)
-    {
-        unset($this->inputNaghdes[$d]);
-        unset($this->naghd_description[$d]);
-        unset($this->naghd_title[$d]);
-
-    }
-
     public function AddProperty($e)
     {
         $e = $e + 1;
         $this->e = $e;
         array_push($this->inputproperty, $e);
-    }
-
-    public function AddImage($j)
-    {
-        $j = $j + 1;
-        $this->j = $j;
-        array_push($this->inputImage, $j);
     }
 
     public function AddDownload($l)
@@ -209,13 +183,6 @@ class AddProduct extends Component
 
     }
 
-    public function removeImage($j)
-    {
-        unset($this->inputImage[$j]);
-        unset($this->product_img[$j]);
-
-    }
-
     public function removeAttribues($i)
     {
 
@@ -284,22 +251,7 @@ class AddProduct extends Component
                 }
 
             }
-            $naghdes = [];
-            if ($this->naghd_title) {
-                foreach ($this->naghd_title as $key => $value) {
-                    $this->validate([
-                        "naghd_title.$key" => 'nullable',
-                    ], [
-                        'naghd_title.*.nullable' => 'عنوان نقد و بررسی اجباری است',
-                    ]);
-                    $naghdes[] = [
-                        'title' => $this->naghd_title[$key],
-                        'description' => $this->naghd_description[$key],
-                    ];
 
-                }
-
-            }
             $properties = [];
             if ($this->property_name) {
                 foreach ($this->property_name as $key => $value) {
@@ -336,26 +288,6 @@ class AddProduct extends Component
                 }
             }
             //images save
-            $images = [];
-            if ($this->product_img) {
-                foreach ($this->product_img as $key => $value) {
-                    $this->validate([
-                        "product_img.$key" => 'nullable|image|mimes:jpg,bmp,png,jpeg,gif,webp,svg',
-                    ], [
-                        'uploadImage.*.max' => 'حداکثر حجم تصویر باید 800 کیلو بایت باشد.',
-                        'uploadImage.*.mimes' => 'پسوند تصویر بایدjpg,bmp,png,jpeg,gif,webp,svg باشد ',
-                        'uploadImage.*.max' => 'حداکثر سایز تصویر باید 800 کیلو بایت باشد. ',
-                    ]);
-                    $directory = "photos/products";
-                    $name1 = $this->product_img[$key]->getClientOriginalName();
-                    $this->product_img[$key]->storeAs($directory, $name1);
-                    $images[] = [
-                        'img' => "$directory/$name1",
-                    ];
-
-
-                }
-            }
             if ($this->image) {
                 $this->product->image = $this->uploadImage()[0];
                 $this->product->thumbnail = $this->uploadImage()[1];
@@ -460,19 +392,14 @@ class AddProduct extends Component
             if ($this->inputAttribues) {
                 $this->product->productAtts()->createMany($attributeess);
             }
-            if ($this->naghd_title) {
-                $this->product->productNaghds()->createMany($naghdes);
-            }
+
             if ($this->property_name) {
                 $this->product->productProperties()->createMany($properties);
             }
             if ($this->download_title) {
                 $this->product->productDownloads()->createMany($downloads);
             }
-            if ($this->product_img) {
 
-                $this->product->productImages()->createMany($images);
-            }
             $msg = 'محصول ذخیره شد';
             return redirect(route('Products'))->with('sucsess', $msg);
 

@@ -10,15 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable=['title','image','thumbnail','slug','meta_title','description','meta_description','meta_keyword','location','price',
-'quantity','minimum','shipping','length','width','height','length_class_id','weight','weight_class_id','status','manufacturer'
-
-    ];
+'status','manufacturer'  ];
     use HasFactory;
 
-    public function productImages(){
 
-        return $this->hasMany(ProductImage::class);
-    }
     public function productDiscounts(){
 
         return $this->hasMany(Discount::class,'product_id');

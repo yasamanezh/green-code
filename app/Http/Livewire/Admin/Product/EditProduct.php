@@ -42,7 +42,6 @@ class EditProduct extends Component
     public $inputdownload = [],$download_file_upload=[],$download_file=[],$download_title=[];
     public $inputImage = [],$product_img=[],$uploadImage=[];
     public $inputproperty=[],$property_name=[],$property_text=[];
-    public $inputNaghdes=[],$naghd_description=[],$naghd_title=[];
     public $property_des=[];
 
     public $type,$imageupadate;
@@ -157,27 +156,7 @@ class EditProduct extends Component
         $this->i = $i;
         array_push($this->inputAttribues ,$i);
     }
-    public function AddNaghd($d)
-    {
-        $d = $d + 1;
-        $this->d = $d;
-        array_push($this->inputNaghdes ,$d);
-    }
-    public function removeNaghd($d)
-    {
-        unset($this->inputNaghdes[$d]);
-        unset($this->naghd_description[$d]);
-        unset($this->naghd_title[$d]);
 
-    }
-    public function AddImage($j)
-    {
-
-        $j = $j + 1;
-        $this->j = $j;
-        array_push($this->inputImage ,$j);
-
-    }
     public function addOptionUl(){
         $this->validate([
             "option_type" => 'required',
@@ -272,16 +251,7 @@ class EditProduct extends Component
 
 
     }
-    public function removeImage($j)
-    {
-        unset($this->inputImage[$j]);
-        if(isset($this->uploadImage[$j])){
-            unset($this->uploadImage[$j]);
-        }else{
-            unset($this->product_img[$j]);
-        }
 
-    }
     public function removeAttribues($i)
     {
 
@@ -307,22 +277,18 @@ class EditProduct extends Component
     protected $rules = [
         'product.title' => 'required|string|min:2|max:255',
         'product.slug' => 'required',
-        'product.shipping' => 'required',
-        'product.type' => 'required',
         'product.price' => 'required|numeric|min:0',
         'product.related' => 'nullable',
-        'product.anbar' => 'nullable',
+
         'product.manufacturer' => 'nullable',
         'product.description' => 'nullable|string|min:2',
-        'product.quantity' => 'nullable|numeric|min:0',
+
         'product.category' => 'required',
-        'product.minimum' => 'nullable|numeric|min:0',
-        'product.location' => 'nullable',
+
         'product.sell' => 'nullable|numeric|min:0|max:100',
         'product.warrenty' => 'nullable',
         'product.Release_date' => 'nullable',
-        'product.weight_class_id' => 'nullable',
-        'product.weight' => 'nullable|numeric|min:0',
+
         'product.status' => 'nullable',
         'product.meta_title' => 'nullable|string|min:2',
         'product.meta_description' => 'nullable|string|min:3',
@@ -393,23 +359,6 @@ class EditProduct extends Component
                 $description=$this->attribue_name[$key];
                 $attributeess[]=[
                     'attribue_description'=>$description,
-                ];
-
-            }
-
-        }
-        $naghdes=[];
-        if($this->naghd_title){
-            foreach ($this->naghd_title as $key=>$value){
-                $this->validate([
-
-                    "naghd_title.$key" => 'required',
-                ],[
-                    'naghd_title.*.required' => 'عنوان نقد و بررسی اجباری است',
-                ]);
-                $naghdes[]=[
-                    'title'=>$this->naghd_title[$key],
-                    'description'=>$this->naghd_description[$key],
                 ];
 
             }
@@ -668,9 +617,6 @@ class EditProduct extends Component
             $this->product->productAtts()->createMany($attributeess);
         }
 
-        if($this->naghd_title){
-            $this->product->productNaghds()->createMany($naghdes);
-        }
 
         if($this->property_text){
 

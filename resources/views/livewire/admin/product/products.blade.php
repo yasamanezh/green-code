@@ -92,7 +92,6 @@
                                                         </span>
                                     </th>
                                     <th class="wd-lg-5p">قیمت</th>
-                                    <th class="wd-lg-5p">تعداد</th>
                                     <th class="wd-lg-5p">مشاهده سریع</th>
                                     <th class="wd-lg-5p">وضعیت</th>
                                     <th class="wd-lg-5p">عملیات</th>
@@ -133,24 +132,6 @@
                                                     {{ $message }}
                                                 </div>
                                                 @enderror
-                                            </td>
-
-                                            <td wire:change="changeQuantity({{$data->id}})">
-                                                <div style="position: absolute" wire:loading
-                                                     wire:target="quantity.{{$data->id}}"
-                                                     class="spinner-grow text-primary" role="status">
-                                                    <span class="sr-only">Loading...</span>
-                                                </div>
-                                                <div class="wd-150">
-                                                    <input wire:model.lazy="quantity.{{$data->id}}"
-                                                           class="form-control">
-                                                </div>
-                                                @error("quantity.$data->id")
-                                                <div class="invalid-feedback display-block">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-
                                             </td>
                                             <td>
                                                 <a target="_blank" href="{{route('SingleProduct',$data->slug)}}" class="btn btn-sm btn-info">
