@@ -10,6 +10,7 @@ use App\Models\Discount;
 use App\Models\Option;
 use App\Models\Order;
 use App\Models\OrderProdct;
+use App\Models\Product;
 use App\Models\productOption;
 use App\Models\SiteOption;
 use App\Models\User;
@@ -68,34 +69,22 @@ class Index extends Component
     public function SaveOrder()
     {
         $this->validate([
-            'payment_method' => ['required', Rule::in('sepehr', 'sadad', 'zarinpal', 'offline')],
+            'payment_method' => ['required', Rule::in('sepehr', 'sadad', 'zarinpal')],
         ]);
         $total = $this->totalPrice - $this->code - $this->cartDiscount;
         // ایجاد و یا ویرایش سفارش
         $order = Order::where('user_id', auth()->user()->id)->where('status', 1)->first();
-        if ($order) {
-            // ویرایش سفارش
-            $order->product_price = $this->totalPrice;
-            $order->update([
-                'product_price' => $this->totalPrice,
-                'cart_discount_price' => $this->cartDiscount,
-                'prices' => $total,
-                'copen_code' => $this->copen,
-                'copen_price' => $this->code,
-                'status' => 1,
-                'payment_type' => $this->payment_method,
-            ]);
-            $productOrders = OrderProdct::where('order_id', $order->id)->get();
-            foreach ($productOrders as $ProductOrder) {
-                $ProductOrder->delete();
-            }
-            // محاسبه و ذخیره گزینه های هر محصول
-            $this->Option($order);
-        } else {
+        $Cart = Cart::where('user_id', auth()->user()->id)->first();
+        $product=Product::findOrFail($Cart->product_id);
+        $support=$product->warrenty;
+        if (! $order) {
+
             $newOrder = new Order();
             $newOrder->cart_discount_price = $this->cartDiscount;
             $newOrder->product_price = $this->totalPrice;
             $newOrder->prices = $total;
+            $newOrder->support = $support;
+            $newOrder->product_id = $Cart->product_id;
             $newOrder->copen_code = $this->copen;
             $newOrder->copen_price = $this->code;
             $newOrder->payment_type = $this->payment_method;
@@ -109,6 +98,10 @@ class Index extends Component
             ]);
             // محاسبه و ذخیره گزینه های هر محصول
             $this->Option($newOrder);
+        }else{
+
+                return redirect(route('Home'));
+
         }
         return redirect(route('payment'));
     }
@@ -157,7 +150,6 @@ class Index extends Component
                 $product->option = $option->option;
                 $product->save();
             }
-
         }
 
     }
@@ -213,7 +205,7 @@ class Index extends Component
         $carts = Cart::where('user_id', auth()->user()->id)->get();
         $this->carts = $carts;
         // محاسبه قیمت محصولات سبد خرید
-        $weight_cart = 0;
+
         foreach ($carts as $cart) {
             $newPercent = 0;
             $product = \App\Models\Product::where('id', $cart->product_id)->first();

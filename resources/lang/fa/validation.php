@@ -149,6 +149,8 @@ return [
 
     'attributes' => [
         "Log in" => "ورود",
+        "prices" => "قیمت",
+        "user" => "کاربر",
         "nameCreate" => "نام",
         "mobileCreate" => "موبایل",
         "code_postiCreate" => "کدپستی",

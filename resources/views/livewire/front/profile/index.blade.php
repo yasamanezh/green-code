@@ -1,6 +1,6 @@
 <div>
 
-    <!-- Navbar & Hero Start -->
+
     <div class="container-xxl position-relative p-0">
 
         <div class="container-xxl py-5 bread-margin">
@@ -20,13 +20,10 @@
             </div>
         </div>
     </div>
-    <!-- Navbar & Hero End -->
-
-
 
     <!-- About Start -->
     <div class="container-xxl">
-        <div class="container px-lg-5">
+        <div class="container-fluid px-lg-5">
             <div class="row g-5">
                 <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
                     @include('livewire.front.profile.sidbar')

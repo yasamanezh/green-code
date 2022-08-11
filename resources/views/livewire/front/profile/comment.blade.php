@@ -6,13 +6,13 @@
             <div class="container my-5 py-5 px-lg-5" style="margin-right: 10%">
                 <div class="row g-5 py-5 ">
                     <div class="col-12 text-center">
-                        <h1 class="text-white animated zoomIn">حساب کاربری</h1>
+                        <h1 class="text-white animated zoomIn">تیکت ها</h1>
                         <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                         <nav aria-label="breadcrumb ">
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item"><a class="text-white" href="{{route('Home')}}">خانه</a></li>
                                 <li class="breadcrumb-item"><a class="text-white" href="{{route('Profile')}}">حساب کاربری</a></li>
-                                <li class="breadcrumb-item text-white active" aria-current="page">پرسش ها</li>
+                                <li class="breadcrumb-item text-white active" aria-current="page">تیکت ها</li>
                             </ol>
                         </nav>
                     </div>
@@ -22,7 +22,7 @@
     </div>
 
     <div class="container-xxl">
-        <div class="container px-lg-5">
+        <div class="container-fluid px-lg-5">
             <div class="row g-5">
                 <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
                     @include('livewire.front.profile.sidbar')
@@ -31,7 +31,7 @@
                     <section class="page-contents">
                         <div class="profile-content">
                             <div class="headline-profile">
-                                <span> پرسش ها</span>
+                                <span>تیکت ها</span>
                             </div>
                             <div class="profile-stats">
                                 <div class="profile-stats-row">
@@ -45,7 +45,6 @@
                                                                 <div class="section">
                                                                     <div class="faq-header">
                                                                         <span class="icon-faq">?</span>
-
 
                                                                     </div>
                                                                     پرسش:

@@ -28,12 +28,7 @@ class Callback extends Component
     {
         $siteOption = SiteOption::first();
         $this->bank = Order::where('user_id', auth()->user()->id)->get()->last();
-        if ($this->bank->payment_type == 'offline') {
-            $this->paymentType = 'offline';
-            $receipt = true;
-            $exception = null;
-            $this->updateTables($request, $this->bank);
-        } elseif ($this->bank->prices == 0) {
+        if ($this->bank->prices == 0) {
             $this->paymentType = 'free';
             $receipt = true;
             $exception = null;
@@ -110,39 +105,6 @@ class Callback extends Component
             }
         }
         $carts = Cart::where('user_id', auth()->user()->id)->get();
-        $options = OrderProdct::where('order_id', $bank->id)->get();
-        foreach ($options as $option) {
-            $product = Product::where('id', $option->product_id)->first();
-            $orderOptions = explode(',', $option->options_id);
-            if (count($orderOptions) > 1) {
-                if ($option->anbar == 1) {
-                    if ($product->type == 'phisical') {
-                        foreach ($orderOptions as $key1 => $value1) {
-                            $optionPro = Option::where('id', $value1)->first();
-                            $counts = (int)($optionPro->count) - (int)($option->count);
-                            $optionPro->count = $counts;
-                            $optionPro->update();
-                        }
-                    }
-                }
-            }
-            $product = Product::where('id', $option->product_id)->first();
-            if (isset($product->countsell)) {
-                $sell = ($product->countsell) + ($option->count);
-            } else {
-                $sell = $option->count;
-            }
-            $quantity = ($product->quantity) - ($option->count);
-            $product->countsell = $sell;
-            if ($product->anbar == 1) {
-                if ($product->type == 'phisical') {
-                    $product->quantity = $quantity;
-                    $product->update();
-                }
-
-            }
-
-        }
         foreach ($carts as $cart) {
             $cart->delete();
         }

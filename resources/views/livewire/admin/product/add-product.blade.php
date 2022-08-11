@@ -146,15 +146,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="row row-sm">
-                                                    <label class="form-label col-sm-2">برند: </label>
+                                                    <label class="form-label col-sm-2">دارای لایسنس: </label>
                                                     <div class="col-md-10 " wire:ignore>
                                                         <select id="manufacturer" class="form-control"
                                                                 wire:model.lazy="product.manufacturer">
-                                                            <option value="">انتخاب</option>
-                                                            @foreach($manufacturers as $manufacturer)
-                                                                <option
-                                                                        value="{{$manufacturer->id}}">{{$manufacturer->title}}</option>
-                                                            @endforeach
+                                                            <option value="1">بله</option>
+                                                            <option value="0">خیر</option>
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -175,15 +173,10 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class="row row-sm">
-                                                    <label class="form-label col-sm-2">گارانتی: </label>
+                                                    <label class="form-label col-sm-2">پشتیبانی(روز): </label>
                                                     <div class="col-sm-10">
-                                                        <select wire:model.defer="product.warrenty"
-                                                                class="form-control">
-                                                            <option value="">انتخاب</option>
-                                                            @foreach($garranties as $garanty)
-                                                                <option value="{{$garanty->id}}">{{$garanty->name}}</option>
-                                                            @endforeach
-                                                        </select>
+                                                        <input wire:model.defer="product.warrenty"
+                                                                class="form-control" placeholder="مثلا 30 ">
                                                     </div>
                                                 </div>
                                             </div>

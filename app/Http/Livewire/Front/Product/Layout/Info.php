@@ -20,7 +20,7 @@ class Info extends Component
     public function mount($id)
     {
      $this->product=Product::findOrFail($id);
-        $this->count=$this->product->minimum;
+
         // قیمت محصول
         $this->price=$this->product->price;
         if(isset($this->product->sell) && !empty($this->product->sell)){
@@ -48,11 +48,7 @@ class Info extends Component
         if(! auth()->user()){
             return redirect(route('login'));
         }
-        $min=$this->product->minimum;
 
-        $this->validate([
-            'count'=>"required|numeric|integer|min:$min",
-        ]);
 
         $cart=Cart::where('product_id',$this->product->id)->where('user_id',auth()->user()->id)->first();
         if($cart){
@@ -86,7 +82,6 @@ class Info extends Component
         $cart=new Cart();
         $cart->user_id=auth()->user()->id;
         $cart->product_id=$id;
-        $cart->count=$this->count;
 
         $cart->save();
         if ($this->color) {
@@ -94,7 +89,7 @@ class Info extends Component
                 $cart->cartOptions()->createMany($colors);
             }
         }
-        $this->count=$min;
+
         return redirect(route('CartOrders'));
     }
 

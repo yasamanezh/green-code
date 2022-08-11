@@ -10,6 +10,14 @@
                 </ol>
 
             </div>
+            <div class="d-flex">
+                <div class="justify-content-center">
+                    <a href="{{route('admin.orders.add')}}" class="btn ripple btn-primary">
+                        افزودن <i class="fa fa-plus-circle ml-0"></i>
+                    </a>
+
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-12 margin-left-10 margin-bottom-15 border-radius-3">
@@ -96,31 +104,23 @@
                                                     </label>
                                                 </td>
                                                 <td>{{$order->order_number}}</td>
-                                                <td>{{$order->user->name}}</td>
+                                                <td>
+                                                    {{$order->user->name}}
+                                                </td>
                                                 <td>
                                                     @if($order->status ==200)
-                                                        @if($order->payment_type=='offline')
-                                                            <span class="text-success"> پرداخت موقع تحویل </span>
-                                                        @else
-                                                            <span class="text-success">آنلاین (موفق) </span>
-                                                        @endif
+                                                        <span class="text-success">پرداخت شده </span>
+
                                                     @else
-                                                        <span class="text-danger">آنلاین (ناموفق)  </span>
+                                                        <span class="text-danger">پرداخت نشده </span>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if($order->processing =='wait')
-                                                        <span class=" text-warning">در انتظار پرداخت</span>
-                                                    @elseif ($order->processing =='complate')
-                                                        <span class=" text-primary">در حال بررسی</span>
-                                                    @elseif ($order->processing =='progress')
-                                                        <span class=" text-dark">در حال آماده سازی سفارش</span>
-                                                    @elseif ($order->processing =='sended')
-                                                        <span class=" text-info">خروج از مرکز پردازش</span>
-                                                    @elseif ($order->processing =='post')
-                                                        <span class=" text-success">تحویل به پست</span>
-                                                    @elseif ($order->processing =='delivered')
-                                                        <span class=" text-success">تحویل مرسوله به مشتری</span>
+                                                    @if($this->ISComplate($order->id) == 1)
+                                                        <span class="text-success">انجام شده</span>
+
+                                                    @else
+                                                        <span class="text-danger">در حال بررسی</span>
                                                     @endif
                                                 </td>
                                                 <td>{{number_format($order->prices)}} تومان</td>

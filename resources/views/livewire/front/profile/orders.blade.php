@@ -5,13 +5,13 @@
             <div class="container my-5 py-5 px-lg-5" style="margin-right: 10%">
                 <div class="row g-5 py-5 ">
                     <div class="col-12 text-center">
-                        <h1 class="text-white animated zoomIn">حساب کاربری</h1>
+                        <h1 class="text-white animated zoomIn"> سفارش‌ها</h1>
                         <hr class="bg-white mx-auto mt-0" style="width: 90px;">
                         <nav aria-label="breadcrumb ">
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item"><a class="text-white" href="{{route('Home')}}">خانه</a></li>
                                 <li class="breadcrumb-item"><a class="text-white" href="{{route('Profile')}}">حساب کاربری</a></li>
-                                <li class="breadcrumb-item text-white active" aria-current="page">دانلودها</li>
+                                <li class="breadcrumb-item text-white active" aria-current="page"> سفارش‌ها</li>
                             </ol>
                         </nav>
                     </div>
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="container-xxl">
-        <div class="container px-lg-5">
+        <div class="container-fluid px-lg-5">
             <div class="row g-5">
                 <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
                     @include('livewire.front.profile.sidbar')
@@ -39,6 +39,7 @@
                                                 <thead class="thead-light">
                                                 <tr>
                                                     <th scope="col">شماره سفارش</th>
+                                                    <th scope="col">محصول</th>
                                                     <th scope="col">تاریخ ثبت سفارش</th>
                                                     <th scope="col">عملیات پرداخت</th>
                                                     <th scope="col">فاکتور</th>
@@ -48,22 +49,25 @@
                                                 </thead>
                                                 <tbody>
                                                 @foreach($orders as $order)
+                                                    @if($order->status==200 )
                                                     <tr>
                                                         <td class="order-code">{{$order->order_number}}</td>
+                                                        <td class="detail text-right">
+                                                            {{$this->title($order->id)}}
+                                                        </td>
                                                         @if($order->status == 200)
                                                             <td>{{ verta($order->created_at)->format('%d  %B %Y') }}</td>
                                                         @else
                                                             <td >{{ verta($order->updated_at)->format('%d/ %B  / %Y') }}</td>
                                                         @endif
                                                         <td>@if($order->status ==200)
-                                                                @if($order->payment_type=='offline')
-                                                                    <span class="text-success"> پرداخت موقع تحویل </span>
-                                                                @else
-                                                                    <span class="text-success">آنلاین (موفق) </span>
-                                                                @endif
+                                                            <span class="text-success">    پرداخت شده</span>
                                                             @else
-                                                                <span class="text-danger">آنلاین (ناموفق)  </span>
+                                                                <span class="text-danger">
+                                                                 <a class="btn btn-danger" href="{{route('checkoutOrder',$order->order_number)}}">پرداخت</a>
+                                                                </span>
                                                             @endif</td>
+
 
 
                                                         <td class="detail text-right">
@@ -80,6 +84,40 @@
 
                                                         </td>
                                                     </tr>
+                                                    @elseif($order->title != null)
+                                                        <tr>
+                                                            <td class="order-code">{{$order->order_number}}</td>
+                                                            <td class="detail text-right">
+                                                                {{$this->title($order->id)}}
+                                                            </td>
+                                                            @if($order->status == 200)
+                                                                <td>{{ verta($order->created_at)->format('%d  %B %Y') }}</td>
+                                                            @else
+                                                                <td >{{ verta($order->updated_at)->format('%d/ %B  / %Y') }}</td>
+                                                            @endif
+                                                            <td>@if($order->status ==200)
+                                                                    <span class="text-success">    پرداخت شده</span>
+                                                                @else
+                                                                    <span class="text-danger">
+                                                                <a class="btn btn-danger" href="{{route('checkoutOrder',$order->order_number)}}">پرداخت</a>
+                                                                </span>
+                                                                @endif</td>
+
+                                                            <td class="detail text-right">
+                                                                <a target="_blank" class="text-center" href="{{route('PrintOrder',$order->order_number)}}" style="display:block;">
+                                                                    <i class="fa fa-print"></i>
+                                                                </a>
+
+                                                            </td>
+                                                            <td class="detail">
+                                                                <a class="text-center" href="{{route('DetailOrder',$order->order_number)}}" style="display:block;">
+                                                                    <i class="fa fa-angle-left"></i>
+                                                                </a>
+
+
+                                                            </td>
+                                                        </tr>
+                                                    @endif
                                                 @endforeach
                                                 </tbody>
                                             </table>

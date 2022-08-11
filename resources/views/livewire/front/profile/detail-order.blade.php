@@ -2,7 +2,7 @@
     <div class="container-xxl position-relative p-0 mr-3">
 
         <div class="container-xxl py-5 bread-margin">
-            <div class="container my-5 py-5 px-lg-5" style="margin-right: 10%">
+            <div class="container-fluid my-5 py-5 px-lg-5" style="margin-right: 10%">
                 <div class="row g-5 py-5 ">
                     <div class="col-12 text-center">
                         <h1 class="text-white animated zoomIn">حساب کاربری</h1>
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="container-xxl">
-        <div class="container px-lg-5">
+        <div class="container-fluid px-lg-5">
             <div class="row g-5">
                 <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
                     @include('livewire.front.profile.sidbar')
@@ -39,43 +39,49 @@
                                         <thead class="thead-light">
                                         <tr>
                                             <th scope="col">نام محصول</th>
-                                            <th scope="col">تعداد</th>
-                                            <th scope="col">قیمت واحد</th>
-                                            <th scope="col">قیمت کل</th>
+                                            <th scope="col">قیمت </th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($order->products as $product)
+
                                             <tr>
                                                 <td>
-                                                    <h3>{{$product->title}}</h3>
+                                                    <h3>{{$this->title($order->id)}}</h3>
+
+                                                    @foreach($order->products as $product)
+                                                        {{$product->option}} :   {{$product->title}}<br>
+                                                    @endforeach
                                                 </td>
-                                                <td>{{$product->count}}</td>
-                                                <td>{{number_format($product->price)}} تومان</td>
-                                                <td>{{number_format($product->price*$product->count)}} تومان</td>
+                                                <td>{{number_format($order->product_price)}} تومان</td>
                                             </tr>
-                                        @endforeach
+
                                         <tr>
-                                            <td colspan="3" class="text-right">جمع جزء:</td>
+                                            <td  class="text-right">جمع جزء:</td>
                                             <td class="text-right">{{number_format($order->product_price)}} تومان</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3" class="text-right">تخفیف بر روی سبد خرید:</td>
+                                            <td class="text-right">تخفیف بر روی صورتحساب:</td>
                                             <td class="text-right">{{number_format($order->cart_discount_price)}} تومان</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3" class="text-right">کوپن تخفیف:</td>
+                                            <td  class="text-right">کوپن تخفیف:</td>
                                             <td class="text-right">{{number_format($order->copen_price)}} تومان</td>
                                         </tr>
                                             <tr>
-                                                <td colspan="3" class="text-right">لینک دانلود:</td>
+                                                <td  class="text-right">لینک دانلود:</td>
                                                 <td class="text-right">
                                                     <a href="{{route('Download')}}" class="text-purple-500">لینک دانلود</a>
                                                 </td>
                                             </tr>
+                                            @if($this->isLicence($order->id))
+                                            <tr>
+                                                <td  class="text-right">لایسنس:</td>
+                                                <td class="text-right"> {{$order->licence}} </td>
+                                            </tr>
+                                            @endif
 
                                         <tr>
-                                            <td colspan="3" class="text-right">جمع:</td>
+                                            <td class="text-right">جمع:</td>
                                             <td class="text-right">{{number_format($order->prices)}} تومان</td>
                                         </tr>
                                         </tbody>

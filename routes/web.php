@@ -24,13 +24,14 @@ Route::get('blog/category/post/{post}',App\Http\Livewire\Front\Blog\Post::class)
 //=======================================> // user profile  routes//
 Route::middleware('web')->middleware('auth')->group(function () {
     Route::get('checkout',App\Http\Livewire\Front\Order\Index::class)->name('CartOrders');
+    Route::get('checkoutOrder/{id}',App\Http\Livewire\Front\Checkout\Index::class)->name('checkoutOrder');
     Route::get('payment',[App\Http\Controllers\Payment::class,'index'])->name('payment');
     Route::get('payment/callback',App\Http\Livewire\Front\Payment\Callback::class)->name('callback');
     Route::get('dashboard/profile',App\Http\Livewire\Front\Profile\Index::class)->name('Profile');
     Route::get('dashboard/profile/download',App\Http\Livewire\Front\Profile\Download::class)->name('Download');
     Route::get('download/{file}',[App\Http\Controllers\Download::class,'index'])->name('DownloadFile');
-    Route::get('dashboard/Wishlist',App\Http\Livewire\Front\Profile\Wishlist::class)->name('Wishlist');
     Route::get('dashboard/orders',App\Http\Livewire\Front\Profile\Orders::class)->name('Orders');
+    Route::get('dashboard/payment',App\Http\Livewire\Front\Profile\Pay::class)->name('DahboardPayment');
     Route::get('dashboard/order/detail/{order}',App\Http\Livewire\Front\Profile\DetailOrder::class)->name('DetailOrder');
     Route::get('dashboard/order/print/{order}',App\Http\Livewire\Front\Profile\PrintOrder::class)->name('PrintOrder');
     Route::get('dashboard/comment',App\Http\Livewire\Front\Profile\Comment::class)->name('UserComment');
@@ -167,6 +168,7 @@ Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
 
 //=======================================> //orders//
     Route::get('admin/orders',\App\Http\Livewire\Admin\Order\Index::class)->name('admin.orders.index');
+    Route::get('admin/order/add',\App\Http\Livewire\Admin\Order\Add::class)->name('admin.orders.add');
     Route::get('admin/order/detailOrder/{detail}',\App\Http\Livewire\Admin\Order\Detail::class)->name('AdminDetailOrder');
     Route::get('admin/order/detailOrder/print/{detail}',\App\Http\Livewire\Admin\Order\PrintOrder::class)->name('AdminPrintOrder');
 

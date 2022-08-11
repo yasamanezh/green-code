@@ -35,8 +35,8 @@
                         <div class="component address">
                         <span class="content"><span class="title">آدرس:</span>
                             <span  class="inner-content">
-                                {{\App\Models\Country::where('id',$siteOption->zone)->pluck('name')->first()}}-
-                                {{\App\Models\City::where('id',$siteOption->city)->pluck('name')->first()}}
+                                {{$siteOption->zone}}-
+                                {{$siteOption->city}}
                                 {{$siteOption->	address}}
                                 <br>
                             </span>
@@ -65,17 +65,7 @@
                 <td class="info">
                     <div class="component full-name"><span class="content"><span class="title">نام:</span><span
                                 class="inner-content"><span class="content1">{{$order->name}}</span></span></span></div>
-                    @if($order->address)
-                    <div class="component recipient"><span class="content"><span class="title">گیرنده:</span><span
-                                class="inner-content"><span class="content1">
-                                    {{\App\Models\Country::where('id',$order->zone)->pluck('name')->first()}}-
-                                {{\App\Models\City::where('id',$order->city)->pluck('name')->first()}}
-                                    {{$order->address}}
-                                    -کدپستی:
-                                    {{$order->code_posti}}
-                                </span></span></span>
-                    </div>
-                    @endif
+
                     <div class="component phone"><span class="content"><span class="title">تلفن:</span><span
                                 class="inner-content"><span class="content1">{{$order->mobile}}</span></span></span></div>
                     <div class="component order-date"><span class="content"><span class="title">تاریخ  ثبت سفارش:</span><span
@@ -97,16 +87,10 @@
                                 class="inner-content">@if($order->processing =='wait')
                                     در انتظار پرداخت
                                 @elseif ($order->processing =='complate')
-                                    در صف بررسی
-                                @elseif ($order->processing =='progress')
-                                    در حال آماده سازی سفارش
-                                @elseif ($order->processing =='sended')
-                                    خروج از مرکز پردازش
-                                @elseif ($order->processing =='post')
-                                    تحویل به پست
-                                @elseif ($order->processing =='delivered')
-                                    تحویل مرسوله به مشتری
-                                @endif</span></span></div>
+                                   پرداخت شده
+
+                                @endif
+                            </span></span></div>
 
                 </td>
             </tr>
@@ -116,45 +100,32 @@
             <table class="products-table table-responsive table-bordered">
                 <thead>
                 <tr>
-                    <th class="row">ردیف</th>
                     <th class="id">شناسه</th>
                     <th class="product">محصول</th>
                     <th class="price">قیمت</th>
-                    <th class="quantity">تعداد</th>
-                    <th class="total-amount">مبلغ کل</th>
+
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($order->products as $product)
-                    <tr class="odd">
-                        <td class="row"><span>{{$counter}}</span></td>
-                        <td class="id"><span class="td-title">شناسه</span>{{$product->product_id}}</td>
-                        <td class="product"><span class="td-title">محصول</span><a href="#">{{$product->title}} </a></td>
+                  <tr class="odd">
+
+                        <td class="id"><span class="td-title">شناسه</span>{{$order->order_number}}</td>
+                        <td class="product"><span class="td-title">محصول</span><a href="#">{{$this->title($order->id)}} </a></td>
                         <td class="price"><span class="td-title">قیمت</span>
                             <ins>
                             <span class="woocommerce-Price-amount amount">
                                 <bdi>
-                                    {{number_format($product->price)}}&nbsp;
+                                    {{number_format($order->prices)}}&nbsp;
                                     <span class="woocommerce-Price-currencySymbol">تومان</span>
                                 </bdi>
                             </span>
                             </ins>
                         </td>
-                        <td class="quantity"><span class="td-title">تعداد</span>{{$product->count}}</td>
-                        <td class="total-amount"><span class="td-title">مبلغ کل</span><span
-                                class="woocommerce-Price-amount amount"><bdi>{{number_format($product->price*$product->count)}}&nbsp;<span
-                                        class="woocommerce-Price-currencySymbol">تومان</span></bdi></span></td>
                     </tr>
-                    @php
-                        $counter++;
-                        $totalcount=$totalcount+(int)$product->count;
-                    @endphp
-                @endforeach
+
                 </tbody>
             </table>
-            <div class="profit-wrapper">
-                <div class="total-items"><span class="title">تعداد کل : </span><span class="content">{{$totalcount}}</span></div>
-            </div>
+
             <table class="table-fixed table-responsive">
                 <tbody>
                 <tr>
@@ -168,12 +139,7 @@
                                 <td class="total"><span class="woocommerce-Price-amount amount"><bdi>{{number_format($order->product_price)}}<span
                                                 class="woocommerce-Price-currencySymbol">تومان</span></bdi></span></td>
                             </tr>
-                            @if($order->shipping_price)
-                            <tr>
-                                <td  class="text-right">هزینه حمل و نقل:</td>
-                                <td class="text-right">{{$order->shipping_price}}</td>
-                            </tr>
-                            @endif
+
                             @if($order->cart_discount_price)
                             <tr>
                                 <td  class="text-right">تخفیف بر روی سبد خرید:</td>

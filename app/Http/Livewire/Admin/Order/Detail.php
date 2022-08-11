@@ -6,6 +6,7 @@ use App\Jobs\DefaultNotification;
 use App\Models\Order;
 use App\Models\OrderHistory;
 use App\Models\OrderProdct;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
@@ -13,6 +14,7 @@ use Livewire\Component;
 class Detail extends Component
 {
     public $order;
+    public $licence,$support;
     public $user, $description, $processing;
     public $shipping;
     public $i = 0, $inputProducts = [], $title = [], $price = [], $count = [];
@@ -43,6 +45,10 @@ class Detail extends Component
         }
         $this->order = Order::find($detail);
         $this->user = auth()->user();
+        $this->licence=$this->order->licence;
+
+        $this->support=$this->order->support;
+
     }
 
     public function deleteProduct($id)
@@ -64,6 +70,16 @@ class Detail extends Component
         }
 
     }
+    public function title($id){
+        $order=Order::findOrFail($id);
+        if($order->title){
+            return $order->title;
+        }else{
+            return Product::where('id',$order->product_id)->pluck('title')->first();
+        }
+
+    }
+
 
     public function saveInfo()
     {
@@ -102,9 +118,27 @@ class Detail extends Component
 
     }
 
+    public function support()
+    {
+        $order=$this->order;
+        $order->support=$this->support;
+        $this->order->update();
+        $this->emit('toast', 'success', 'پشتیبانی با موفقیت به روز رسانی شد.');
+
+    }
+    public function license()
+    {
+        $order=$this->order;
+        $order->licence=$this->licence;
+        $order->update();
+        $this->emit('toast', 'success', 'لایسنس با موفقیت به روز رسانی شد.');
+    }
+
     public function render()
     {
         $products = OrderProdct::where('id', $this->order->order_id)->get();
+
+
         return view('livewire.admin.order.detail', compact('products'));
     }
 }

@@ -41,9 +41,7 @@ class Download extends Component
         $userID=auth()->user()->id;
         $orders=Order::where('user_id',$userID)->where('status',200)->get();
         foreach ($orders as $order){
-            $products=OrderProdct::where('order_id',$order->id)->get();
-           foreach ($products as $value){
-               $product=Product::where('id',$value->product_id)->first();
+               $product=Product::where('id',$order->product_id)->first();
                if($product){
                    $downloads=ProductDownload::where('product_id',$product->id)->get();
                    if($downloads){
@@ -53,9 +51,6 @@ class Download extends Component
                        }
                    }
                }
-
-           }
-
         }
 
     }

@@ -18,17 +18,17 @@ class Payment extends Controller
             $bank->update([
                 'status' => 'NOK',
             ]);
-            return redirect(route('Cart'));
+            return redirect(route('Home'));
         }
         if (!$bank) {
-            return redirect(route('Cart'));
+            return redirect(route('Home'));
         }
         $siteOption = SiteOption::first();
         if ($bank->payment_type == 'offline') {
             if ($this->shipping()) {
                 return redirect(route('callback'));
             } else {
-                return redirect(route('Cart'));
+                return redirect(route('Home'));
             }
         } else {
             Config::set('payment.default', $bank->payment_type);

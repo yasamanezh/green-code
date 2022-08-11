@@ -1,3 +1,4 @@
+@section('title','چاپ فاکتور')
 <div>
     <div class="top-line"></div>
     <div class="template-8 container">
@@ -7,7 +8,7 @@
                 <td>
                     <div class="shop-logo"><img src="/storage/{{$siteOption->logo}}"></div>
                 </td>
-                <td class="invoice-title">صورت‌ حساب</td>
+                <td class="invoice-title">صورت‌ حساب </td>
                 <td class="print-date">
                     <div class="component print-date">
                         <span class="content"><span class="title">تاریخ چاپ:</span>
@@ -33,22 +34,21 @@
                         </div>
                         <div class="component address">
                         <span class="content"><span class="title">آدرس:</span>
-                            <span class="inner-content">
-                                {{\App\Models\Country::where('id',$siteOption->zone)->pluck('name')->first()}}-
-                                {{\App\Models\City::where('id',$siteOption->city)->pluck('name')->first()}}
+                            <span  class="inner-content">
+                                {{$siteOption->zone}}-
+                                {{$siteOption->city}}
                                 {{$siteOption->	address}}
-                                 -کدپستی:
-                                    {{$order->code_posti}}
                                 <br>
                             </span>
                         </span>
                         </div>
+
                     </td>
                     <td class="last">
                         <div class="component url">
                         <span class="content">
                             <span class="title">وب‌سایت:</span>
-                            <span class="inner-content">{{\Illuminate\Support\Facades\URL::to('/')}}</span>
+                            <span  class="inner-content">{{\Illuminate\Support\Facades\URL::to('/')}}</span>
                         </span>
                         </div>
                         <div class="component phone">
@@ -64,49 +64,34 @@
                 </th>
                 <td class="info">
                     <div class="component full-name"><span class="content"><span class="title">نام:</span><span
-                                    class="inner-content"><span class="content1">{{$order->name}}</span></span></span>
-                    </div>
-                    <div class="component recipient"><span class="content"><span class="title">گیرنده:</span><span
-                                    class="inner-content"><span class="content1">
-                                    {{\App\Models\Country::where('id',$order->zone)->pluck('name')->first()}}-
-                                {{\App\Models\City::where('id',$order->city)->pluck('name')->first()}}
-                                    {{$order->address}}
-                                </span></span></span>
-                    </div>
-                    <div class="component phone"><span class="content"><span class="title">تلفن:</span><span
-                                    class="inner-content"><span class="content1">{{$order->mobile}}</span></span></span>
-                    </div>
-                    <div class="component order-date"><span class="content"><span class="title">تاریخ سفارش:</span><span
-                                    class="inner-content" dir="ltr">
-                @if($order->status == 200)
-                    {{ verta($order->created_at)}}
-                @else
-                   {{ verta($order->updated_at)}}
-                    @endif
+                                class="inner-content"><span class="content1">{{$order->name}}</span></span></span></div>
 
+                    <div class="component phone"><span class="content"><span class="title">تلفن:</span><span
+                                class="inner-content"><span class="content1">{{$order->mobile}}</span></span></span></div>
+                    <div class="component order-date"><span class="content"><span class="title">تاریخ  ثبت سفارش:</span><span
+                                class="inner-content" dir="ltr">
+                    @if($order->status == 200)
+                                    {{ verta($order->created_at)}}
+                                @else
+                                    {{ verta($order->updated_at)}}
+                                @endif
                             </span></span></div>
                 </td>
                 <td class="last">
                     <div class="component order-id"><span class="content"><span class="title">شناسه سفارش:</span><span
-                                    class="inner-content">
+                                class="inner-content">
 
                                 {{$order->order_number}}
                             </span></span></div>
-                    <div class="component order-status"><span class="content"><span
-                                    class="title">وضعیت سفارش:</span><span
-                                    class="inner-content">@if($order->processing =='wait')
+                    <div class="component order-status"><span class="content"><span class="title">وضعیت سفارش:</span><span
+                                class="inner-content">@if($order->processing =='wait')
                                     در انتظار پرداخت
                                 @elseif ($order->processing =='complate')
-                                    در صف بررسی
-                                @elseif ($order->processing =='progress')
-                                    در حال آماده سازی سفارش
-                                @elseif ($order->processing =='sended')
-                                    خروج از مرکز پردازش
-                                @elseif ($order->processing =='post')
-                                    تحویل به پست
-                                @elseif ($order->processing =='delivered')
-                                    تحویل مرسوله به مشتری
-                                @endif</span></span></div>
+                                    پرداخت شده
+
+                                @endif
+                            </span></span></div>
+
                 </td>
             </tr>
             </tbody>
@@ -115,46 +100,32 @@
             <table class="products-table table-responsive table-bordered">
                 <thead>
                 <tr>
-                    <th class="row">ردیف</th>
                     <th class="id">شناسه</th>
                     <th class="product">محصول</th>
                     <th class="price">قیمت</th>
-                    <th class="quantity">تعداد</th>
-                    <th class="total-amount">مبلغ کل</th>
+
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($order->products as $product)
-                    <tr class="odd">
-                        <td class="row"><span>{{$counter}}</span></td>
-                        <td class="id"><span class="td-title">شناسه</span>{{$product->product_id}}</td>
-                        <td class="product"><span class="td-title">محصول</span><a href="#">{{$product->title}} </a></td>
-                        <td class="price"><span class="td-title">قیمت</span>
-                            <ins>
+                <tr class="odd">
+
+                    <td class="id"><span class="td-title">شناسه</span>{{$order->order_number}}</td>
+                    <td class="product"><span class="td-title">محصول</span><a href="#">{{$this->title($order->id)}} </a></td>
+                    <td class="price"><span class="td-title">قیمت</span>
+                        <ins>
                             <span class="woocommerce-Price-amount amount">
                                 <bdi>
-                                    {{number_format($product->price)}}&nbsp;
+                                    {{number_format($order->prices)}}&nbsp;
                                     <span class="woocommerce-Price-currencySymbol">تومان</span>
                                 </bdi>
                             </span>
-                            </ins>
-                        </td>
-                        <td class="quantity"><span class="td-title">تعداد</span>{{$product->count}}</td>
-                        <td class="total-amount"><span class="td-title">مبلغ کل</span><span
-                                    class="woocommerce-Price-amount amount"><bdi>{{number_format($product->price*$product->count)}}&nbsp;<span
-                                            class="woocommerce-Price-currencySymbol">تومان</span></bdi></span></td>
-                    </tr>
-                    @php
-                        $counter++;
-                        $totalcount=$totalcount+(int)$product->count;
-                    @endphp
-                @endforeach
+                        </ins>
+                    </td>
+                </tr>
+
                 </tbody>
             </table>
-            <div class="profit-wrapper">
-                <div class="total-items"><span class="title">تعداد کل : </span><span
-                            class="content">{{$totalcount}}</span></div>
-            </div>
+
             <table class="table-fixed table-responsive">
                 <tbody>
                 <tr>
@@ -166,23 +137,21 @@
                             <tr>
                                 <th class="total">مبلغ کل</th>
                                 <td class="total"><span class="woocommerce-Price-amount amount"><bdi>{{number_format($order->product_price)}}<span
-                                                    class="woocommerce-Price-currencySymbol">تومان</span></bdi></span>
-                                </td>
+                                                class="woocommerce-Price-currencySymbol">تومان</span></bdi></span></td>
                             </tr>
-                            @if(isset($order->shipping_price) && !empty($order->shipping_price) && $order->shipping_price!=0)
-                            <tr>
-                                <td class="text-right">هزینه حمل و نقل:</td>
-                                <td class="text-right">{{number_format($order->shipping_price)}} تومان</td>
-                            </tr>
+
+                            @if($order->cart_discount_price)
+                                <tr>
+                                    <td  class="text-right">تخفیف بر روی سبد خرید:</td>
+                                    <td class="text-right">{{$order->cart_discount_price}} تومان</td>
+                                </tr>
                             @endif
-                            <tr>
-                                <td class="text-right">تخفیف بر روی سبد خرید:</td>
-                                <td class="text-right">{{$order->cart_discount_price}} تومان</td>
-                            </tr>
-                            <tr>
-                                <td class="text-right">کوپن تخفیف:</td>
-                                <td class="text-right">{{$order->copen_price}} تومان</td>
-                            </tr>
+                            @if($order->copen_price)
+                                <tr>
+                                    <td  class="text-right">کوپن تخفیف:</td>
+                                    <td class="text-right">{{$order->copen_price}} تومان</td>
+                                </tr>
+                            @endif
                             <tr>
                                 <td class="text-right">جمع:</td>
                                 <td class="text-right">{{number_format($order->prices)}} تومان</td>
@@ -200,21 +169,17 @@
                         <div class="component shop-signature">
                             <span class="content">
                                 <span class="title">مهر و امضای فروشگاه</span>
-                                <span class="inner-content">
+                                <span class="inner-content" style="height:150px">
                                     @if($siteOption->Signature)
-                                    <img src="/storage/{{$siteOption->Signature}}"style="width: 150px;height: 150px">
+                                        <img src="/storage/{{$siteOption->Signature}}" style="width: 150px;height: 150px">
                                     @endif
                                 </span>
                             </span>
                         </div>
                     </td>
                     <td>
-                        <div class="component customer-signature">
-                            <span class="content">
-                                <span class="title">مهر و امضای مشتری</span>
-                                <span  class="inner-content"></span>
-                            </span>
-                        </div>
+                        <div class="component customer-signature"><span class="content"><span class="title">مهر و امضای مشتری</span><span
+                                    class="inner-content"></span></span></div>
                     </td>
                 </tr>
                 </tbody>

@@ -8,7 +8,7 @@
                                 @if(isset(auth()->user()->avatar))
                                     <img src="/storage/{{auth()->user()->avatar}}">
                                 @else
-                                <img src="{{asset('assets/images/profile/user-profile.svg')}}">
+                                <img src="{{asset('assets/images/user.png')}}">
                                 @endif
                             </a>
                         </div>
@@ -28,32 +28,33 @@
                     <ul class="profile-menu-items">
                         <li>
                             <a href="{{route('Profile')}}" class="profile-menu-url  @if(Request::routeIs('Profile')) active-profile @endif">
-                                <span class="mdi mdi-account-outline"></span>
+                                <span class="fa fa-user-circle"></span>
                                 پروفایل</a>
                         </li>
                         <li>
                             <a href="{{route('Orders')}}" class="profile-menu-url  @if(Request::routeIs('Orders')) active-profile @endif">
                                 <span class="fa fa-shopping-basket"></span>
-                                همه سفارش ها</a>
+                                سفارش ها</a>
                         </li>
-                        <li>
-                            <a href="{{route('Wishlist')}}" class="profile-menu-url @if(Request::routeIs('Wishlist')) active-profile @endif">
-                                <span class="fa fa-star-o"></span>
-                                لیست علاقه مندی ها</a>
-                        </li>
+
                         <li>
                             <a href="{{route('UserComment')}}" class="profile-menu-url @if(Request::routeIs('UserComment')) active-profile @endif">
                                 <span class="fa fa-question"></span>
-                                پرسش ها
-
-
-                                 </a>
+                                تیکت ها
+                               </a>
 
                         </li>
+                        <li>
+                            <a href="{{route('DahboardPayment')}}" class="profile-menu-url @if(Request::routeIs('DahboardPayment')) active-profile @endif">
+                                <span class="fa fa-question"></span>
+                                پرداخت ها
+                            </a>
+                        </li>
+
 
                         <li>
                             <a href="{{route('Download')}}" class="profile-menu-url @if(Request::routeIs('Download')) active-profile @endif">
-                                <span class="mdi mdi-download"></span>
+                                <span class="fa fa-download"></span>
                                دانلودها</a>
                         </li>
 

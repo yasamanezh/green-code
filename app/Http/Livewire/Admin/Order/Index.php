@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Order;
 
 use App\Models\Log;
 use App\Models\Order;
+use App\Models\OrderHistory;
 use App\Models\ReceiptCenter;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
@@ -25,8 +26,7 @@ class Index extends Component
     public function UpdatedSelectPage($value)
     {
         if ($value){
-            $this->mulitiSelect=Order::where('address', 'LIKE', "%{$this->search}%")->
-                orWhere('order_number', 'LIKE', "%{$this->search}%")->
+            $this->mulitiSelect=Order::where('order_number', 'LIKE', "%{$this->search}%")->
                 orWhere('transactionId', 'LIKE', "%{$this->search}%")
                 ->orWhere('id',$this->search)
                 ->orderBy($this->sortColumnName, $this->sortDirection)
@@ -137,6 +137,22 @@ class Index extends Component
 
     public $readyToLoad = false;
 
+
+    public function ISComplate($id)
+    {
+        $history=OrderHistory::where('order_id',$id)->latest()->pluck('history')->first();
+        if($history){
+            if($history == 'complate'){
+                return 1;
+            }else{
+                return  0;
+            }
+        }else{
+            return 0;
+        }
+
+
+   }
     public function loadOrder()
     {
         $this->readyToLoad = true;
@@ -144,8 +160,7 @@ class Index extends Component
 
     public function render()
     {
-        $orders = $this->readyToLoad ? Order::where('address', 'LIKE', "%{$this->search}%")->
-        orWhere('order_number', 'LIKE', "%{$this->search}%")->
+        $orders = $this->readyToLoad ? Order::where('order_number', 'LIKE', "%{$this->search}%")->
         orWhere('transactionId', 'LIKE', "%{$this->search}%")->
         orWhere('id', $this->search)->
         orderBy($this->sortColumnName, $this->sortDirection)->

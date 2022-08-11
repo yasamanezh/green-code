@@ -65,6 +65,7 @@ class AddProduct extends Component
         $this->product = new Product();
         $this->product->price = 0;
         $this->product->status = 1;
+        $this->product->manufacturer = 1;
 
     }
 

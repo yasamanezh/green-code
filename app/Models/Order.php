@@ -9,8 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['order_number', 'cart_id', 'user_id',  'status',  'payment_type',
-        'copen_code', 'copen_price',  'cart_discount_price', 'payment_price',
+    protected $fillable = ['order_number', 'support','product_id','licence', 'user_id',  'status',  'payment_type',
+        'copen_code', 'copen_price',  'cart_discount_price', 'payment_price','title',
         'product_price', 'prices', 'processing', 'transactionId', 'driver','product-id'];
 
     public function products()
