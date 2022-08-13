@@ -79,6 +79,14 @@
                                                 <td class="text-right"> {{$order->licence}} </td>
                                             </tr>
                                             @endif
+                                             @if($this->issupport($order->id))
+                                            <tr>
+                                                <td  class="text-right"> پشتیبانی:</td>
+                                                <td class="text-right"> {{$this->support($order->id)}} </td>
+                                            </tr>
+                                            @endif
+
+
 
                                         <tr>
                                             <td class="text-right">جمع:</td>

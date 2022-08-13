@@ -7,6 +7,7 @@ use App\FrontModels\Order;
 use App\Models\Product;
 use App\Models\SiteOption;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Hekmatinasser\Verta\Verta;
 use Livewire\Component;
 
 class DetailOrder extends Component
@@ -27,6 +28,36 @@ class DetailOrder extends Component
 
     }
 
+    public function issupport($id)
+    {
+        $order=$this->order;
+
+            $support=$order->support;
+            if($support){
+                return true;
+            }else{
+                return false;
+            }
+
+
+    }
+    public function support($id)
+    {
+        $order=$this->order;
+       $support=$order->support;
+            if($support){
+                $start = new Verta($order->created_at);
+                $end=$start->addDays($support);
+                $now = verta();
+                if( $now->diffDays($end) <=0){
+                    return 'منقضی شده';
+                }else{
+                    return $now->diffDays($end).' '.'روز';
+                }
+
+            }
+    }
+
     public function title($id){
         $order= \App\Models\Order::findOrFail($id);
         if($order->title){
@@ -36,9 +67,11 @@ class DetailOrder extends Component
         }
 
     }
+
     public function mount(){
         SEOMeta::setTitle('جزئیات سفارش');
     }
+
     public function render()
     {
         $options=SiteOption::first();
