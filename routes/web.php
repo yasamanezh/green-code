@@ -97,16 +97,6 @@ Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
     Route::get('admin/demo/edit/{demo}',\App\Http\Livewire\Admin\Demo\Update::class)->name('demoupdate');
 
 
-//=======================================> //filter//
-    Route::get('admin/filters',\App\Http\Livewire\Admin\Filter\Index::class)->name('Filters');
-    Route::get('admin/filter/edit/{filter}',\App\Http\Livewire\Admin\Filter\Update::class)->name('editFilter');
-    Route::get('admin/filters/add',\App\Http\Livewire\Admin\Filter\Add::class)->name('AddFilter');
-
-//=======================================> //manufacturer//
-    Route::get('admin/manufacturers',App\Http\Livewire\Admin\manufacturer\Manufactor::class)->name('Manufacturers');
-    Route::get('admin/brand/edit/{manufacturer}',App\Http\Livewire\Admin\manufacturer\EditManufactor::class)->name('Editbrand');
-    Route::get('admin/brand/add',App\Http\Livewire\Admin\manufacturer\Add::class)->name('AddBrand');
-
 //=======================================> //attribute group//
     Route::get('admin/attributeGroups',App\Http\Livewire\Admin\attribute\Groups::class)->name('AttributeGroups');
     Route::get('admin/attributeGroup/edit/{attributeGroup}',App\Http\Livewire\Admin\attribute\Editgroup::class)->name('EditAttributeGroup');
@@ -121,10 +111,6 @@ Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
 //=======================================> //No products//
     Route::get('admin/noProducts',App\Http\Livewire\Admin\Noproduct\Index::class)->name('NoProducts');
 
-//=======================================> //warranties//
-    Route::get('admin/warranty',\App\Http\Livewire\Admin\Product\Warranty\Index::class)->name('warrantys');
-    Route::get('admin/warranty/update/{warranty}',\App\Http\Livewire\Admin\Product\Warranty\Update::class)->name('warranty.update');
-    Route::get('admin/warranty/add',\App\Http\Livewire\Admin\Product\Warranty\Add::class)->name('warrantyAdd');
 
 //=======================================> //newsletter//
     Route::get('admin/newsletter',\App\Http\Livewire\Admin\Newsletter\Index::class)->name('newsletter.index');

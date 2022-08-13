@@ -28,38 +28,20 @@
                             <a class="nav-sub-link" href="{{route('categories')}}">دسته بندی محصولات</a>
                         </li>
                     @endcan
-                    @can('show_brand')
-                        <li class="nav-sub-item  @if(Request::routeIs('Manufacturers') || Request::routeIs('AddBrand') || Request::routeIs('Editbrand')  ) active @endif">
-                            <a class="nav-sub-link" href="{{route('Manufacturers')}}">برندها </a>
-                        </li>
-                    @endcan
+
                     @can('show_attr')
                         <li class="nav-sub-item  @if(Request::routeIs('AttributeGroups') || Request::routeIs('EditAttributeGroup')  ) active @endif">
                             <a class="nav-sub-link" href="{{route('AttributeGroups')}}">گروه مشخصات </a>
                         </li>
                     @endcan
-
-                    @can('show_garranty')
-                        <li class="nav-sub-item  {{Request::routeIs('warrantys') ? 'active': '' }}"><a class="nav-sub-link" href="{{route('warrantys')}}">گارانتی محصولات</a></li>
-                    @endcan
                     @can('show_product')
                         <li class="nav-sub-item  @if(Request::routeIs('Products') ||    Request::routeIs('EditProduct') ||   Request::routeIs('AddProduct')    ) active @endif">
                             <a class="nav-sub-link" href="{{route('Products')}}">محصولات</a>
                         </li>
-                         <li class="nav-sub-item  @if(Request::routeIs('NoProducts')  ) active @endif">
-                            <a class="nav-sub-link" href="{{route('NoProducts')}}">لیست اطلاع از موجودی</a>
-                        </li>
-
                         <li class="nav-sub-item {{Request::routeIs('ProductComment') ? 'active': '' }}"><a class="nav-sub-link" href="{{route('ProductComment')}}">دیدگاه ها</a></li>
                         <li class="nav-sub-item {{Request::routeIs('Questions') ? 'active': '' }}"><a class="nav-sub-link" href="{{route('Questions')}}">پرسش ها</a></li>
 
                     @endcan
-                    @can('show_filter')
-                        <li class="nav-sub-item  @if(Request::routeIs('Filters') ||Request::routeIs('editFilter') || Request::routeIs('AddFilter') ) active @endif">
-                            <a class="nav-sub-link" href="{{route('Filters')}}">فیلترها</a>
-                        </li>
-                    @endcan
-
                 </ul>
             </li>
             <li class="nav-item  @if(Request::routeIs('blog')) active @endif">
