@@ -33,61 +33,51 @@
                             <div class="headline-profile">
                                 <span>تیکت ها</span>
                             </div>
+                            <a href="{{route('TicketAdd')}}" class="btn btn-primary pull-left" style="margin-left: 23px;" >افزودن تیکت</a>
                             <div class="profile-stats">
                                 <div class="profile-stats-row">
                                     <div class="profile-stats page-profile-order">
                                         <div id="product-questions-list">
-                                            @foreach($questions as $value)
-                                                <div id="product-questions-list">
-                                                    <div class="questions-list">
-                                                        <ul class="faq-list">
-                                                            <li class="is-question">
-                                                                <div class="section">
-                                                                    <div class="faq-header">
-                                                                        <span class="icon-faq">?</span>
+                                            <div class="table-orders">
+                                                <table class="table" wire:poll.120s>
+                                                    <thead class="thead-light">
+                                                    <tr>
 
-                                                                    </div>
-                                                                    پرسش:
-                                                                    {{$value->question}}
-                                                                    <div class="faq-date">
-                                                                        <em> {{ verta($value->created_at)->format('%d/ %B  / %Y') }}</em>
-                                                                    </div>
-
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    @if($value->answer)
-                                                        <div class="questions-list answer-questions">
-                                                            <ul class="faq-list">
-                                                                <li class="is-question">
-                                                                    <div class="section">
-                                                                        <div class="faq-header">
-                                                                            <span class="icon-faq"><i class="mdi mdi-storefront"></i></span>
-
-                                                                        </div>
-                                                                        <span class="pull-right"> پاسخ فروشنده :</span>
-                                                                        <p>{{$value->answer}}</p>
-                                                                        <div class="faq-date">
-                                                                            <em>{{ verta($value->updated_at)->format('%d/ %B  / %Y') }}</em>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    @endif
-
-                                                </div>
-                                            @endforeach
+                                                        <th scope="col">تاریخ ثبت تیکت</th>
+                                                        <th scope="col">بخش</th>
+                                                        <th scope="col">موضوع</th>
+                                                        <th scope="col">وضعیت</th>
+                                                        <th scope="col">اخرین به روز رسانی</th>
+                                                        <th scope="col">مشاهده</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($tickets as $ticket)
+                                                        <tr>
+                                                            <td>{{ verta($ticket->created_at)->format('%d  %B %Y') }}</td>
+                                                            <td>{{$ticket->part}}</td>
+                                                            <td>{{$ticket->title}}</td>
+                                                            <td>{{$ticket->status ==0 ? 'بسته' : 'باز' }}</td>
+                                                            <td>{{ verta($ticket->updates_at)->format('%d  %B %Y') }}</td>
+                                                            <td>
+                                                                <a href="{{route('TicketEdit',$ticket->id)}}" class="btn btn-sm">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
 
                                         </div>
 
 
-                                        <div class="position-relative pull-left">{{$questions->links()}}</div>
+                                        <div class="position-relative pull-left">{{$tickets->links()}}</div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </section>
 

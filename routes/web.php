@@ -35,6 +35,8 @@ Route::middleware('web')->middleware('auth')->group(function () {
     Route::get('dashboard/order/detail/{order}',App\Http\Livewire\Front\Profile\DetailOrder::class)->name('DetailOrder');
     Route::get('dashboard/order/print/{order}',App\Http\Livewire\Front\Profile\PrintOrder::class)->name('PrintOrder');
     Route::get('dashboard/comment',App\Http\Livewire\Front\Profile\Comment::class)->name('UserComment');
+    Route::get('dashboard/ticket/add',App\Http\Livewire\Front\Profile\Ticket\Add::class)->name('TicketAdd');
+    Route::get('dashboard/ticket/edit/{edit}',App\Http\Livewire\Front\Profile\Ticket\Edit::class)->name('TicketEdit');
 });
 
 //=======================================> // start admin routes//
@@ -153,6 +155,12 @@ Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
     Route::get('admin/menus',\App\Http\Livewire\Admin\Menu\Index::class)->name('Menus');
     Route::get('admin/menu/add',\App\Http\Livewire\Admin\Menu\Add::class)->name('AddMenu');
     Route::get('admin/menu/edit/{menu}',\App\Http\Livewire\Admin\Menu\Edit::class)->name('EditMenu');
+//======================================= > //ticket//
+    Route::get('admin/tickets',\App\Http\Livewire\Admin\Ticket\Index::class)->name('AdminTickets');
+    Route::get('admin/ticket/add',\App\Http\Livewire\Admin\Ticket\Add::class)->name('AddAdminTicket');
+    Route::get('admin/ticket/edit/{edit}',\App\Http\Livewire\Admin\Ticket\Edit::class)->name('EditAdminTicket');
+
+
 
 //======================================= > //contact//
     Route::get('admin/contacts',\App\Http\Livewire\Admin\Contact\Index::class)->name('contacts');

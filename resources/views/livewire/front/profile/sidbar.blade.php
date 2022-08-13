@@ -39,14 +39,14 @@
 
                         <li>
                             <a href="{{route('UserComment')}}" class="profile-menu-url @if(Request::routeIs('UserComment')) active-profile @endif">
-                                <span class="fa fa-question"></span>
+                                <span class="fa fa-ticket"></span>
                                 تیکت ها
                                </a>
 
                         </li>
                         <li>
                             <a href="{{route('DahboardPayment')}}" class="profile-menu-url @if(Request::routeIs('DahboardPayment')) active-profile @endif">
-                                <span class="fa fa-question"></span>
+                                <span class="fa fa-wallet"></span>
                                 پرداخت ها
                             </a>
                         </li>

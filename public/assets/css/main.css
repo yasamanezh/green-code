@@ -10567,3 +10567,6 @@ li.nav-item-account button{
 .fa-sign-out{
     margin-left:10px;
 }
+.display-block{
+    display: block !important;
+}

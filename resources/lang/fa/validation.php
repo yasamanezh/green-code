@@ -151,6 +151,7 @@ return [
         "Log in" => "ورود",
         "prices" => "قیمت",
         "user" => "کاربر",
+        "part" => "بخش",
         "nameCreate" => "نام",
         "mobileCreate" => "موبایل",
         "code_postiCreate" => "کدپستی",
