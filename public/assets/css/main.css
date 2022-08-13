@@ -5688,18 +5688,28 @@ input[type='checkbox']:checked ~ .switch {
 }
 
 .card {
-    margin: 13px;
-    margin: 10px;
-    text-align: center;
-    position: relative;
+    background: #fff;
+    box-shadow: 0 0 10px hsl(0deg 0% 75% / 35%);
+    -webkit-box-shadow: hsl(0deg 0% 75% / 35%) 0 0 10px;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 20px;
+    min-height: 200px;
 }
 
-.card label {
-    float: right;
-    margin-top: 37px;
-    display: block;
-    margin-right: -60px;
-    color: #c4c4c4;
+.message-light-opinion-positive{
+    color: green;
+    font-size: 12px;
+}
+.message-light-opinion-negetive{
+    color: red;
+    font-size: 12px;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+    border: 1px solid #ccc;
+    border-top: none !important;
 }
 
 .listing-sidebar .box .card-main .form-auth-row .filter-color{
@@ -7357,7 +7367,7 @@ span.show-less{
 }
 
 .questions-list:first-child{
-    margin-top: 85px;
+    margin-top: 30px;
 }
 
 .answer-questions{
@@ -10569,4 +10579,9 @@ li.nav-item-account button{
 }
 .display-block{
     display: block !important;
+}
+.description-ul{margin-right: 0 !important;
+    background: #dddbdb2e;
+    padding: 10px;
+    border-radius: 8px;
 }

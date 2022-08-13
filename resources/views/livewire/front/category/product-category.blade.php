@@ -45,7 +45,8 @@
                                             id="pills-home-tab{{$category->id}}" data-bs-toggle="pill"
                                             data-bs-target="#tab{{$category->id}}" type="button" role="tab"
                                             aria-controls="tab{{$category->id}}"
-                                            aria-selected="{{$loop->first ? 'true' : 'false'}}">{{$category->title}}</button>
+                                            aria-selected="{{$loop->first ? 'true' : 'false'}}">{{$category->title}}
+                                    </button>
                                 </li>
                             @endforeach
 

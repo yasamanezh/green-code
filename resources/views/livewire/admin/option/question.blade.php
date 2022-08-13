@@ -112,7 +112,7 @@
 
 
                                                             <label class="custom-switch" style="cursor: pointer;"
-                                                                   wire:click.prefetch.prevent="disableStatus({{$value->id}})">
+                                                                   wire:click.prevent="disableStatus({{$value->id}})">
                                                                 <input type="checkbox" name="custom-switch-checkbox"
                                                                        class="custom-switch-input"  @if($value->status == 1) checked="checked" @endif>
                                                                 <span class="custom-switch-indicator"></span>
