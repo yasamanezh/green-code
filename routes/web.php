@@ -108,9 +108,6 @@ Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
     Route::get('admin/products',App\Http\Livewire\Admin\Product\Products::class)->name('Products');
     Route::get('admin/product/edit/{product}',App\Http\Livewire\Admin\Product\EditProduct::class)->name('EditProduct');
     Route::get('admin/product/add',App\Http\Livewire\Admin\Product\AddProduct::class)->name('AddProduct');
-//=======================================> //No products//
-    Route::get('admin/noProducts',App\Http\Livewire\Admin\Noproduct\Index::class)->name('NoProducts');
-
 
 //=======================================> //newsletter//
     Route::get('admin/newsletter',\App\Http\Livewire\Admin\Newsletter\Index::class)->name('newsletter.index');
