@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Front\Profile\Ticket;
 
 use App\Models\Answer;
 use App\Models\Ticket;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use function view;
@@ -34,6 +35,7 @@ class Edit extends Component
         $answer->user_id=auth()->user()->id;
         $answer->answer=$this->description;
         $answer->ticket_id=$this->ticket->id;
+        $answer->status=1;
         if($this->file){
             $answer->file=$this->uploadImage();
         }
@@ -45,6 +47,7 @@ class Edit extends Component
 
     public function mount($edit)
     {
+        SEOMeta::setTitle('مشاهده تیکت');
         $this->ticket=Ticket::findOrFail($edit);
 
     }

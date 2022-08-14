@@ -15,6 +15,24 @@ class Comment extends Component
     {
         SEOMeta::setTitle('تیکت ها');
     }
+    public function status($id){
+        $ticket=Ticket::findOrFail($id);
+        if($ticket->status == 0){
+            return 'بسته شده';
+        }else{
+            $answer=$ticket->answers()->latest()->first();
+            if($answer){
+                if($answer->user_id != auth()->user()->id){
+                    return 'پاسخ داده شده';
+                }else{
+                    return 'در حال بررسی';
+                }
+
+            }else{
+                return 'در حال بررسی';
+            }
+        }
+    }
     public function render()
     {
         $tickets=Ticket::where('user_id',auth()->user()->id)->paginate(10);

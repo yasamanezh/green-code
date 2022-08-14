@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front\Profile\Ticket;
 
 use App\Models\Ticket;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -22,6 +23,7 @@ class Add extends Component
 
     public function mount()
     {
+        SEOMeta::setTitle(' افزودن تیکت');
         $this->ticket=new Ticket();
     }
     public function uploadImage()

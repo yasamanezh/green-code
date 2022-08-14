@@ -34,7 +34,7 @@ Route::middleware('web')->middleware('auth')->group(function () {
     Route::get('dashboard/payment',App\Http\Livewire\Front\Profile\Pay::class)->name('DahboardPayment');
     Route::get('dashboard/order/detail/{order}',App\Http\Livewire\Front\Profile\DetailOrder::class)->name('DetailOrder');
     Route::get('dashboard/order/print/{order}',App\Http\Livewire\Front\Profile\PrintOrder::class)->name('PrintOrder');
-    Route::get('dashboard/comment',App\Http\Livewire\Front\Profile\Comment::class)->name('UserComment');
+    Route::get('dashboard/tickets',App\Http\Livewire\Front\Profile\Comment::class)->name('UserComment');
     Route::get('dashboard/ticket/add',App\Http\Livewire\Front\Profile\Ticket\Add::class)->name('TicketAdd');
     Route::get('dashboard/ticket/edit/{edit}',App\Http\Livewire\Front\Profile\Ticket\Edit::class)->name('TicketEdit');
 });

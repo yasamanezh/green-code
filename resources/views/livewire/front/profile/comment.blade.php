@@ -57,7 +57,7 @@
                                                             <td>{{ verta($ticket->created_at)->format('%d  %B %Y') }}</td>
                                                             <td>{{$ticket->part}}</td>
                                                             <td>{{$ticket->title}}</td>
-                                                            <td>{{$ticket->status ==0 ? 'بسته' : 'باز' }}</td>
+                                                            <td>{{$this->status($ticket->id)}}</td>
                                                             <td>{{ verta($ticket->updates_at)->format('%d  %B %Y') }}</td>
                                                             <td>
                                                                 <a href="{{route('TicketEdit',$ticket->id)}}" class="btn btn-sm">
