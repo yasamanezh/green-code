@@ -21,7 +21,14 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<style>
+    html {
+        overflow-x: hidden !important;
+    }
+    body{
+        overflow-x: hidden !important;
+    }
+</style>
     <livewire:front.layouts.head/>
 </head>
 <body>
