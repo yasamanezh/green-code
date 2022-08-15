@@ -8,7 +8,9 @@
 
     {!! app('seotools')->generate() !!}
 
+
     <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}" />
+
     <link rel="stylesheet" href="{{asset('assets/css/materialdesignicons.css')}}" />
     <!--    bootstrap------------------------------->
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}" />
@@ -29,7 +31,7 @@
 {{$slot}}
  <livewire:front.layouts.footer />
 </div>
-<link href="{{asset('admin/plugins/web-fonts/font-awesome/font-awesome.min.css')}}" rel="stylesheet">
+
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset('assets/lib/wow/wow.min.js')}}"></script>
