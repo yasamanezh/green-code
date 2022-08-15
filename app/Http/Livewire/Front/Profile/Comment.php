@@ -19,18 +19,12 @@ class Comment extends Component
         $ticket=Ticket::findOrFail($id);
         if($ticket->status == 0){
             return 'بسته شده';
+        }elseif($ticket->status == 'user'){
+            return 'در حال بررسی';
+        }elseif ($ticket->status == 'admin'){
+            return 'پاسخ داده شده';
         }else{
-            $answer=$ticket->answers()->latest()->first();
-            if($answer){
-                if($answer->user_id != auth()->user()->id){
-                    return 'پاسخ داده شده';
-                }else{
-                    return 'در حال بررسی';
-                }
-
-            }else{
-                return 'در حال بررسی';
-            }
+            return 'پیام ادمین';
         }
     }
     public function render()

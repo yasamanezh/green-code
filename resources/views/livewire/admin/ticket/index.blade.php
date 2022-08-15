@@ -69,27 +69,61 @@
                                                role="grid" aria-describedby="example2_info">
                                             <thead class="thead-light">
                                             <tr>
-
-                                                <th scope="col">تاریخ ثبت تیکت</th>
+                                                <th style="padding-right: 15px;" class="wd-lg-5p">
+                                                    <label class="ckbox">
+                                                        <input name="selected" wire:model="SelectPage"
+                                                               type="checkbox"><span
+                                                            class="tx-13"></span>
+                                                    </label>
+                                                </th>
+                                                <th>
+                                                    تاریخ ایجاد
+                                                    <span wire:click="sortBy('created_at')" class="float-right text-sm" style="cursor: pointer;">
+                                                <i class="fa fa-arrow-up {{ $sortColumnName === 'created_at' && $sortDirection === 'asc' ? '' : 'text-muted' }}"></i>
+                                                <i class="fa fa-arrow-down {{ $sortColumnName === 'created_at' && $sortDirection === 'desc' ? '' : 'text-muted' }}"></i>
+                                            </span>
+                                                </th>
                                                 <th scope="col">بخش</th>
-                                                <th scope="col">موضوع</th>
+                                                <th class="wd-lg-20p">
+                                                    <span>عنوان</span>
+                                                    <span wire:click="sortBy('title')" class="float-right text-sm"  style="cursor: pointer;">
+                                                <i class="fa fa-arrow-up {{ $sortColumnName === 'title' && $sortDirection === 'asc' ? '' : 'text-muted' }}"></i>
+                                                <i class="fa fa-arrow-down {{ $sortColumnName === 'title' && $sortDirection === 'desc' ? '' : 'text-muted' }}"></i>
+                                             </span>
+                                                </th>
                                                 <th scope="col">وضعیت</th>
                                                 <th scope="col">اخرین به روز رسانی</th>
-                                                <th scope="col">مشاهده</th>
+                                                <th scope="col">عملیات</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($tickets as $ticket)
                                                 <tr>
+                                                    <td>
+                                                        <label class="ckbox">
+                                                            <input name="selected" value="{{$ticket->id}}" wire:model="mulitiSelect" type="checkbox">
+                                                            <span class="tx-13"></span>
+                                                        </label>
+                                                    </td>
                                                     <td>{{ verta($ticket->created_at)->format('%d  %B %Y') }}</td>
                                                     <td>{{$ticket->part}}</td>
                                                     <td>{{$ticket->title}}</td>
-                                                    <td>{{$ticket->status ==0 ? 'بسته' : 'باز' }}</td>
+                                                    <td>{{$this->status($ticket->id)}}</td>
                                                     <td>{{ verta($ticket->updates_at)->format('%d  %B %Y') }}</td>
                                                     <td>
-                                                        <a href="{{route('EditAdminTicket',$ticket->id)}}" class="btn btn-sm">
-                                                            <i class="fa fa-eye"></i>
+                                                        <a href="{{route('EditAdminTicket',$ticket->id)}}"  class="btn btn-sm btn-info">
+                                                            <i class="fe fe-edit-2"></i>
                                                         </a>
+                                                        <a href=""  wire:click.prevent="confirmRemoval({{ $ticket->id }})"
+                                                           class="btn btn-sm btn-danger">
+                                                            <i class="fe fe-trash"></i>
+                                                        </a>
+                                                        @if($ticket->status == 0)
+                                                        <a href=""  class="btn btn-sm btn-danger">بسته </a>
+                                                        @else
+                                                            <a href=""   wire:click.prevent="close({{ $ticket->id }})" class="btn btn-sm btn-success">باز </a>
+                                                        @endif
+
                                                     </td>
                                                 </tr>
                                             @endforeach

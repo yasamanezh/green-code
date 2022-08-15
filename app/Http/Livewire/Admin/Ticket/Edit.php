@@ -37,9 +37,10 @@ class Edit extends Component
             $answer->file=$this->uploadImage();
         }
         $answer->save();
-
+        $ticket=$this->ticket;
+        $ticket->status='admin';
+        $ticket->update();
         redirect(route('AdminTickets'));
-
     }
 
     public function mount($edit)

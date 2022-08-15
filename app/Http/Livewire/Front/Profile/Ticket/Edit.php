@@ -35,12 +35,13 @@ class Edit extends Component
         $answer->user_id=auth()->user()->id;
         $answer->answer=$this->description;
         $answer->ticket_id=$this->ticket->id;
-        $answer->status=1;
         if($this->file){
             $answer->file=$this->uploadImage();
         }
         $answer->save();
-
+        $ticket=$this->ticket;
+        $ticket->status='user';
+        $ticket->update();
         redirect(route('UserComment'));
 
     }

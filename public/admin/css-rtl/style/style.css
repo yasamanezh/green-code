@@ -143778,3 +143778,22 @@ div.dtr-modal div.dtr-modal-close {
     background-color: #6259c8;
 }
 /*end scrollbar*/
+.box1{
+    border: 1px solid #eee;
+    box-shadow: inset 1px 2px 3px #ddd;
+    min-height:150px;
+    text-align: right;
+}
+.box1 .header{
+    display: block;
+    width: 100%;
+    background: aliceblue;
+    padding:15px 20px;
+}
+
+.box1 .body{
+    display: block;
+    width: 100%;
+    padding: 20px;
+}
+

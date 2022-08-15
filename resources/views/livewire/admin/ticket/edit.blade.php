@@ -88,6 +88,9 @@
                                                         <br>
                                                         {{$ticket->description}}
                                                     </p>
+                                                    @if($ticket->file)
+                                                        <a  download="download" href="/storage/{{$ticket->file}}">مشاهده فایل</a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </section><br>
@@ -105,6 +108,9 @@
 
                                                             {{$answer->answer}}
                                                         </p>
+                                                        @if($answer->file)
+                                                            <a  download="download" href="/storage/{{$answer->file}}">مشاهده فایل</a>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </section><br>

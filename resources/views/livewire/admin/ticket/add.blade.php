@@ -38,7 +38,7 @@
                                         <div >
 
                                             <div class="row">
-                                                <div class="form-group col-sm-6">
+                                                <div class="form-group col-sm-4">
                                                     <label for="inputSubject">موضوع</label>
                                                     <input type="text" wire:model="ticket.title" name="title" id="inputSubject" value="" class="form-control">
                                                     @error('ticket.title')
@@ -47,7 +47,7 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-                                                <div class="form-group col-sm-6">
+                                                <div class="form-group col-sm-4">
                                                     <label for="inputDepartment">بخش</label>
                                                     <select name="part" id="inputDepartment" class="form-control" wire:model="ticket.part">
                                                         <option value="">انتخاب</option>
@@ -70,6 +70,22 @@
                                                         <option value=" طراحی وب سایت">
                                                             طراحی وب سایت
                                                         </option>
+                                                    </select>
+                                                    @error('ticket.part')
+                                                    <div class="invalid-feedback display-block">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col-sm-4">
+                                                    <label for="inputDepartment">کاربر</label>
+                                                    <select name="part" id="inputDepartment" class="form-control" wire:model="user">
+                                                        <option value="">انتخاب</option>
+                                                        @foreach($users as $user)
+                                                        <option value="{{$user->id}}" >
+                                                            {{$user->name}}
+                                                        </option>
+                                                        @endforeach
                                                     </select>
                                                     @error('ticket.part')
                                                     <div class="invalid-feedback display-block">

@@ -124,7 +124,30 @@ class Index extends Component
 
 
     }
+    public function status($id){
+        $ticket=Ticket::findOrFail($id);
+        if($ticket->status == 0){
+            return 'بسته شده';
+        }elseif($ticket->status == 'user'){
 
+            return 'در حال بررسی';
+        }elseif ($ticket->status == 'admin'){
+            return 'پاسخ داده شده';
+        }else{
+            return 'پیام ادمین';
+        }
+    }
+
+    public function close($id)
+    {
+        $ticket=Ticket::findOrFail($id);
+        if($ticket->status !=0){
+            $ticket->status=0;
+            $ticket->update();
+            $this->emit('toast', 'success', 'تیکت مورد نظر با موفقیت بسته شد.');
+            }
+
+    }
     public function render()
     {
 
@@ -132,7 +155,7 @@ class Index extends Component
         $tickets = $this->readyToLoad ? Ticket::where('title', 'LIKE', "%{$this->search}%")
             ->orWhere('description', 'LIKE', "%{$this->search}%")
             ->orWhere('id', $this->search)
-            ->orderBy($this->sortColumnName, $this->sortDirection)
+            ->orderBy('status', 'DESC')
             ->latest()->paginate($this->count_data) : [];
             $deleteItem = $this->mulitiSelect;
 

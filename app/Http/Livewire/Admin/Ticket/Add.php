@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Ticket;
 
 use App\Models\Ticket;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -11,7 +12,7 @@ class Add extends Component
     use WithFileUploads;
 
     public Ticket $ticket;
-    public $file;
+    public $file,$user;
 
     protected $rules=[
         'ticket.title'=>'required|string|min:2',
@@ -35,7 +36,8 @@ class Add extends Component
 
     public function saveInfo(){
         $this->validate();
-        $this->ticket->user_id=auth()->user()->id;
+        $this->ticket->user_id=$this->user;
+        $this->ticket->status=1;
         if($this->file){
             $this->ticket->file=$this->uploadImage();
         }
@@ -46,6 +48,7 @@ class Add extends Component
     }
     public function render()
     {
-        return view('livewire.admin.ticket.add');
+        $users=User::get();
+        return view('livewire.admin.ticket.add',compact('users'));
     }
 }

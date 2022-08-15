@@ -41,8 +41,8 @@ class Add extends Component
         if($this->file){
             $this->ticket->file=$this->uploadImage();
         }
+        $this->ticket->status='user';
         $this->ticket->save();
-
         redirect(route('UserComment'));
 
     }
