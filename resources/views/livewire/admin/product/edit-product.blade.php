@@ -101,6 +101,18 @@
                                         </div>
                                         <div class="form-group ">
                                             <div class="row row-sm">
+                                                <label class="form-label col-sm-2">دمو: </label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" wire:model.defer="product.demo"
+                                                           name="product.demo"
+                                                           value="" placeholder="ادرس دمو"
+                                                           id="input-name1"
+                                                           class="form-control @error('product.demo') parsley-error @enderror">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="row row-sm">
                                                 <label class="form-label col-sm-2">قیمت: <span
                                                         class="tx-danger">*</span></label>
                                                 <div class="col-sm-10">

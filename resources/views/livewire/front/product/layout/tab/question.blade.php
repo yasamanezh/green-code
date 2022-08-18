@@ -16,10 +16,7 @@
             </div>
             <div class="parent-btn lr-ds">
                 <div class="form-faq-col form-faq-col-submit">
-                    <button class="dk-btn dk-btn-danger" wire:click.prevent="saveQuestion()">
-                        ثبت پرسش
-                        <i class="mdi mdi-account-question"></i>
-                    </button>
+                    <a  wire:click.prevent="saveQuestion()" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">ثبت پرسش</a>
                 </div>
             </div>
         </div>

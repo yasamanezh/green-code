@@ -11,7 +11,7 @@ class Product extends Model
     protected $fillable=['title','sell','slug','meta_title','description','meta_description','meta_keyword',
         'price','image',
          'Release_date','warrenty','status','manufacturer',
-        'category','countsell','thumbnail'
+        'category','countsell','thumbnail','demo'
     ];
     use HasFactory;
 

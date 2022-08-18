@@ -11,7 +11,7 @@ class Blog extends Component
 
     public function render()
     {
-        $posts=Post::orderBy('id','DESC')->get();
+        $posts=Post::orderBy('id','DESC')->take(4)->get();
         return view('livewire.front.module.blog',compact('posts'));
     }
 }

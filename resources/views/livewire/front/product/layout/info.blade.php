@@ -1,20 +1,24 @@
 <div>
-    <div class="container-xxl position-relative p-0">
+    <div class="container-xxl position-relative p-0" style="margin-top: -100px">
 
         <div class="container-xxl py-5 mb-5">
-            <div class="container my-5 py-2 px-lg-5">
+            <div class="container my-5 py-2 px-lg-5 rtl">
                 <div class="row g-5 py-2">
                     <div class="col-lg-12 text-center text-lg-start">
                         <section class="product-info">
-                            <div class="product-headline">
-                                <h1 class="product-title">
-                                    <span class="product-title-en">{{$product->title}}</span>
-                                </h1>
-                            </div>
+
                             <div class="product-attributes">
 
                                 <div class="col-lg-6 col-xs-12 pull-right">
+                                    <div class="product-headline">
+                                    </div>
 
+                                    <img class="img-fluid pull-right" src="/storage/{{$product->image}}" alt="{{$product->title}}">
+                                   @if($product->demo)
+                                    <a href="{{$product->demo}}" target="_blank">مشاهده دمو</a>
+                                    @endif
+                                </div>
+                                <div class="col-lg-5 col-xs-12 pull-left" style="text-align: right">
                                     <div >
                                         <div >
 
@@ -45,54 +49,13 @@
 
                                             </div>
 
-
-                                            <div class="product-params">
-                                                <ul>ویژگی‌های محصول
-                                                    @php $i=1; @endphp
-                                                    @foreach($product->productAtts as $value)
-
-                                                        <li class="@if($i>=4) product-params-more @endif ">
-                                                            <span>{{$value->attribue_description}}</span>
-
-                                                        </li>
-                                                        @php $i++; @endphp
-                                                    @endforeach
-                                                    <li class="product-params-more-handler">
-                                                        <a href="#" class="more-attr-button">
-                                                            <span class="show-more">+ موارد بیشتر</span>
-                                                            <span class="show-less">- بستن</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-5 col-xs-12 pull-left">
                                     <div class="product-summary">
                                         <div class="product-seller-info">
-                                            @isset($product->warrenty)
-                                                <div class="product-seller-row guarantee">
-                                                    <span class="title"> گارانتی:</span>
-                                                    <a  class="product-name">{{\App\Models\Warranty::where('id',$product->warrenty)->pluck('name')->first()}}</a>
-                                                </div>
-                                            @endisset
-                                            @isset($manufacturer->title)
-                                                <div class="product-seller-row guarantee">
-
-                                                    <span class="title"> برند:</span>
-
-                                                    <a href="#" class="product-name">{{$manufacturer->title}}</a>
-                                                </div>
-                                            @endisset
-                                            @if($product->type == 'phisical' && $product->quantity !=0 && $product->quantity <= 3  )
-                                                <div class="product-seller-row guarantee">
-                                                    <a href="#"> فقط تعداد {{$product->quantity}} عدد از این کالا موجود است.</a>
-                                                </div>
-                                            @endif
 
                                             <div class="product-seller-row price">
-                                <span class="product-seller-price-info price-value mb-3">
+                                <span class="product-seller-price-info price-value mb-3 mt-2">
                                     <span class="title"> قیمت:</span>
                                     <span class="amount">
                                         @if($product->price == 0)
@@ -111,12 +74,8 @@
                                     </span>
                                 </span>
                                             </div>
-                                            <div class="parent-btn">
-                                                <button id="cart" class="dk-btn dk-btn-info at-c as-c send-count"
-                                                        wire:click.prevent="addToCart({{$product->id}})">
-                                                    افزودن به سبد خرید
-                                                    <i class="mdi mdi-cart"></i>
-                                                </button>
+                                            <div class="parent-btn mt-2">
+                                                <a  wire:click.prevent="addToCart({{$product->id}})" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">خرید و پرداخت</a>
 
                                             </div>
                                             @if($errors->any())

@@ -39,19 +39,15 @@ class AddProduct extends Component
     protected $rules = [
         'product.title' => 'required|string|min:2|max:255',
         'product.slug' => 'required|string|min:2|max:255|unique:products,slug',
-
         'product.price' => 'nullable|integer',
+        'product.demo' => 'nullable|string',
         'product.related' => 'nullable',
         'product.manufacturer' => 'nullable',
-
         'product.description' => 'nullable|string|min:2',
-
         'product.category' => 'required',
-
         'product.sell' => 'nullable|numeric|min:0|max:100',
         'product.warrenty' => 'nullable',
         'product.Release_date' => 'nullable',
-
         'product.status' => 'nullable',
         'product.meta_title' => 'nullable|string|min:2',
         'product.meta_description' => 'nullable|string|min:3',

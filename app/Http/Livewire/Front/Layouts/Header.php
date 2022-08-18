@@ -9,7 +9,16 @@ use Livewire\Component;
 
 class Header extends Component
 {
+   public $showChat=false;
 
+    public function shoeChatBox()
+    {
+        $this->showChat=true;
+    }
+   public function hideChatBox()
+    {
+        $this->showChat=false;
+    }
 
     public function render()
     {

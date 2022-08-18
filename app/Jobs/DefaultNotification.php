@@ -91,6 +91,9 @@ class DefaultNotification implements ShouldQueue
         elseif ($type == 'question'){
             $Message='ثبت پرسش  جدید  !';
 
+        }elseif ($type == 'ticket'){
+            $Message='تیکت جدید دارید.';
+
         }
         elseif ($type == 'comment'){
             $Message='ثبت دیدگاه جدید  !';

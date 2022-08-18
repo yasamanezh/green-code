@@ -66,10 +66,11 @@
 
                                                             <span>{{$attr->title}}</span>
                                                             @if(App\Models\ProductProperty::where('title',$attr->id)->where('product_id',$product->id)->pluck('description')->first() ==1)
-                                                                +
+                                                                <i class="fa fa-plus text-success pull-left font-size-12"></i>
                                                             @else
-                                                                -
+                                                                <i class="fa fa-minus text-danger pull-left font-size-12"></i>
                                                             @endif
+                                                            <br>
 
                                                         @endforeach
                                                         <br>

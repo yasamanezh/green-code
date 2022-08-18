@@ -1,27 +1,4 @@
 @section('title','داشبورد')
-@if(isset($result))
-    <div class="container-fluid">
-        <div class="inner-body">
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">خوش آمدید</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">داشبورد</li>
-                    </ol>
-                </div>
-            </div>
-            <!-- row opened -->
-            <div class="row row-sm">
-                <div class="col-xxl-12 col-xl-12 col-md-12 col-lg-12">
-                    <div class="card custom-card">
-                       {!! $result !!}
-                    </div>
-                </div>
-            </div>
-            <!-- row closed -->
-        </div>
-    </div>
-@else
 <div class="container-fluid">
     <div class="inner-body">
         <div class="page-header">
@@ -304,4 +281,3 @@
 
     </div>
 </div>
-@endif

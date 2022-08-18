@@ -6,7 +6,7 @@
             <h3 class="widget-title">دسته بندی ها</h3>
             @foreach($oneLevelBlogs as $cattwo)
                 @if($this->hasParent($cattwo->id))
-                    <div class="box">
+                    <div >
                         <div class="box-header">
                             <h2 class="mb-0">
                                 <button class="btn btn-block text-right" data-toggle="collapse" href="#collapseExample{{$cattwo->id}}" role="button" aria-expanded="true" aria-controls="collapseExample">
@@ -33,7 +33,7 @@
             @endforeach
             @foreach($oneLevelBlogs as $cat)
                 @if(! $this->hasParent($cat->id))
-                    <div class="box">
+                    <div >
                         <div class="box-header">
                             <h2 class="mb-0">
                                 <a class="btn btn-block text-right post-tag-a"  href="{{route('BlogCategory',$cat->slug)}}">

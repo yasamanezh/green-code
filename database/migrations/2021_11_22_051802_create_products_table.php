@@ -36,6 +36,7 @@ class CreateProductsTable extends Migration
             $table->string('anbar')->nullable();
             $table->string('image')->nullable();
             $table->string('type')->nullable();
+            $table->string('demo')->nullable();
             $table->string('shipping')->nullable();
             $table->string('warrenty')->nullable();
             $table->integer('countsell')->nullable();

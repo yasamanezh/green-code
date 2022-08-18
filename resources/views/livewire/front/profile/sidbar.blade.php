@@ -46,7 +46,7 @@
                         </li>
                         <li>
                             <a href="{{route('DahboardPayment')}}" class="profile-menu-url @if(Request::routeIs('DahboardPayment')) active-profile @endif">
-                                <span class="fa fa-wallet"></span>
+                                <span class="fa fa-shopping-bag"></span>
                                 پرداخت ها
                             </a>
                         </li>

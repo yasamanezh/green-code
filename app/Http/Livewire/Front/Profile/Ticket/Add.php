@@ -2,6 +2,9 @@
 
 namespace App\Http\Livewire\Front\Profile\Ticket;
 
+use App\Jobs\DefaultNotification;
+use App\Models\Notification;
+use App\Models\SiteOption;
 use App\Models\Ticket;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Livewire\Component;
@@ -43,6 +46,16 @@ class Add extends Component
         }
         $this->ticket->status='user';
         $this->ticket->save();
+
+        $admins = User::where('role', 'admin')->get();
+        foreach ($admins as $admin) {
+            DefaultNotification::dispatch($admin, 'ticket');
+            Notification::create([
+                'user_id' => $admin->id,
+                'type' => 'order',
+                'link' => $this->bank->id
+            ]);
+        }
         redirect(route('UserComment'));
 
     }

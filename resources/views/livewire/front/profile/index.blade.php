@@ -126,10 +126,8 @@
                                     <div class="col-12" style="padding:0;">
                                         <div class="profile-stats-row form-legal-row-submit">
                                             <div class="parent-btn parent-store">
-                                                <button class="dk-btn dk-btn-info btn-store" wire:click="changePassword">
-                                                    ذخیره پسورد جدید
-                                                    <i class="fa fa-save"></i>
-                                                </button>
+                                                <a wire:click="changePassword" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3"> ذخیره پسورد جدید</a>
+
                                             </div>
                                         </div>
                                     </div>

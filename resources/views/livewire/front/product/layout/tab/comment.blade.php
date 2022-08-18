@@ -26,13 +26,9 @@
                         نظر
                         شما به عنوان مالک محصول ثبت خواهد شد.
                     </p>
-                    <div class="parent-btn lr-ds">
+                    <div class="parent-btn lr-ds mb-2">
                         @if(auth()->user())
-                        <button wire:ignore class="dk-btn dk-btn-info"
-                                 wire:click.prevent="Add()" style="width: 50%">
-                            افزودن نظر جدید
-                            <i class="mdi mdi-comment-text-multiple-outline"></i>
-                        </button>
+                            <a wire:ignore  wire:click.prevent="Add()" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">افزودن نظر جدید </a>
                         @else
                             <p class="font-size-12">
                                 لطفا برای ثبت نظر
@@ -58,8 +54,7 @@
 
                         </li>
                         <li class="mb-3">
-                            <div class="cell cell-name pull-left" style="margin-top: -30px"
-                                 wire:click.prevent="is_buyyer({{$comment->user_id}})">
+                            <div class="cell cell-name pull-left" style="margin-top: -30px">
                                 {{ verta($comment->created_at)->format('%d %B  %Y') }}
                             </div>
                         </li>
