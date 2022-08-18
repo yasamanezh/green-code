@@ -4,57 +4,38 @@
         <div class="container py-5 px-lg-5">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-3">
-                    <h5 class="text-white mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <h5 class="text-white mb-4">آدرس دفتر</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>تهران ، میدان آزادی</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>09384054988</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>09199041290</p>
+                    <p><i class="fa fa-envelope me-3"></i>  info@green-code.ir  </p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://wa.me/09384054988" target="_blank"><i class="fa fa-whatsapp"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://wa.me/09199041290" target="_blank"><i class="fa fa-whatsapp"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="http://instagram.com/green_code_ir" target="_blank"><i class="fa fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <h5 class="text-white mb-4">Popular Link</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Career</a>
+                <div class="col-md-6 col-lg-2">
+                    <h5 class="text-white mb-4">لینک صفحات</h5>
+                    <a class="btn btn-link" style="text-align: right;" href=""><i class="fa fa-arrow-left"></i> خانه </a>
+                    <a class="btn btn-link" style="text-align: right;" href=""><i class="fa fa-arrow-left"></i> وبلاگ </a>
+                    <a class="btn btn-link" style="text-align: right;" href=""><i class="fa fa-arrow-left"></i> پکیج ها </a>
+                    <a class="btn btn-link" style="text-align: right;" href=""><i class="fa fa-arrow-left"></i> تماس با ما </a>
+                    <a class="btn btn-link" style="text-align: right;" href=""><i class="fa fa-arrow-left"></i> درباره ما </a>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <h5 class="text-white mb-4">تیم گرین کد</h5>
+                    <p>هدف ما ارائه ی خدمات برتر و در نهایت کسب رضایتمندی کارفرما بوده و این مجموعه به صورت صادقانه کل انرژی خود را به صورت شبانه روزی بر روی پروژه های سفارش شده متمرکز می نماید تا سفارشات کارفرمایان محترم را به نحو احسن در کوتاهترین زمان ممکن به انجام برساند امید است سبک کاری ما و نتیجه ی وب سایت طراحی شده رضایت خاطر شما را کسب نماید اعتماد شما بزرگترین سرمایه ماست.</p>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <h5 class="text-white mb-4">Project Gallery</h5>
-                    <div class="row g-2">
-                        <div class="col-4">
-                            <img class="img-fluid" src="img/portfolio-1.jpg" alt="Image">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid" src="img/portfolio-2.jpg" alt="Image">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid" src="img/portfolio-3.jpg" alt="Image">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid" src="img/portfolio-4.jpg" alt="Image">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid" src="img/portfolio-5.jpg" alt="Image">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid" src="img/portfolio-6.jpg" alt="Image">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <h5 class="text-white mb-4">Newsletter</h5>
-                    <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu</p>
+                    <h5 class="text-white mb-4">خبرنامه</h5>
+                    <p>با عضویت در خبر نامه از آخرین اخبار سایت با خبر شوید.</p>
                     <div class="position-relative w-100 mt-3">
-                        <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" style="height: 48px;">
+                        <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="ایمیل خود را وارد کنید.." style="height: 48px;">
                         <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="container px-lg-5">

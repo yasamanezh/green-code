@@ -1,7 +1,7 @@
 /********** Template CSS **********/
 :root {
-    --primary: #2124B1;
-    --secondary: #4777F5;
+    --primary: #3F6844;
+    --secondary: #5DAA68;
     --light: #F7FAFF;
     --dark: #1D1D27;
 }
@@ -500,11 +500,7 @@ h6,
 }
 
 .footer .btn.btn-link::before {
-    position: relative;
-    content: "\f105";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    margin-right: 10px;
+
 }
 
 .footer .btn.btn-link:hover {
