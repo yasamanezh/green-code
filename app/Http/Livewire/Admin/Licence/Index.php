@@ -28,6 +28,8 @@ class Index extends Component
     public $sortDirection = 'desc';
     public $SelectPage=false;
 
+
+
     public function UpdatedSelectPage($value)
     {
         if ($value){
