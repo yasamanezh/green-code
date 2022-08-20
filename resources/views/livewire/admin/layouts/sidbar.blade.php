@@ -5,12 +5,19 @@
             <img src="/storage/{{$options->logo}}" class="header-brand-img desktop-logo" alt="لوگو">
         </a>
     </div>
+
     <div class="main-sidebar-body">
         <ul class="nav">
             @can('show_dashboard')
-            <li class="nav-item  @if(Request::routeIs('Dashboard')) active @endif">
+            <li class="nav-item  @if(Request::routeIs('Dashboard') ) active @endif">
                 <a class="nav-link" href="{{route('Dashboard')}}"><span class="shape1"></span><span class="shape2"></span><i
                         class="ti-home sidemenu-icon"></i><span class="sidemenu-label">داشبورد</span></a>
+            </li>
+            @endcan
+                @can('show_licence')
+            <li class="nav-item  @if(Request::routeIs('Licences')  ||Request::routeIs('AddLicence')  ||Request::routeIs('EditLicence')) active @endif">
+                <a class="nav-link" href="{{route('Licences')}}"><span class="shape1"></span><span class="shape2"></span><i
+                        class="ti-lock sidemenu-icon"></i><span class="sidemenu-label">لایسنس ها</span></a>
             </li>
             @endcan
 

@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Video;
+namespace App\Http\Livewire\Admin\Licence;
 
+use App\Models\Licence;
 use App\Models\Log;
-use App\Models\Product;
-use App\Models\ProductVideo;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Index extends Component
 {
-
     use WithPagination;
 
 
@@ -33,8 +31,8 @@ class Index extends Component
     public function UpdatedSelectPage($value)
     {
         if ($value){
-            $this->mulitiSelect=ProductVideo::where('title','LIKE',"%{$this->search}%")
-                ->orWhere('link','LIKE',"%{$this->search}%")
+            $this->mulitiSelect=Licence::where('url','LIKE',"%{$this->search}%")
+                ->orWhere('licence','LIKE',"%{$this->search}%")
                 ->orWhere('id',$this->search)
                 ->orderBy($this->sortColumnName, $this->sortDirection)
                 ->latest()->paginate($this->count_data)->pluck('id')->map(fn($item)=>(string) $item)->toArray();
@@ -81,14 +79,14 @@ class Index extends Component
 
 
         if(Gate::allows('delete_video')){
-            $data_info_id=ProductVideo::findOrFail($this->categoryIdBeingRemoved);
+            $data_info_id=Licence::findOrFail($this->categoryIdBeingRemoved);
 
 
             $data_info_id->delete();
 
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'حذف کردن ویدئو ها' .'-'. $data_info_id->title,
+                'url' => 'حذف کردن لایسنس ها' .'-'. $data_info_id->title,
                 'actionType' => 'حذف'
             ]);
             $this->dispatchBrowserEvent('hide-delete-modal');
@@ -102,14 +100,14 @@ class Index extends Component
     public function deleteAll(){
         if(Gate::allows('delete_video')){
             foreach ($this->mulitiSelect as $value){
-                $video=ProductVideo::where('id',$value)->first();
+                $video=Licence::where('id',$value)->first();
 
                 $video->delete();
             }
             $this->mulitiSelect=[];
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'حذف کردن گروهی ویدئو ها ',
+                'url' => 'حذف کردن گروهی لایسنس ها ',
                 'actionType' => 'حذف'
             ]);
             $this->SelectPage=false;
@@ -123,8 +121,8 @@ class Index extends Component
 
 
     public function statusDisable($id){
-        if(Gate::allows('edit_video')){
-            $data_info_id=ProductVideo::find($id);
+        if(Gate::allows('edit_licence')){
+            $data_info_id=Licence::find($id);
             if($data_info_id->status == 1){
                 $status=0;
                 $action='غیر فعال';
@@ -137,7 +135,7 @@ class Index extends Component
             ]);
             Log::create([
                 'user_id' => auth()->user()->id,
-                'url' => 'تغییر وضعیت ویدئو ها' .'-'. $data_info_id->title,
+                'url' => 'تغییر وضعیت لایسنس ها' .'-'. $data_info_id->title,
                 'actionType' => $action
             ]);
             $this->emit('toast','success', 'تغییر وضعیت با موفقیت انجام شد');
@@ -154,16 +152,15 @@ class Index extends Component
     {
 
 
-        $data_info = $this->readyToLoad ? ProductVideo::where('title','LIKE',"%{$this->search}%")
-            ->orWhere('link','LIKE',"%{$this->search}%")
+        $data_info = $this->readyToLoad ? Licence::where('url','LIKE',"%{$this->search}%")
+            ->orWhere('licence','LIKE',"%{$this->search}%")
             ->orWhere('id',$this->search)
             ->orderBy($this->sortColumnName, $this->sortDirection)
             ->latest()->paginate($this->count_data) :[];
-        $products=Product::get();
 
         $deleteItem=$this->mulitiSelect;
 
 
-        return view('livewire.admin.video.index',compact('data_info','products','deleteItem'));
+        return view('livewire.admin.licence.index',compact('data_info','deleteItem'));
     }
 }

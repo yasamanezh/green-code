@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product_videos', function (Blueprint $table) {
+        Schema::create('licences', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products') ->onUpdate('cascade')->onDelete('cascade');
-            $table->string('title')->nullable();
+            $table->string('url')->nullable();
+            $table->string('licence')->nullable();
+            $table->string('date')->nullable();
             $table->string('status')->nullable();
-            $table->string('sort')->nullable();
-            $table->string('link')->nullable();
-            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_videos');
+        Schema::dropIfExists('licences');
     }
 };

@@ -148,6 +148,11 @@ Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
     Route::get('admin/video/add',\App\Http\Livewire\Admin\Video\Add::class)->name('AddVideo');
     Route::get('admin/video/edit/{edit}',\App\Http\Livewire\Admin\Video\Edit::class)->name('EditVideo');
 
+//======================================= > //licence//
+    Route::get('admin/licences',\App\Http\Livewire\Admin\Licence\Index::class)->name('Licences');
+    Route::get('admin/licence/add',\App\Http\Livewire\Admin\Licence\Add::class)->name('AddLicence');
+    Route::get('admin/licence/edit/{edit}',\App\Http\Livewire\Admin\Licence\Edit::class)->name('EditLicence');
+
 
 
 //======================================= > //contact//
