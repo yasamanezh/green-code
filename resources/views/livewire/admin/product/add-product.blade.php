@@ -13,6 +13,7 @@
                 <div wire:ignore>
                     <button wire:click.prevent="saveInfo" class="btn btn-primary my-2 btn-icon-text"
                             type="submit"
+                            type="submit"
                             wire:loading.remove>ذخیره
                     </button>
                     <div wire:loading wire:target="saveInfo">

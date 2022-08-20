@@ -6,6 +6,12 @@
         <livewire:front.product.layout.tab.description :id="$product->id" />
         </div>
         <div class="tab-pane fade rtl"
+             id="tab-video" role="tabpanel"
+             aria-labelledby="pills-video-tab">
+
+        <livewire:front.product.layout.tab.video :id="$product->id" />
+        </div>
+        <div class="tab-pane fade rtl"
              id="tab-comment" role="tabpanel"
              aria-labelledby="pills-comment-tab">
 

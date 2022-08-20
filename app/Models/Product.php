@@ -25,6 +25,11 @@ class Product extends Model
 
         return $this->hasMany(ProductDownload::class);
     }
+     public function videos(){
+
+        return $this->hasMany(ProductVideo::class);
+    }
+
     public function productAtts(){
 
         return $this->hasMany(ProductAtt::class);

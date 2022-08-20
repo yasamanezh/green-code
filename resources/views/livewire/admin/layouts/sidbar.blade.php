@@ -18,7 +18,7 @@
                   || Request::routeIs('EditCategory')|| Request::routeIs('Filters')||
                    Request::routeIs('AttributeGroups')||  Request::routeIs('EditAttributeGroup') ||
                      Request::routeIs('Trashed') ||   Request::routeIs('AddProduct') || Request::routeIs('Editbrand') ||Request::routeIs('editFilter') || Request::routeIs('AddFilter')
-                       || Request::routeIs('ProductComment') || Request::routeIs('Questions')|| Request::routeIs('editQuestion')) active @endif">
+                       || Request::routeIs('ProductComment') || Request::routeIs('Questions')|| Request::routeIs('editQuestion') || Request::routeIs('Videos') || Request::routeIs('AddVideo')|| Request::routeIs('EditVideo')) active @endif">
                 <a class="nav-link with-sub" href="#"><span class="shape1"></span><span class="shape2"></span><i
                         class="ti-package sidemenu-icon"></i><span class="sidemenu-label">محصولات</span><i
                         class="angle fe fe-chevron-left"></i></a>
@@ -32,6 +32,11 @@
                     @can('show_attr')
                         <li class="nav-sub-item  @if(Request::routeIs('AttributeGroups') || Request::routeIs('EditAttributeGroup')  ) active @endif">
                             <a class="nav-sub-link" href="{{route('AttributeGroups')}}">گروه مشخصات </a>
+                        </li>
+                    @endcan
+                        @can('show_video')
+                        <li class="nav-sub-item  @if(Request::routeIs('Videos') || Request::routeIs('AddVideo')|| Request::routeIs('EditVideo')  ) active @endif">
+                            <a class="nav-sub-link" href="{{route('Videos')}}">ویدئو ها </a>
                         </li>
                     @endcan
                     @can('show_product')

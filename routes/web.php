@@ -143,6 +143,11 @@ Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
     Route::get('admin/ticket/add',\App\Http\Livewire\Admin\Ticket\Add::class)->name('AddAdminTicket');
     Route::get('admin/ticket/edit/{edit}',\App\Http\Livewire\Admin\Ticket\Edit::class)->name('EditAdminTicket');
 
+//======================================= > //videos//
+    Route::get('admin/videos',\App\Http\Livewire\Admin\Video\Index::class)->name('Videos');
+    Route::get('admin/video/add',\App\Http\Livewire\Admin\Video\Add::class)->name('AddVideo');
+    Route::get('admin/video/edit/{edit}',\App\Http\Livewire\Admin\Video\Edit::class)->name('EditVideo');
+
 
 
 //======================================= > //contact//

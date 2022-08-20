@@ -7,8 +7,18 @@
                aria-controls="tab-home"
                aria-selected="true">
 
-                نقد و بررسی</button>
+                توضیحات</button>
         </li>
+        <li class="nav-item" role="presentation">
+            <button class="box-tab-item nav-link  "
+               id="pills-video-tab" data-bs-toggle="pill"
+               data-bs-target="#tab-video" type="button" role="tab"
+               aria-controls="tab-video"
+               aria-selected="true">
+
+                فیلم های آموزشی</button>
+        </li>
+
         <li class="nav-item" role="presentation">
             <button class="box-tab-item nav-link "
                id="pills-comment-tab" data-bs-toggle="pill"
