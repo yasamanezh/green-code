@@ -17,7 +17,6 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
-            $table->longText('naghd')->nullable();
             $table->string('slug')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
@@ -25,10 +24,6 @@ class CreateProductsTable extends Migration
             $table->integer('sell')->nullable();
             $table->string('location')->nullable();
             $table->bigInteger('price')->nullable();
-            $table->bigInteger('quantity')->nullable();
-            $table->integer('minimum')->nullable();
-            $table->string('weight_class_id')->nullable();
-            $table->bigInteger('weight')->nullable();
             $table->string('status')->nullable();
             $table->string('manufacturer')->nullable();
             $table->string('category')->nullable();

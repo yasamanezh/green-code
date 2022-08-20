@@ -112,7 +112,13 @@ class Callback extends Component
             'status' => 200,
             'processing' => 'complate'
         ]);
-
+        $product=Product::findOrFail($bank->product_id);
+        if($product->countsell){
+            $product->countsell+=1;
+        }else{
+            $product->countsell=1;
+        }
+        $product->update();
     }
 
     public function render()
