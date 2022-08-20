@@ -142,7 +142,7 @@
                                     </li>
                                     @if($cartDiscount >=1)
                                         <li>
-                                            <span class="checkout-bill-item-title">تخفیف بر روی سبد خرید</span>
+                                            <span class="checkout-bill-item-title">تخفیف بر روی  خرید</span>
                                             <span class="checkout-bill-price">
                                            {{number_format($cartDiscount)}}
                                             <span class="checkout-bill-currency">
@@ -170,7 +170,7 @@
                                             <span class="checkout-bill-total-price-currency">تومان</span>
                                         </span>
                                         <div class="parent-btn">
-                                            <button class="dk-btn dk-btn-info payment-link"
+                                            <button class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3 mt-3"
                                                     wire:click.prevent="SaveOrder()">
                                                 پرداخت
                                                 <i class="mdi mdi-arrow-left"></i>

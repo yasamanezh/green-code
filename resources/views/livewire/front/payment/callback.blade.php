@@ -124,9 +124,8 @@
 
 
                                     <div class="parent-btn btn-following-order">
-                                        <a href="{{route('DetailOrder',$bank->order_number)}}" class="dk-btn dk-btn-info">
+                                        <a href="{{route('DetailOrder',$bank->order_number)}}" class="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">
                                             پیگیری سفارش
-                                            <i class="fa fa-shopping-bag sign-in"></i>
                                         </a>
                                     </div>
 
