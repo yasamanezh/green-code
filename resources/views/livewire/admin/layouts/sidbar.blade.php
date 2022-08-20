@@ -44,6 +44,12 @@
                     @endcan
                 </ul>
             </li>
+                    <li class="nav-item  @if(Request::routeIs('AdminTickets')) active @endif">
+                        <a class="nav-link" href="{{route('AdminTickets')}}"><span class="shape1"></span><span class="shape2"></span><i
+                                class="ti-ticket sidemenu-icon"></i><span class="sidemenu-label">تیکت ها</span></a>
+                    </li>
+
+
             <li class="nav-item  @if(Request::routeIs('blog')) active @endif">
                 <a class="nav-link with-sub" href="#"><span class="shape1"></span>
                     <span class="shape2"></span><i class="ti-receipt sidemenu-icon"></i><span class="sidemenu-label">وبلاگ</span><i
