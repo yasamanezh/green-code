@@ -1,40 +1,5 @@
 @section('title','افزودن گروه مشخصات')
-@if(isset($result))
-    <div class="container-fluid">
-        <div class="inner-body">
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5"> افزودن گروه مشخصات</h2><br>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('Dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('AttributeGroups')}}">مشخصات</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">افزودن گروه مشخصات</li>
-                    </ol>
-                </div>
-                <div>
-                    <a data-toggle="tooltip" href="{{route('AttributeGroups')}}" class="btn btn-warning text-white"
-                       data-original-title="برگشت">
-                        <i class="fa fa-backward"></i>
-                    </a>
-                </div>
-            </div>
-            @include('livewire.admin.layouts.error')
-            <div class="row row-sm">
-                <div class="col-lg-12">
-                    @include('livewire.admin.layouts.message')
-                    <div class="card custom-card">
-                        <div class="card-header p-3 tx-medium my-auto tx-white bg-primary">
-                            افزودن گروه مشخصات
-                        </div>
-                        <div class="card-body birder">
-                            {!! $result !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@else
+
     <div class="container-fluid">
         <div class="inner-body">
             <div class="page-header">
@@ -129,4 +94,3 @@
             </div>
         </div>
     </div>
-@endif

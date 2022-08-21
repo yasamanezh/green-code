@@ -1,29 +1,5 @@
 @section('title','افزودن html')
-@if(isset($result))
-    <div class="container-fluid">
-        <div class="inner-body">
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5">افزودن html</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('Dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('Htmls')}}">ماژول های html</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">افزودن html</li>
-                    </ol>
-                </div>
-            </div>
-            <!-- row opened -->
-            <div class="row row-sm">
-                <div class="col-xxl-12 col-xl-12 col-md-12 col-lg-12">
-                    <div class="card custom-card">
-                        {!! $result !!}
-                    </div>
-                </div>
-            </div>
-            <!-- row closed -->
-        </div>
-    </div>
-@else
+<div>
     <div class="container-fluid">
         <div class="inner-body">
             <div class="page-header">
@@ -96,7 +72,7 @@
             </form>
         </div>
     </div>
-    </div>
+
     @push('customcss')
 
         <!-- Internal Summernote css-->
@@ -162,5 +138,6 @@
             });
         </script>
     @endpush
-@endif
 
+
+</div>

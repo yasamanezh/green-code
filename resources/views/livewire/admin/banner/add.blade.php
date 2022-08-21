@@ -1,39 +1,4 @@
 @section('title',' ایجاد بنر جدید')
-@if(isset($result))
-    <div class="container-fluid">
-        <div class="inner-body">
-            <div class="page-header">
-                <div>
-                    <h2 class="main-content-title tx-24 mg-b-5"> ایجاد بنر جدید</h2><br>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('Dashboard')}}">داشبورد</a></li>
-                        <li class="breadcrumb-item"><a href="{{route('banner.index')}}">بنرها</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> ایجاد بنر جدید</li>
-                    </ol>
-                </div>
-                <div>
-                    <a data-toggle="tooltip" href="{{route('banner.index')}}" class="btn btn-warning text-white"
-                       data-original-title="برگشت">
-                        <i class="fa fa-backward"></i>
-                    </a>
-                </div>
-            </div>
-            @include('livewire.admin.layouts.error')
-            <div class="row">
-                <div class="col-12 ">
-                    <div class="card custom-card">
-                        <div class="card-header p-3 tx-medium my-auto tx-white bg-primary">
-                            ایجاد بنر جدید
-                        </div>
-                        <div class="card-body">
-                            {!! $result !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@else
     <div class="container-fluid">
         <div class="inner-body">
             <div class="page-header">
@@ -158,4 +123,3 @@
             </div>
         </div>
     </div>
-@endif
