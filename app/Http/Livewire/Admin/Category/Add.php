@@ -21,11 +21,7 @@ class Add extends Component
     public $parent, $meta_description, $meta_keyword, $meta_title;
     public $result = null;
 
-    public function mount()
-    {
-        $license = SiteOption::first()->license;
 
-    }
 
     public function saveInfo()
     {
