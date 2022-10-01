@@ -658,6 +658,9 @@
 
                                                                                                             @elseif($array[0]=='blog')
                                                                                                                 <span>اخرین مطالب وبلاگ</span>
+                                                                                                            @elseif($array[0]=='package')
+                                                                                                                <span>پکیج ها</span>
+
 
                                                                                                             @endif
                                                                                                         @endisset
@@ -699,14 +702,12 @@
                                                                                                             value="logo">
                                                                                                             لوگو
                                                                                                         </option>
-                                                                                                        <option
-                                                                                                            value="contact">
+                                                                                                        <option value="contact">
                                                                                                             فرم تماس با
                                                                                                             ما
                                                                                                         </option>
-
-                                                                                                        <option  value="blog">  اخرین مطالب وبلاگ
-                                                                                                        </option>
+                                                                                                        <option  value="package">پکیج ها</option>
+                                                                                                        <option  value="blog">  اخرین مطالب وبلاگ</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>

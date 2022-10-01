@@ -825,6 +825,9 @@
 
                                                                                                                 @elseif($array[0]=='blog')
                                                                                                                     <span>اخرین مطالب وبلاگ</span>
+                                                                                                                @elseif($array[0]=='package')
+                                                                                                                    <span>پکیج ها</span>
+
                                                                                                                 @endif
                                                                                                             @endisset
                                                                                                         </div>
@@ -878,6 +881,7 @@
                                                                                                                 مطالب
                                                                                                                 وبلاگ
                                                                                                             </option>
+                                                                                                            <option  value="package">پکیج ها</option>
 
                                                                                                         </select>
                                                                                                     </div>

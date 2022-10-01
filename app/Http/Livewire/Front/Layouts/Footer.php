@@ -2,17 +2,28 @@
 
 namespace App\Http\Livewire\Front\Layouts;
 
-use App\Models\SiteOption;
+use App\Models\NewsLetter;
 use Livewire\Component;
-
 
 class Footer extends Component
 {
+    public $email;
+    public $success=false;
 
+    public function saveEmail()
+    {
+        $this->validate([
+            'email'=>'required|email'
+        ]);
+        $news_letters=new NewsLetter();
+        $news_letters->email=$this->email;
+        $news_letters->save();
+        $this->email='';
+        $this->success=true;
 
+    }
     public function render()
     {
-        $options=SiteOption::first();
-        return view('livewire.front.layouts.footer',compact('options'));
+        return view('livewire.front.layouts.footer');
     }
 }

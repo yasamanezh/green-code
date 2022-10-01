@@ -1,64 +1,101 @@
 <div>
-    <!-- Footer Start -->
-    <div class="container-fluid bg-primary text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5 px-lg-5">
-            <div class="row g-5">
-                <div class="col-md-6 col-lg-3">
-                    <h5 class="text-white mb-4">آدرس دفتر</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>تهران ، میدان آزادی</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>09384054988</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>09199041290</p>
-                    <p><i class="fa fa-envelope me-3"></i>  info@green-code.ir  </p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href="https://wa.me/09384054988" target="_blank"><i class="fa fa-whatsapp"></i></a>
-                        <a class="btn btn-outline-light btn-social" href="https://wa.me/09199041290" target="_blank"><i class="fa fa-whatsapp"></i></a>
-                        <a class="btn btn-outline-light btn-social" href="http://instagram.com/green_code_ir" target="_blank"><i class="fa fa-instagram"></i></a>
+    <footer class="footer-light">
+        <div class="container rtl-dir">
+            <div class="row g-custom-x">
+                <div class="col-lg-4">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="" />
+                        <div class="spacer-20"></div>
+                        <p>یک شرکت طراحی سایت حرفه ای و موفق از مجموعه ای از افراد جوان و متخصص تشکیل شده است.به این می بالیم و مفتخریم که جمعی از کارشناسان، نخبگان و مدیران با تجربه در حوزه طراحی سایت و دیجیتال مارکتینگ را در گرین کد داریم و با وجود این تیم خلاق و پرانرژی، بهترین پشتیبانی را در سریعترین زمان به مشتریان عزیز خود ارائه می دهیم.</p>
+                    </a>
+                    <div class="spacer-10"></div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="widget">
+                                <h5>صفحات سایت</h5>
+                                <ul>
+                                    <li><a href="{{ route('Home') }}">خانه</a></li>
+                                    <li><a href="{{ route('services') }}">طراحی سایت</a></li>
+                                    <li><a href="{{ route('about') }}">درباره ما</a></li>
+                                    <li><a href="{{ route('contact') }}">تماس با ما</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="widget">
+                                <h5>خدمات</h5>
+                                <ul>
+                                    <li><a href="#">طراحی وب سایت</a></li>
+                                    <li><a href="#">طراحی لوگو</a></li>
+                                    <li><a href="#">طراحی بنر</a></li>
+                                    <li><a href="#">کلیپ های تبلیغاتی</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-2">
-                    <h5 class="text-white mb-4">لینک صفحات</h5>
-                    <a class="btn btn-link" style="text-align: right;" href=""><i class="fa fa-arrow-left"></i> خانه </a>
-                    <a class="btn btn-link" style="text-align: right;" href=""><i class="fa fa-arrow-left"></i> وبلاگ </a>
-                    <a class="btn btn-link" style="text-align: right;" href=""><i class="fa fa-arrow-left"></i> پکیج ها </a>
-                    <a class="btn btn-link" style="text-align: right;" href=""><i class="fa fa-arrow-left"></i> تماس با ما </a>
-                    <a class="btn btn-link" style="text-align: right;" href=""><i class="fa fa-arrow-left"></i> درباره ما </a>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <h5 class="text-white mb-4">تیم گرین کد</h5>
-                    <p>هدف ما ارائه ی خدمات برتر و در نهایت کسب رضایتمندی کارفرما بوده و این مجموعه به صورت صادقانه کل انرژی خود را به صورت شبانه روزی بر روی پروژه های سفارش شده متمرکز می نماید تا سفارشات کارفرمایان محترم را به نحو احسن در کوتاهترین زمان ممکن به انجام برساند امید است سبک کاری ما و نتیجه ی وب سایت طراحی شده رضایت خاطر شما را کسب نماید اعتماد شما بزرگترین سرمایه ماست.</p>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <h5 class="text-white mb-4">خبرنامه</h5>
-                    <p>با عضویت در خبر نامه از آخرین اخبار سایت با خبر شوید.</p>
-                    <div class="position-relative w-100 mt-3">
-                        <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="ایمیل خود را وارد کنید.." style="height: 48px;">
-                        <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
-                    </div>
-                </div>
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h5>خبر نامه</h5>
+                        <p>با عضویت در خبرنامه از آخرین اخبار سایت با خبر شوید.</p>
+                        <form action="blank.php" class="row form-dark" id="form_subscribe" method="post" name="form_subscribe">
+                            <div class="col text-center">
+                                @if($success)
+                                    <div  class="success">
+                                        ایمیل شما در خبرنامه سایت گرینکد ذخیره شد.
+                                    </div>
+                                    <br>
+                                @endif
+                                <input wire:model.defer="email"  class="form-control" id="txt_subscribe" name="txt_subscribe" placeholder="ایمیل خود را وارد کنید." type="text" />
 
+
+
+                                <a  wire:click.prevent="saveEmail()" id="btn-subscribe"><i class="arrow_right bg-color-secondary"></i></a>
+                                <div class="clearfix"></div>
+                                    @error('email')
+                                    <br>
+                                    <div  class="error">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                            </div>
+                        </form>
+                        <div class="spacer-10"></div>
+                        <div class="spacer-30"></div>
+                        <div class="widget">
+                            <h5>شبکه های اجتماعی</h5>
+                            <div class="social-icons">
+                                <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
+                                <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
+                                <a href="#"><i class="fa fa-linkedin fa-lg"></i></a>
+                                <a href="#"><i class="fa fa-pinterest fa-lg"></i></a>
+                                <a href="#"><i class="fa fa-rss fa-lg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="container px-lg-5">
-            <div class="copyright">
+        <div class="subfooter">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-12 text-center text-md-start mb-3 mb-md-0">
-                        <p style="text-align: center">
-                        تمام حقوق این سایت متعلق به گروه برنامه نویسی
-                        &copy; <a class="border-bottom" href="/">گرینکد </a>
-میباشد.
-
-                        </p>
+                    <div class="col-md-12">
+                        <div class="de-flex">
+                            <div class="de-flex-col">
+                                <a href="#">
+                                    Copyright 2022 - Green-Code by Green-Code.ir
+                                </a>
+                            </div>
+                            <ul class="menu-simple">
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Footer End -->
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="fa fa-arrow-up"></i></a>
-
-@once
-    <livewire:front.layouts.footer.script />
-@endonce
+    </footer>
 </div>
