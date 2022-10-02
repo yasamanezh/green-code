@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\admin\layouts;
 
-use App\Models\Notification;
 use Livewire\Component;
 
 class Header extends Component
