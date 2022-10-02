@@ -43,13 +43,6 @@
             </li>
 
 
-            @can('show_demo')
-                <li class="nav-item  @if(Request::routeIs('demoes') || Request::routeIs('demoAdd') || Request::routeIs('demoUpdate') || Request::routeIs('demoTrashed')  ) active @endif">
-                    <a class="nav-link" href="{{route('demoes')}}"><span class="shape1"></span>
-                        <span class="shape2"></span><i class="ti-palette sidemenu-icon"></i><span class="sidemenu-label">دموها</span></a>
-                </li>
-            @endcan
-
            @can('show_page')
                 <li class="nav-item  @if(Request::routeIs('pages') || Request::routeIs('page.add') || Request::routeIs('page.add') || Request::routeIs('page.update') || Request::routeIs('page.trashed')  ) active @endif">
                     <a class="nav-link" href="{{route('pages')}}"><span class="shape1"></span>

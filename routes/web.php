@@ -45,13 +45,6 @@ Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
     Route::get('admin/page/add',\App\Http\Livewire\Admin\Page\Add::class)->name('page.add');
     Route::get('admin/page/edit/{page}',\App\Http\Livewire\Admin\Page\Update::class)->name('page.update');
 
-//=======================================> //demos//
-    Route::get('admin/demoes',\App\Http\Livewire\Admin\Demo\Index::class)->name('demoes');
-    Route::get('admin/demo/trash',\App\Http\Livewire\Admin\Demo\Trashed::class)->name('demoTrashed');
-    Route::get('admin/demo/add',\App\Http\Livewire\Admin\Demo\Add::class)->name('demoAdd');
-    Route::get('admin/demo/edit/{demo}',\App\Http\Livewire\Admin\Demo\Update::class)->name('demoupdate');
-
-
 
 //=======================================> //newsletter//
     Route::get('admin/newsletter',\App\Http\Livewire\Admin\Newsletter\Index::class)->name('newsletter.index');

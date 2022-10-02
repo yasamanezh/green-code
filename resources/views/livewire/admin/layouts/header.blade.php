@@ -13,12 +13,6 @@
                     </a>
                 </div>
 
-                <div class="main-header-notification">
-                    <a class="nav-link icon" wire:click="deleteMessage()">
-                        <i class="fe fe-message-square header-icons"></i>
-                        <span class="badge badge-success nav-link-badge">{{count($messages)}}</span>
-                    </a>
-                </div>
                 <div class="dropdown main-profile-menu">
                     <a class="d-flex" href="#">
                         <span class="main-img-user">

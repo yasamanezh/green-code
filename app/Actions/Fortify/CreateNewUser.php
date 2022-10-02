@@ -3,15 +3,11 @@
 namespace App\Actions\Fortify;
 
 use App\Jobs\DefaultNotification;
-use App\Models\Notification;
-use App\Models\SiteOption;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
-use Trez\RayganSms\Facades\RayganSms;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -39,16 +35,7 @@ class CreateNewUser implements CreatesNewUsers
             'phone' => $input['phone'],
             'password' => Hash::make($input['password']),
         ]);
-        DefaultNotification::dispatch($user,'register');
-        $admins=User::where('role','admin')->get();
-        foreach($admins as $admin){
-            Notification::create([
-                'user_id' => $admin->id,
-                'type'=>'register',
-                'link'=>$admin->id
-            ]);
-            DefaultNotification::dispatch($admin,'register_admin');
-        }
+
       return $user;
 
       }
