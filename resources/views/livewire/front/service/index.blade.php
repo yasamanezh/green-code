@@ -736,16 +736,16 @@
                             </div>
                         </div>
                         <div class="spacer-half"></div>
-                        <a class="btn-main" href="#">رفتن به دمو</a>
+                        <a class="btn-main" href="https://larasmart.green-code.ir/" target="_blank">رفتن به دمو</a>
                         <div class="spacer-half" style="background-size: 100%; background-repeat: no-repeat;"></div>
 
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp animated"
                      style="background-size: 100%; background-repeat: no-repeat; visibility: visible; animation-name: fadeInUp;">
-                    <div id="80932763609">
+                    <div id="53929394110">
                         <script type="text/JavaScript"
-                                src="https://www.aparat.com/embed/Hpstc?data[rnddiv]=80932763609&data[responsive]=yes"></script>
+                                src="https://www.aparat.com/embed/tJZYC?data[rnddiv]=53929394110&data[responsive]=yes"></script>
                     </div>
                 </div>
             </div>
@@ -793,7 +793,8 @@
                                          style="background-size: 100%; background-repeat: no-repeat;">
                                         <div class="col-lg-6 wow fadeInUp animated"
                                              style="background-size: 100%; background-repeat: no-repeat; visibility: visible; animation-name: fadeInUp;">
-                                            <img class="img-fluid anim-up-down" src="images/misc/Online-shopping-bro.png" alt="">
+                                            <img class="img-fluid anim-up-down"
+                                                 src="images/misc/Online-shopping-bro.png" alt="">
                                         </div>
                                         <div class="col-lg-6 wow fadeInUp animated" data-wow-delay=".3s"
                                              style="background-size: 100%; background-repeat: no-repeat; visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
