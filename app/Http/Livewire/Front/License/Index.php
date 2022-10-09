@@ -36,7 +36,7 @@ class Index extends Component
 
         }
         $ch = $request->all();
-        $url = Licence::where('url', $ch['svr'])->first();
+        $url = Licence::where('url', $ch['svr'])->where('status',1)->first();
         if ($url){
             if ($url->licence == $ch['lic']){
                 return response([
