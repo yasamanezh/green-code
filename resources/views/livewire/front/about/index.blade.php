@@ -36,13 +36,13 @@
                          style="background-size: 100%; background-repeat: no-repeat;">
                         <div class="col-lg-6 wow fadeInUp animated"
                              style="background-size: 100%; background-repeat: no-repeat; visibility: visible; animation-name: fadeInUp;">
-                            <img class="img-fluid anim-up-down" src="images/misc/server.png" alt="">
+                            <img class="img-fluid anim-up-down" src="images/misc/About-us.png" alt="">
                         </div>
                         <div class="col-lg-6 wow fadeInUp animated" data-wow-delay=".3s"
                              style="background-size: 100%; background-repeat: no-repeat; visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
                             <div class="p-sm-30 pb-sm-0 mb-sm-0"
                                  style="background-size: 100%; background-repeat: no-repeat;">
-                                <p>فعالیت و کسب درامد از طریق اینترنت یکی از مهمترین امور زندگی امروزه مردم شده است.
+                                <p style="text-align: justify">فعالیت و کسب درامد از طریق اینترنت یکی از مهمترین امور زندگی امروزه مردم شده است.
                                     درست است که طراحی سایت از سال هاپیش انجام می شده است اما در چند سال اخیر نقش بخصوصی
                                     پیدا کرده است. شرکت ره وب با بیش از 10 سال سابقه و بیش از ده ها نیروی متخصص و جوان
                                     در زمینه طراحی سایت حرفه ای، طراحی استارتاپ، طراحی اپلیکیشن، دیجیتال مارکتینگ، سئو،
