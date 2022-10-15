@@ -11,6 +11,9 @@ Route::get('/',\App\Http\Livewire\Front\Home\Index::class)->name('Home');
 Route::get('/services',\App\Http\Livewire\Front\Service\Index::class)->name('services');
 Route::get('/contact',\App\Http\Livewire\Front\Contact\Index::class)->name('contact');
 Route::get('/about',\App\Http\Livewire\Front\About\Index::class)->name('about');
+Route::get('/blogs',\App\Http\Livewire\Front\Blog\Index::class)->name('Blog');
+Route::get('/single/{id}',\App\Http\Livewire\Front\Blog\Single::class)->name('SingleBlogFront');
+
 //=======================================> // start admin routes//
 Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
     //=======================================> //role//

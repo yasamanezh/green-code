@@ -4,7 +4,7 @@
         <div class="container rtl-dir">
             <div class="row align-items-center">
                 <div class="col-md-6 xs-hide">
-                    <img src="images/misc/Code.png" class="lazy img-fluid anim-up-down" alt="">
+                    <img alt="طراحی سایت اختصاصی" src="images/misc/Code.png" class="lazy img-fluid anim-up-down">
                 </div>
                 <div class="col-md-6">
                     <h1 class="fontsize48"><span class="color-gradient">گرین کد</span></h1>
@@ -44,13 +44,13 @@
                     <div class="p-sm-30 pb-sm-30 mb-sm-30">
                         <h2>تیم برنامه نویسی <span class="color-gradient">گرین کد</span>
                         </h2>
-                        <p>هدف ما ارائه ی خدمات برتر و در نهایت کسب رضایتمندی کارفرما بوده و این مجموعه به صورت صادقانه
+                        <p style="font-size: 14px">هدف ما ارائه ی خدمات برتر و در نهایت کسب رضایتمندی کارفرما بوده و این مجموعه به صورت صادقانه
                             کل انرژی خود را به صورت شبانه روزی بر روی پروژه های سفارش شده متمرکز می نماید تا سفارشات
                             کارفرمایان محترم را به نحو احسن در کوتاهترین زمان ممکن به انجام برساند امید است سبک کاری ما
                             و نتیجه ی وب سایت طراحی شده رضایت خاطر شما را کسب نماید اعتماد شما بزرگترین سرمایه ماست.</p>
                         <div class="row mt10 rtl-dir mb20">
                             <div class="col-md-5">
-                                <ul class="ul-style-2">
+                                <ul class="ul-style-2 rtl-dir">
                                     <li><h4>طراحی اختصاصی</h4></li>
                                     <li><h4>پشتیبانی 24 ساعته</h4></li>
                                 </ul>
@@ -63,11 +63,11 @@
                             </div>
                         </div>
                         <div class="spacer-half"></div>
-                        <a class="btn-main" href="#">Learn More</a>
+                        <a class="btn-main" href="/about">اطلاعات بیشتر</a>
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp">
-                    <img class="img-fluid anim-up-down" src="images/misc/Team.png" alt="">
+                    <img alt="طراحی سایت اختصاصی" class="img-fluid anim-up-down" src="images/misc/Team.png" >
                 </div>
 
             </div>
@@ -110,13 +110,264 @@
             </div>
         </div>
     </section>
+    <!-- section begin -->
+    <section id="subheader" class="jarallax">
+        <img src="images/background/subheader.jpg" class="jarallax-img" alt="طراحی سایت اختصاصی">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>تعرفه ها</h1>
+                    </div>
+                    <div class="col-md-6 offset-md-3">
+                        <p class="lead">لیست قیمت طراحی سایت فروشگاهی</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+
+    <section id="section-hero" class="no-top mt-100" aria-label="section">
+        <div class="container">
+            <div class="spacer-10"></div>
+            <div class="row g-custom-x">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-sm-30">
+                    <div class="pricing-table pricing-s1">
+                        <div class="top">
+                            <h3>پلن حرفه ای</h3>
+                        </div>
+                        <div class="mid">
+                            <p class="price">
+                                <span class="currency">تماس بگیرید</span>
+                            </p>
+                        </div>
+                        <div class="bottom">
+                            <ul>
+                                <li><i class="fa fa-check"></i>طراحی گرافیکی استاندارد</li>
+                                <li><i class="fa fa-check"></i>سئوی داخلی استاندارد</li>
+                                <li><i class="fa fa-check"></i>دارای لایسنس مادام العمر برای یک سایت</li>
+                                <li><i class="fa fa-check"></i>اجرای سایت با لاراول</li>
+                                <li><i class="fa fa-check"></i>پشتیبانی یک ساله رایگان(قابل تمدید) </li>
+                                <li><i class="fa fa-check"></i>قابلیت ارسال پیامک </li>
+                                <li><i class="fa fa-check"></i>قابلیت تعریف کارمند برای کاربران </li>
+                                <li><i class="fa fa-check"></i> درگاه بانک ملت ، صادرات و زرین پال</li>
+                                <li><i class="fa fa-check"></i>قابلیت پرداخت در محل</li>
+                                <li><i class="fa fa-check"></i>قابلیت ایجاد بی نهایت صفحه</li>
+                                <li><i class="fa fa-check"></i>فیلتر محصولات بر اساس مشخصات</li>
+                                <li><i class="fa fa-check"></i> تعریف انواع تخفیف </li>
+                                <li><i class="fa fa-check"></i>دارای بخش وبلاگ و مقالات</li>
+                                <li><i class="fa fa-check"></i>تعریف انواع روش حمل ونقل</li>
+                                <li><i class="fa fa-check"></i> امکان عضویت در خبرنامه</li>
+                                <li><i class="fa fa-check"></i> اموزش ویدئویی پنل ادمین</li>
+                                <li><i class="fa fa-check"></i> سیستم تیکتینگ</li>
+                                <li><i class="fa fa-check"></i>راه اندازی سرچ کنسول</li>
+                                <li><i class="fa fa-check"></i> راه اندازی گوگل آنالیتیکس </li>
+                                <li><i class="fa fa-check " ></i>چند فروشندگی(مارکت پلیس)</li>
+                            </ul>
+                            <div class="action">
+                                <a href="" class="btn-main">زمان تحویل:تماس بگیرید</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-sm-30">
+                    <div class="pricing-table pricing-s1 table-featured">
+                        <div class="top">
+                            <h3>پلن پیشرفته</h3>
+                        </div>
+                        <div class="mid">
+                            <p class="price">
+                                <span class="currency">میلیون تومان</span>
+                                <span class="m opt-1">10</span>
+                            </p>
+                        </div>
+                        <div class="bottom">
+                            <ul>
+                                <li><i class="fa fa-check"></i>طراحی گرافیکی استاندارد</li>
+                                <li><i class="fa fa-check"></i>سئوی داخلی استاندارد</li>
+                                <li><i class="fa fa-check"></i>دارای لایسنس مادام العمر برای یک سایت</li>
+                                <li><i class="fa fa-check"></i>اجرای سایت با لاراول</li>
+                                <li><i class="fa fa-check"></i>پشتیبانی یک ساله رایگان(قابل تمدید) </li>
+                                <li><i class="fa fa-check"></i>قابلیت ارسال پیامک </li>
+                                <li><i class="fa fa-check"></i>قابلیت تعریف کارمند برای کاربران </li>
+                                <li><i class="fa fa-check"></i> درگاه بانک ملت ، صادرات و زرین پال</li>
+                                <li><i class="fa fa-check"></i>قابلیت پرداخت در محل</li>
+                                <li><i class="fa fa-check"></i>قابلیت ایجاد بی نهایت صفحه</li>
+                                <li><i class="fa fa-check"></i>فیلتر محصولات بر اساس مشخصات</li>
+                                <li><i class="fa fa-check"></i> تعریف انواع تخفیف </li>
+                                <li><i class="fa fa-check"></i>دارای بخش وبلاگ و مقالات</li>
+                                <li><i class="fa fa-check"></i>تعریف انواع روش حمل ونقل</li>
+                                <li><i class="fa fa-check"></i> امکان عضویت در خبرنامه</li>
+                                <li><i class="fa fa-check"></i> اموزش ویدئویی پنل ادمین</li>
+                                <li><i class="fa fa-check"></i> سیستم تیکتینگ</li>
+                                <li><i class="fa fa-check"></i>راه اندازی سرچ کنسول</li>
+                                <li><i class="fa fa-check"></i> راه اندازی گوگل آنالیتیکس </li>
+                                <li><i class="fa fa-minus text-danger" ></i>چند فروشندگی(مارکت پلیس)</li>
+                            </ul>
+                            <div class="action">
+                                <a href="" class="btn-main">زمان تحویل:45 روز</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-sm-30">
+                    <div class="pricing-table pricing-s1">
+                        <div class="top">
+                            <h3>پلن پایه</h3>
+                        </div>
+                        <div class="mid">
+                            <p class="price">
+                                <span class="currency">میلیون تومان</span>
+                                <span class="m opt-1">6</span>
+                            </p>
+                        </div>
+                        <div class="bottom">
+                            <ul>
+                                <li><i class="fa fa-check"></i>طراحی گرافیکی استاندارد</li>
+                                <li><i class="fa fa-check"></i>سئوی داخلی استاندارد</li>
+                                <li><i class="fa fa-check"></i>دارای لایسنس مادام العمر برای یک سایت</li>
+                                <li><i class="fa fa-check"></i>اجرای سایت با لاراول</li>
+                                <li><i class="fa fa-check"></i>پشتیبانی یک ساله رایگان(قابل تمدید) </li>
+                                <li><i class="fa fa-check"></i>قابلیت ارسال پیامک </li>
+                                <li><i class="fa fa-check"></i>قابلیت تعریف کارمند برای کاربران </li>
+                                <li><i class="fa fa-check"></i> درگاه بانک ملت ، صادرات و زرین پال</li>
+                                <li><i class="fa fa-check"></i>قابلیت پرداخت در محل</li>
+                                <li><i class="fa fa-check"></i>قابلیت ایجاد بی نهایت صفحه</li>
+                                <li><i class="fa fa-check"></i>فیلتر محصولات بر اساس مشخصات</li>
+                                <li><i class="fa fa-check"></i> تعریف انواع تخفیف </li>
+                                <li><i class="fa fa-check"></i>دارای بخش وبلاگ و مقالات</li>
+                                <li><i class="fa fa-check"></i>تعریف انواع روش حمل ونقل</li>
+                                <li><i class="fa fa-check"></i> امکان عضویت در خبرنامه</li>
+                                <li><i class="fa fa-check"></i> اموزش ویدئویی پنل ادمین</li>
+                                <li><i class="fa fa-minus text-danger"></i> سیستم تیکتینگ</li>
+                                <li><i class="fa fa-minus text-danger"></i>راه اندازی سرچ کنسول</li>
+                                <li><i class="fa fa-minus text-danger"></i> راه اندازی گوگل آنالیتیکس </li>
+                                <li><i class="fa fa-minus text-danger" ></i>چند فروشندگی(مارکت پلیس)</li>
+                            </ul>
+                            <div class="action">
+                                <a href="" class="btn-main">زمان تحویل:30 روز</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="section-faq" class="no-top">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h5 class="s2">سوالات متداول</h5>
+                    <h2>آیا سوال دارید؟</h2>
+                    <div class="spacer-20"></div>
+                </div>
+            </div>
+            <div class="row g-custom-x">
+                <div class="col-md-6 wow fadeInUp">
+                    <div class="accordion secondary">
+                        <div class="accordion-section">
+                            <div class="accordion-section-title" data-tab="#accordion-1">
+                                آموزش پنل ادمین به چه صورت است؟
+                            </div>
+                            <div class="accordion-section-content" id="accordion-1">
+                                <p>اموزش پنل ادمین با استفاده از فیلم اموزش ضبط شده در اختیار شما قرار میگیرد.</p>
+                            </div>
+                            <div class="accordion-section-title" data-tab="#accordion-2">
+                               ایا از قالب اماده در طراحی استفاده شده؟
+                            </div>
+                            <div class="accordion-section-content" id="accordion-2">
+                                <p>خیر . در طراحی سایت توسط گروه برنامه نویسی گرینکد از هیچ قالب اماده ای استفاده نشده و به صورت کامل و از پایه برنامه نویسی میشود.
+                                </p>
+                            </div>
+                            <div class="accordion-section-title" data-tab="#accordion-3">
+                                ایا محتوا گذاری اولیه انجام میشود؟
+                            </div>
+                            <div class="accordion-section-content" id="accordion-3">
+                                <p>بله .گروه گرینکد 20 مطلب اولیه را برای سایت شما وارد کرده و مابقی مطالب را با توجه به اموزش ارائخ شده میتوانید وارد سایت کنید.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 wow fadeInUp">
+                    <div class="accordion secondary">
+                        <div class="accordion-section">
+                            <div class="accordion-section-title" data-tab="#accordion-b-4">
+                               آیا کدها به صورت اپن سورس در اختیار من قرار میگیرد؟
+                            </div>
+                            <div class="accordion-section-content" id="accordion-b-4">
+                                <p>خیر .ولی اگر نیاز به کد سایت داشتین باید قبل از طراحی با مشاوران ما در میان بگذارید. </p>
+                            </div>
+                            <div class="accordion-section-title" data-tab="#accordion-b-5">
+                                به روز رسانی سایت به چه صورت است؟
+                            </div>
+                            <div class="accordion-section-content" id="accordion-b-5">
+                                <p>به روز رسانی سایت شما توسط تیم انجام میشود.</p>
+                            </div>
+                            <div class="accordion-section-title" data-tab="#accordion-b-6">
+                               هزینه خرید هاست  و دامین به عهده سایت میباشد؟
+                            </div>
+                            <div class="accordion-section-content" id="accordion-b-6">
+
+                           <p>خیر. هزینه خرید هاست و دامنه بر عهده کارفرما میباشد. </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section begin -->
+    <section id="subheader" class="jarallax">
+        <img src="images/background/subheader.jpg" class="jarallax-img" alt="طراحی سایت اختصاصی">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>وبلاگ</h1>
+                    </div>
+                    <div class="col-md-6 offset-md-3">
+                        <p class="lead">
+                            آخرین اخبار و مقالات سایت</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+
+    <section id="section-hero" class="no-top mt-50" aria-label="section">
+        <div class="container">
+            <div class="row">
+                @foreach($posts as $post)
+                <div class="col-lg-4 col-md-6 mb10">
+                    <div class="bloglist item">
+                        <div class="post-content">
+                            <div class="post-image">
+                                <img alt="{{$post->title}}" src="/storage/{{$post->image}}" class="lazy" style="width: 356px;height: 237px">
+                            </div>
+                            <div class="post-text">
+                                <h4><a title="{{$post->title}}" href="news-single.html">{{$post->title}}<span></span></a></h4>
+                                {!! \Illuminate\Support\Str::limit($post->description,130,'...') !!}                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
     <section id="section-banner" class="no-bottom no-top bgcustom"
              style="background-color: rgb(220 245 233 / 62%)!important; background-size: 100%; background-repeat: no-repeat;">
         <div class="container rtl-dir" style="background-size: 100%; background-repeat: no-repeat;">
             <div class="row align-items-center g-custom-x" style="background-size: 100%; background-repeat: no-repeat;">
                 <div class="col-lg-4 d-none d-lg-block d-xl-block  text-center"
                      style="background-size: 100%; background-repeat: no-repeat;">
-                    <img class="relative img-fluid mt-60" src="images/misc/Call-center-bro.png" alt="">
+                    <img alt="طراحی سایت اختصاصی" class="relative img-fluid mt-60" src="images/misc/Call-center-bro.png">
                 </div>
 
                 <div class="col-lg-4 col-md-6" style="background-size: 100%; background-repeat: no-repeat;">

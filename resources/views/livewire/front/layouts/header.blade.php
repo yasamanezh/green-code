@@ -23,8 +23,8 @@
                                 <!-- logo begin -->
                                 <div id="logo">
                                     <a href="/">
-                                        <img class="logo-main" src="images/logo.png" alt="گرینکد" />
-                                        <img class="logo-mobile" src="images/logo-mobile.png" alt="گرینکد" />
+                                        <img class="logo-main" src="{{asset('images/logo.png')}}" alt="گرینکد" />
+                                        <img class="logo-mobile" src="{{asset('images/logo-mobile.png')}}" alt="گرینکد" />
                                     </a>
                                 </div>
                                 <!-- logo close -->
@@ -32,10 +32,11 @@
                         </div>
                         <div class="de-flex-col header-col-mid rtl-dir">
                             <ul id="mainmenu">
-                                <li><a class="menu-item" href="{{ route('Home') }}">خانه</a></li>
+                                <li><a class="menu-item" href="{{ route('Blog') }}">وبلاگ</a></li>
                                 <li><a class="menu-item" href="{{ route('services') }}">طراحی سایت</a></li>
                                 <li><a class="menu-item" href="{{ route('about') }}">درباره ما</a></li>
                                 <li><a class="menu-item" href="{{ route('contact') }}">تماس با ما</a></li>
+                                <li><a class="menu-item" href="{{ route('Home') }}">خانه</a></li>
                             </ul>
                         </div>
                         <div class="de-flex-col">

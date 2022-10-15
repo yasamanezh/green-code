@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Admin\Blog;
 
 
-use App\Models\Category;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Log;
 use Livewire\Component;
@@ -184,11 +183,8 @@ class Index extends Component
             ->orWhere('id', $this->search)
             ->orderBy($this->sortColumnName, $this->sortDirection)
             ->latest()->paginate($this->count_data) : [];
-        $categories = Category::get();
-        $categoriesId = Category::pluck('id')->all();
         $deleteItem = $this->mulitiSelect;
 
-
-        return view('livewire.admin.blog.index', compact('data_info', 'categoriesId', 'categories', 'deleteItem'));
+        return view('livewire.admin.blog.index', compact('data_info',  'deleteItem'));
     }
 }

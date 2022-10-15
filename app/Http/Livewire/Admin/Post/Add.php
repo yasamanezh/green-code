@@ -49,7 +49,7 @@ class Add extends Component
         $name=$this->image->getClientOriginalName();
         $this->image->storeAs($directory,$name);
         $img=Image::make($this->image->getRealPath())->resize(500, 500)->save();
-        Image::make($this->image->getRealPath())->resize(250, 250)->save($thumb);
+        Image::make($this->image->getRealPath())->resize(356, 534)->save($thumb);
         $image=["$directory/$name","$directory/thumbnail_$name"];
         return($image);
     }
@@ -58,8 +58,7 @@ class Add extends Component
         if(Gate::allows('edit_post')){
             $this->validate();
             if($this->image){
-                $this->post->image=$this->uploadImage()[0];
-                $this->post->thumbnail=$this->uploadImage()[1];
+                $this->post->image=$this->uploadImage()[1];
             }
             $this->post->save();
             $this->post->blogs()->attach($this->showcategories);

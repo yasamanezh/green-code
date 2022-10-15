@@ -6,19 +6,18 @@
     <link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>گرین کد</title>
-
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- CSS Files
    ================================================== -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap"/>
-    <link href="css/mdb.min.css" rel="stylesheet" type="text/css" id="mdb" />
-    <link href="css/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/coloring.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" id="bootstrap"/>
+    <link href="{{asset('css/mdb.min.css')}}" rel="stylesheet" type="text/css" id="mdb" />
+    <link href="{{asset('css/plugins.css')}}" rel="stylesheet"  />
+    <link href="{{asset('css/coloring.css')}}" rel="stylesheet"  />
+    <link href="{{asset('css/style.css')}}" rel="stylesheet"  />
     <!-- color scheme -->
-    <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css" />
+    <link id="colors" href="{{asset('css/colors/scheme-01.css')}}" rel="stylesheet" type="text/css" />
+{!! app('seotools')->generate() !!}
 
     <!-- Scripts -->
 <!--@vite(['resources/css/app.css', 'resources/js/app.js']) -->
@@ -47,8 +46,8 @@
 </div>
 <!-- Javascript Files
   ================================================== -->
-<script src="js/plugins.js"></script>
-<script src="js/designesia.js"></script>
+<script src="{{asset('js/plugins.js')}}"></script>
+<script src="{{asset('js/designesia.js')}}"></script>
 @livewireScripts
 </body>
 </html>

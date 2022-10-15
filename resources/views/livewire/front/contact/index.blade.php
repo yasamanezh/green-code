@@ -3,7 +3,7 @@
 
     <!-- section begin -->
     <section id="subheader" class="jarallax">
-        <img src="images/background/subheader.jpg" class="jarallax-img" alt="">
+        <img src="{{asset('images/background/subheader.jpg')}}" class="jarallax-img" alt="گرینکد">
         <div class="center-y relative text-center">
             <div class="container">
                 <div class="row">

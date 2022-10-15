@@ -710,7 +710,7 @@
         </div>
         <div id="jarallax-container-0"
              style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100; clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%); background-size: 100%; background-repeat: no-repeat;">
-            <img src="images/background/subheader.jpg" class="jarallax-img" alt=""
+            <img src="{{asset('images/background/subheader.jpg')}}" class="jarallax-img" alt="گرینکد"
                  style="object-fit: cover; object-position: 50% 50%; max-width: none; position: absolute; top: 0px; left: 0px; width: 1674px; height: 707.93px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; will-change: transform, opacity; margin-top: -40.4648px; transform: translate3d(0px, 361.465px, 0px);">
         </div>
     </section>
@@ -794,7 +794,7 @@
                                         <div class="col-lg-6 wow fadeInUp animated"
                                              style="background-size: 100%; background-repeat: no-repeat; visibility: visible; animation-name: fadeInUp;">
                                             <img class="img-fluid anim-up-down"
-                                                 src="images/misc/Online-shopping-bro.png" alt="">
+                                                 src="{{asset('images/misc/Online-shopping-bro.png')}}" alt="گرینکد">
                                         </div>
                                         <div class="col-lg-6 wow fadeInUp animated" data-wow-delay=".3s"
                                              style="background-size: 100%; background-repeat: no-repeat; visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">

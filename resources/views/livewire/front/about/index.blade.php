@@ -3,7 +3,7 @@
 
     <!-- section begin -->
     <section id="subheader" class="jarallax">
-        <img src="images/background/subheader.jpg" class="jarallax-img" alt="">
+        <img src="{{asset('images/background/subheader.jpg')}}" class="jarallax-img" alt="گرینکد">
         <div class="center-y relative text-center">
             <div class="container">
                 <div class="row">
@@ -36,7 +36,7 @@
                          style="background-size: 100%; background-repeat: no-repeat;">
                         <div class="col-lg-6 wow fadeInUp animated"
                              style="background-size: 100%; background-repeat: no-repeat; visibility: visible; animation-name: fadeInUp;">
-                            <img class="img-fluid anim-up-down" src="images/misc/About-us.png" alt="">
+                            <img class="img-fluid anim-up-down" src="images/misc/About-us.png" alt="گرینکد">
                         </div>
                         <div class="col-lg-6 wow fadeInUp animated" data-wow-delay=".3s"
                              style="background-size: 100%; background-repeat: no-repeat; visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">

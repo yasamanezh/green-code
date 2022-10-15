@@ -63,7 +63,7 @@ class Update extends Component
         }
         $this->uploadImage->storeAs($directory, $name);
         $img = Image::make($this->uploadImage->getRealPath())->resize(500, 500)->save();
-        Image::make($this->uploadImage->getRealPath())->resize(250, 250)->save($thumb);
+        Image::make($this->uploadImage->getRealPath())->resize(356, 534)->save($thumb);
         $image = ["$directory/$name", "$directory/thumbnail_$name"];
         return ($image);
     }
