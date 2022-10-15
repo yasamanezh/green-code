@@ -58,12 +58,6 @@ Route::group(['middleware' => ['web','auth','Admin_panel']], function () {
 
 //======================================= > // optios//
     Route::get('admin/options',\App\Http\Livewire\Admin\Option\Index::class)->name('SiteOptions');
-    Route::get('admin/ProductComments',\App\Http\Livewire\Admin\Option\ProductComment::class)->name('ProductComment');
-    Route::get('admin/ProductComment/edit/{edit}',\App\Http\Livewire\Admin\Option\ProductCommentEdit::class)->name('ProductCommentEdit');
-    Route::get('admin/questions',\App\Http\Livewire\Admin\Option\Question::class)->name('Questions');
-    Route::get('admin/question/edit/{edit}',\App\Http\Livewire\Admin\Option\EditQuestion::class)->name('editQuestion');
-
-
 
 //======================================= > //licence//
     Route::get('admin/licences',\App\Http\Livewire\Admin\Licence\Index::class)->name('Licences');
