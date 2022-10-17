@@ -6099,7 +6099,7 @@ header.smaller{
 
 .social-icons i {
     text-shadow: none;
-    color: #fff;
+
     padding: 12px 10px 8px 10px;
     width: 34px;
     height: 34px;
@@ -7781,9 +7781,7 @@ a.btn-right {
     left: -21px;
     top: 0;
     content: counter(wa-process-counter);
-    border: 1px solid green;
     border-radius: 0px;
-    background: white;
     height: 45px;
     width: 45px;
     text-align: center;
@@ -12301,7 +12299,7 @@ section.bg-grey {
 }
 
 #back-to-top {
-    background: #ffffff;
+
     position: fixed;
     bottom: -40px;
     right: 10px;
@@ -16698,3 +16696,4 @@ img {
     font-size: 13px;
     text-align: right;
 }
+
