@@ -179,8 +179,7 @@
                         </div>
                         <div class="mid">
                             <p class="price">
-                                <span class="currency">میلیون تومان</span>
-                                <span class="m opt-1">10</span>
+                                <span class="currency">تماس بگیرید</span>
                             </p>
                         </div>
                         <div class="bottom">
@@ -219,8 +218,7 @@
                         </div>
                         <div class="mid">
                             <p class="price">
-                                <span class="currency">میلیون تومان</span>
-                                <span class="m opt-1">6</span>
+                                <span class="currency">تماس بگیرید</span>
                             </p>
                         </div>
                         <div class="bottom">
@@ -352,7 +350,7 @@
                                 <img alt="{{$post->title}}" src="/storage/{{$post->image}}" class="lazy" style="width: 356px;height: 237px">
                             </div>
                             <div class="post-text">
-                                <h4><a title="{{$post->title}}" href="news-single.html">{{$post->title}}<span></span></a></h4>
+                                <h4><a title="{{$post->title}}" href="{{route('SingleBlogFront',$post->slug)}}">{{$post->title}}<span></span></a></h4>
                                 {!! \Illuminate\Support\Str::limit($post->description,130,'...') !!}                            </div>
                         </div>
                     </div>
