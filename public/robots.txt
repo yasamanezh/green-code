@@ -1,2 +1,5 @@
 User-agent: *
 Disallow:
+Disallow: /admin/
+Sitemap: https://green-code.ir/siteMap.xml
+Sitemap: http://green-code.ir/siteMap.xml

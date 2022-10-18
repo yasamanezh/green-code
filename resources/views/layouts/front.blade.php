@@ -17,6 +17,15 @@
     <link href="{{asset('css/style.css')}}" rel="stylesheet"  />
     <!-- color scheme -->
     <link id="colors" href="{{asset('css/colors/scheme-01.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XV7FRKX4WK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-XV7FRKX4WK');
+    </script>
 {!! app('seotools')->generate() !!}
 
     <!-- Scripts -->
