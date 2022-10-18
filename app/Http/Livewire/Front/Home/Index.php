@@ -30,7 +30,7 @@ class Index extends Component
     }
     public function render()
     {
-        $posts=Post::orderBy('id','DESC')->take(3)->get();
+        $posts=Post::orderBy('id','DESC')->take(3)->where('status',1)->get();
         return view('livewire.front.home.index',compact('posts'))->layout('layouts.front');
     }
 }
